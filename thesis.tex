@@ -1,0 +1,95 @@
+\documentclass[12pt,oneside]{fithesis2}
+
+% ===== LOADING PACKAGES =====
+% language settings, main documnet language last
+\usepackage[english]{babel}
+% enabling new fonts support (nicer)
+\usepackage{lmodern}
+% setting input encoding
+\usepackage[utf8]{inputenc}
+% setting output encoding
+\usepackage[T1]{fontenc}
+% fithesis2 requires csquotes
+\usepackage{csquotes}
+% set page margins
+\usepackage[top=3.5cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+% package to make bullet list nicer
+\usepackage{enumitem}
+% generating hyperlinks in document
+\usepackage{url}
+\usepackage[plainpages=false,pdfpagelabels,colorlinks=true]{hyperref}
+
+% ===== MAIN DOCUMENT SETTINGS =====
+% adjusting hyphenation penalties
+\tolerance=10000
+\hyphenpenalty=500
+% FI THESIS settings
+\thesistitle{Usage of evolvable circuit \\for statistical testing \\of randomness}
+\thesissubtitle{Bachelor thesis}
+\thesisstudent{Martin Ukrop}
+\thesiswoman{false}
+\thesisfaculty{fi}
+\thesisyear{spring 2013}
+\thesisadvisor{RNDr.\ Petr Švenda,\ Ph.D.}
+\thesislang{en}
+% set correct spacing in itemize
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+% ===== BEGIN DOCUMENT =====
+\begin{document}
+
+\FrontMatter
+\ThesisTitlePage
+
+\begin{ThesisDeclaration}
+\DeclarationText
+\AdvisorName
+\end{ThesisDeclaration}
+
+\begin{ThesisThanks}
+Thanks will be here.
+\end{ThesisThanks}
+
+\begin{ThesisAbstract}
+Abstract will be here.
+\end{ThesisAbstract}
+
+\begin{ThesisKeyWords}
+Keywords will be here.
+\end{ThesisKeyWords}
+
+\MainMatter
+\tableofcontents
+\chapter{Introduction}
+\label{chap:intro}
+Text ...
+
+\chapter{Statistical randomness testing}
+\label{chap:stat-rand-testing}
+Text ...
+
+\chapter{Limits and disadvantages of statistical testing}
+\label{chap:limits-stat-testing}
+Text ...
+
+\chapter{Evolution based randomness testing}
+\label{chap:evo-based-testing}
+Text ...
+
+\chapter{Distinguishing cipher outputs from random stream}
+\label{chap:distinguish-cipher}
+Text ...
+
+\chapter{Analysis of Salsa20 output stream}
+\label{chap:analysis-salsa}
+Text ...
+
+\chapter{Distinguishing hash outputs from random stream}
+\label{chap:distinguish-hash}
+Text ...
+
+\chapter{Conclusions and future work}
+\label{chap:conclusions}
+Text ...
+
+\end{document}

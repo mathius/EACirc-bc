@@ -1,0 +1,10 @@
+# backup and autosave files
+*~
+*.bak
+
+# TeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
