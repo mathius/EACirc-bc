@@ -12,9 +12,17 @@
 % fithesis2 requires csquotes
 \usepackage{csquotes}
 % set page margins
-\usepackage[top=3.5cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[top=3.5cm, bottom=3cm, left=2.4cm, right=2.4cm]{geometry}
 % package to make bullet list nicer
 \usepackage{enumitem}
+% math symbols and environments
+\usepackage{mathtools}
+% packages for complex tables
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{dcolumn}
+\usepackage{array}
 % generating hyperlinks in document
 \usepackage{url}
 \usepackage[plainpages=false,pdfpagelabels,colorlinks=true]{hyperref}
@@ -34,6 +42,21 @@
 \thesislang{en}
 % set correct spacing in itemize
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+% new commands for results table headers
+\newcommand{\rotatedHeader}[2][l]{\rotatebox{90}{\begin{tabular}[#1]{@{}l}#2\end{tabular}}}
+\newcommand{\resultsTable}[1]{%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+\begin{tabularx}{\textwidth}{|r*{3}{||S[table-format=2.1]|S[table-format=3.0]|C}|} \hline
+\multirow{1}*{\raisebox{-\height-0.3cm}{\rotatebox{90}{\# of rounds}}} & \multicolumn{9}{c|}{IV and key reinitialization} \\ \cline{2-10}
+& \multicolumn{3}{c||}{once for run} & 
+\multicolumn{3}{c||}{for each test set} & 
+\multicolumn{3}{c|}{for each test vector} \\ \cline{2-10}
+& \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} &  \rotatedHeader{EACirc\\(\textsc{aam})}
+& \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & \rotatedHeader{EACirc\\(\textsc{aam})}
+& \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & \rotatedHeader{EACirc\\(\textsc{aam})} \\ \hline \hline
+#1
+\end{tabularx}}
 
 % ===== BEGIN DOCUMENT =====
 \begin{document}
@@ -66,17 +89,45 @@ Text ...
 
 \chapter{Statistical randomness testing}
 \label{chap:stat-rand-testing}
+
 \begin{itemize}
-\item intro to statistical testing of randomness
-\item STS-NIST
-\item Diehard
-\item Dieharder
+\item idea: statistic (maths) -> test
+\item fast
+\item universal
+\item usage: assess quality of (pseudo)random data, ???
 \end{itemize}
 
-\chapter{Limits and disadvantages of statistical testing}
-\label{chap:limits-stat-testing}
+\section{Statistical Test Suite by \textsc{Nist}}
+\label{sec:sts-nist}
+
 \begin{itemize}
-\item idea -> test
+\item nist standard
+\item short description (?)
+\end{itemize}
+
+\section{Diehard battery of tests}
+\label{sec:diehard}
+
+\begin{itemize}
+\item author
+\item one of the first and most-well known in those years
+\item old, but still considered "gold standard" along with sts-nist
+\item short description of tests (?)
+\end{itemize}
+
+\section{Dieharder: A Random Number Test Suite}
+\label{sec:dieharder}
+
+\begin{itemize}
+\item framework idea
+\item progress: diehard -> sts-nist -> new
+\end{itemize}
+
+\section{Limits and disadvantages of statistical testing}
+\label{sec:limits-stat-testing}
+
+\begin{itemize}
+\item idea -> test (idea is always the predecessor)
 \item check only one specific property
 \item can only rarely be adapted to specific situation
 \item results interpretation (what is wrong?)
@@ -97,6 +148,7 @@ Text ...
 \item computation recommencing (state, ...)
 \item static checker for pregenerated test vectors
 \end{itemize}
+\item EACirc is wider project beyond the scope of this thesis, thus project evolution, some parts are being redesigned
 \end{itemize}
 
 \chapter{Experiment settings and results}
@@ -105,13 +157,20 @@ Text ...
 \begin{itemize}
 \item general evolution settings
 \item main goal: finding strong distinguisher (over 99\% for 50 consecutive generations)
-\item if strong distinguisher -> average generation
-\item if not -> AAM after test set change
+\item displayed average stable generation across 30 independent runs \\
+(stable = fitness over $99\%$ for at least next 50 test sets)
+\item if none stable generation was found, average average maximum fitness after test vector change is displayed in parentheses.
 \item statistical batteries STS-NIST and Dieharder for reference
+\item 250 MB of data used, same files for Dieharder and STS-NIST
 \item STS-NIST settings (lenghts, 2 test omitted)
-\item STS-NIST results interpretation (scores 0, 0.5, 1)
-\item Dieharder settings (lengths, tests roughly corresponding to Diehard)
+\item each test run 100 times on 1\,000\,000 bits
+\item some runs had problems with tests RandomExcursions and RandomExcursionsVariant, these tests are not included in the result
+\item STS-NIST results interpretation (scores 0, 1)
+\item Dieharder settings
+\item test corresponding to original Diehard (except for Diehard sums test)
+\item each test run once, length of the stream decided by test
 \item Dieharder results interpretation (scores 0, 0.5, 1)
+\item displayed number of tests passed out of total (pass=1, weak=0.5, fail=0)
 \end{itemize}
 
 \chapter{Control distinguishers}
@@ -120,9 +179,34 @@ Text ...
 \begin{itemize}
 \item introduction (what are reference points? what result are "normal" and "random"?)
 \item control distinguisher random-random
+\item no stable generations found
+\item average average maximum fitness after test vector change: 0.52
+\item Dieharder: 20/20
+\item STS NIST: 188/188
 \item dependence on number of test set and test set change frequency
-\item distinguishing Croatia from Germany (?)
+\item distinguishing Croatia from Germany
+\begin{itemize}
+\item 6 files of 5 MB from each source
+\item read from beginning (initial offset = 0) => same data
+\item looking for distinguisher for each pair
 \end{itemize}
+\end{itemize}
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|c|r|*{6}{c|}} \cline{3-8}
+\multicolumn{2}{c|}{} & \multicolumn{6}{c|}{test set size} \\ \cline{3-8}
+\multicolumn{2}{c|}{} & 200 & 500 & 1000 & 2000 & 5000 & 10\,000 \\ \hline
+\multirow{5}*{\rotatebox{90}{population }}
+& 5 & - & - & (0.509) & - & - & - \\ \cline{2-8}
+& 10 & - & - & (0.514) & - & - & - \\ \cline{2-8}
+& 20 & (0.544) & (0.527) & (0.520) & (0.514) & (0.509) & (0.506) \\ \cline{2-8}
+& 50 & - & - & (0.526) & - & - & - \\ \cline{2-8}
+& 100 & - & - & (0.530) & - & - & - \\ \hline
+\end{tabular}
+\caption{Dependence of AAM on population size and test vector set size.}
+\label{tab:random-set-size-change}
+\end{table}
 
 \chapter{Distinguishing cipher outputs from random stream}
 \label{chap:distinguish-cipher}
@@ -140,6 +224,101 @@ Text ...
 \item using evolved distinguisher is quick
 \end{itemize}
 \end{itemize}
+
+\begin{table}[htb]
+\centering
+\resultsTable{
+1 & 0.0 & 0 & $n=2681$ & 0.0 & 0 & (0.85) & 0.0 & 5 & $n=1431$ \\ \hline
+2 & 0.5 & 0 & (0.54) & 1.0 & 0 & (0.54) & 15.5 & 146 & (0.52) \\ \hline
+3 & 1.0 & 0 & (0.53) & 1.0 & 0 & (0.53) & 15.0 & 160 & (0.52) \\ \hline
+4 & 3.5 & 79 & (0.52) & 3.0 & 78 & (0.52) & 20.0 & 160 & (0.52) \\ \hline
+5 & 4.5 & 79 & (0.52) & 3.5 & 91 & (0.52) & 17.5 & 161 & (0.52) \\ \hline
+6 & 19.0 & 158 & (0.52) & 19.0 & 159 & (0.52) & 18.0 & 162 & (0.52) \\ \hline
+7 & 18.5 & 162 & (0.52) & 19.0 & 161 & (0.52) & 20.0 & 161 & (0.52) \\ \hline \hline
+8 & 20.0 & 162 & (0.52) & 20.0 & 159 & (0.52) & 19.0 & 161 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Decim ciphertext.}
+\label{tab:estream-decim}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\resultsTable{
+1 & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) & 18.0 & 162 & (0.52) \\ \hline \hline
+4 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for FUBUKI ciphertext.}
+\label{tab:estream-fubuki}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\resultsTable{
+1 & 0.0 & 0 & $n=221$ & 0.0 & 0 & (0.67) & 18.5 & 162 & (0.52) \\ \hline
+2 & 0.0 & 0 & $n=471$ & 0.5 & 0 & (0.66) & 20.0 & 162 & (0.52) \\ \hline
+3 & 19.5 & 160 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline \hline
+13 & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) & 19.5 & 162 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Grain ciphertext.}
+\label{tab:estream-grain}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\resultsTable{
+1 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline \hline
+10 & 20.0 & 160 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Hermes ciphertext.}
+\label{tab:estream-hermes}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\resultsTable{
+1 & 0.0 & 0 & $n=148$ & 0.0 & 0 & $n=7274$ & 3.0 & 1 & $n=154$ \\ \hline
+2 & 4.0 & 1 & $n=221$ & 4.0 & 1 & $n=304$ & 3.5 & 1 & $n=254$ \\ \hline
+3 & 0.5 & 1 & $n=378$ & 3.5 & 1 & $n=491$ & 4.0 & 1 & $n=361$ \\ \hline
+4 & 20.0 & 162 & (0.52) & 19.5 & 162 & (0.52) & 20.0 & 161 & (0.52) \\ \hline \hline
+10 & 19.5 & 162 & (0.52) & 19.5 & 160 & (0.52) & 20.0 & 160 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for LEX ciphertext.}
+\label{tab:estream-lex}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\resultsTable{
+1 & 5.5 & 1 & (0.87) & 8.5 & 1 & (0.67) & 17.5 & 161 & (0.52) \\ \hline
+2 & 5.5 & 1 & (0.87) & 7.0 & 1 & (0.67) & 19.5 & 162 & (0.52) \\ \hline
+3 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 19.5 & 161 & (0.52) \\ \hline \hline
+12 & 20.0 & 162 & (0.52) & 19.5 & 161 & (0.52) & 19.0 & 161 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Salsa20 ciphertext.}
+\label{tab:estream-salsa}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\resultsTable{
+1 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+2 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+3 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+4 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+5 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+6 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+7 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+8 & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & & 0.0${}^{*}$ & 0 & \\ \hline
+9 & 1.0 & 1 & $n=234$ & 1.5 & 1 & $n=491$ & 2.0 & 1 & $n=121$ \\ \hline
+10 & 2.0 & 13 & $n=188$ & 3.0 & 13 & $n=218$ & 3.0 & 12 & $n=158$ \\ \hline
+11 & 10.0 & 157 & (0.52) & 11.5 & 157 & (0.52) & 14.0 & 159 & (0.52) \\ \hline
+12 & 16.0 & 162 & (0.52) & 17.0 & 161 & (0.52) & 17.5 & 162 & (0.52) \\ \hline
+13 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 19.0 & 162 & (0.52) \\ \hline \hline
+32 & 20.0 & 161 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for TSC-4 ciphertext.}
+\label{tab:estream-tsc}
+\end{table}
 
 \chapter{Analysis of Salsa20 output stream}
 \label{chap:analysis-salsa}
@@ -160,6 +339,30 @@ Text ...
 
 \chapter{Conclusions and future work}
 \label{chap:conclusions}
-Text ...
+\begin{itemize}
+\item conclusions
+\begin{itemize}
+\item different approach than statistical batteries -> possibly new things
+\item dynamically adapting distinguisher - both advantage and disadvantage
+\item comparable to statistical tests, however smaller inputs
+\item speed: slow learning (more computational power needed), fast distinguishing
+\item problem with interpreting results
+\item 
+\end{itemize}
+\item future work
+\begin{itemize}
+\item deep analyses instead of wide
+\item possibilities of longer input 
+\begin{itemize}
+\item READX
+\item memory circuit
+\end{itemize}
+\item tools for interpreting results
+\begin{itemize}
+\item histogram of outputs in nodes
+\end{itemize}
+\item fixing functions in layers
+\end{itemize}
+\end{itemize}
 
 \end{document}
