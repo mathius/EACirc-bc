@@ -1,0 +1,147 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage[margin=2cm,a4paper]{geometry}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{dcolumn}
+\usepackage{enumitem}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+\newcommand{\rotatedHeader}[2][l]{\rotatebox{90}{\begin{tabular}[#1]{@{}l}#2\end{tabular}}}
+
+\newcommand{\resultsTable}[1]{%
+\begin{tabular}{|r*{3}{||S[table-format=2.1]|S[table-format=3.0]|c}|} \hline
+\multirow{1}*{\raisebox{-\height-0.3cm}{\rotatebox{90}{\# of rounds}}} & \multicolumn{9}{c|}{IV and key reinitialization} \\ \cline{2-10}
+& \multicolumn{3}{c||}{once for run} & 
+\multicolumn{3}{c||}{for each test set} & 
+\multicolumn{3}{c|}{for each test vector} \\ \cline{2-10}
+& \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & \rotatedHeader{EACirc}
+& \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & \rotatedHeader{EACirc}
+& \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & \rotatedHeader{EACirc} \\ \hline \hline
+#1
+\end{tabular}}
+
+\begin{document}
+
+\subsubsection*{Dieharder}
+\begin{itemize}
+\item 250 MB of data
+\item test corresponding to original Diehard (except for Diehard sums test)
+\item each test run once, length of the stream decided by test
+\item displayed number of tests passed out of total (pass=1, weak=0.5, fail=0)
+\end{itemize}
+
+\subsubsection*{\textsc{Sts Nist}}
+\begin{itemize}
+\item same source files as for Dieharder
+\item each test run 100 times on 1\,000\,000 bits
+\item some runs had problems with tests RandomExcursions and RandomExcursionsVariant, these tests are not included in the result when their run was not errorless
+\end{itemize}
+
+\subsubsection*{EACirc}
+\begin{itemize}
+\item displayed average stable generation across 30 independent runs \\
+(stable = fitness over $99\%$ for at least next 50 test sets)
+\item if none stable generation was found, average average maximum fitness after test vector change is displayed in parentheses.
+\end{itemize}
+
+\subsection*{Decim}
+
+\resultsTable{
+1 & 0.0 & 0 & $n=2681$ & 0.0 & 0 & (0.85) & 0.0 & 5 & $n=1431$ \\ \hline
+2 & 0.5 & 0 & (0.54) & 1.0 & 0 & (0.54) & 15.5 & 146 & (0.52) \\ \hline
+3 & 1.0 & 0 & (0.53) & 1.0 & 0 & (0.53) & 15.0 & 160 & (0.52) \\ \hline
+4 & 3.5 & 79 & (0.52) & 3.0 & 78 & (0.52) & 20.0 & 160 & (0.52) \\ \hline
+5 & 4.5 & 79 & (0.52) & 3.5 & 91 & (0.52) & 17.5 & 161 & (0.52) \\ \hline
+6 & 19.0 & 158 & (0.52) & 19.0 & 159 & (0.52) & 18.0 & 162 & (0.52) \\ \hline
+7 & 18.5 & 162 & (0.52) & 19.0 & 161 & (0.52) & 20.0 & 161 & (0.52) \\ \hline \hline
+8 & 20.0 & 162 & (0.52) & 20.0 & 159 & (0.52) & 19.0 & 161 & (0.52) \\ \hline
+}
+
+\subsection*{FUBUKI}
+
+\resultsTable{
+1 & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) & 18.0 & 162 & (0.52) \\ \hline \hline
+4 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline
+}
+
+\subsection*{Grain}
+
+\resultsTable{
+1 & 0.0 & 0 & $n=221$ & 0.0 & 0 & (0.67) & 18.5 & 162 & (0.52) \\ \hline
+2 & 0.0 & 0 & $n=471$ & 0.5 & 0 & (0.66) & 20.0 & 162 & (0.52) \\ \hline
+3 & 19.5 & 160 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline \hline
+13 & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) & 19.5 & 162 & (0.52) \\ \hline
+}
+
+\subsection*{Hermes}
+
+\resultsTable{
+1 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline \hline
+10 & 20.0 & 160 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline
+}
+
+\subsection*{LEX}
+
+\resultsTable{
+1 & 0.0 & 0 & $n=148$ & 0.0 & 0 & $n=7274$ & 3.0 & 1 & $n=154$ \\ \hline
+2 & 4.0 & 1 & $n=221$ & 4.0 & 1 & $n=304$ & 3.5 & 1 & $n=254$ \\ \hline
+3 & 0.5 & 1 & $n=378$ & 3.5 & 1 & $n=491$ & 4.0 & 1 & $n=361$ \\ \hline
+4 & 20.0 & 162 & (0.52) & 19.5 & 162 & (0.52) & 20.0 & 161 & (0.52) \\ \hline \hline
+10 & 19.5 & 162 & (0.52) & 19.5 & 160 & (0.52) & 20.0 & 160 & (0.52) \\ \hline
+}
+
+\subsection*{Salsa20}
+
+\resultsTable{
+1 & 5.5 & 1 & (0.87) & 8.5 & 1 & (0.67) & 17.5 & 161 & (0.52) \\ \hline
+2 & 5.5 & 1 & (0.87) & 7.0 & 1 & (0.67) & 19.5 & 162 & (0.52) \\ \hline
+3 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 19.5 & 161 & (0.52) \\ \hline \hline
+12 & 20.0 & 162 & (0.52) & 19.5 & 161 & (0.52) & 19.0 & 161 & (0.52) \\ \hline
+}
+
+\subsection*{TSC}
+
+\resultsTable{
+1 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+2 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+3 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+4 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+5 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+6 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+7 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+8 & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & & 0.0${}^{*}$ & 0.0 & \\ \hline
+9 & 1.0 & 1 & $n=234$ & 1.5 & 1 & $n=491$ & 2.0 & 1 & $n=121$ \\ \hline
+10 & 2.0 & 13 & $n=188$ & 3.0 & 13 & $n=218$ & 3.0 & 12 & $n=158$ \\ \hline
+11 & 10.0 & 157 & (0.52) & 11.5 & 157 & (0.52) & 14.0 & 159 & (0.52) \\ \hline
+12 & 16.0 & 162 & (0.52) & 17.0 & 161 & (0.52) & 17.5 & 162 & (0.52) \\ \hline
+13 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 19.0 & 162 & (0.52) \\ \hline \hline
+32 & 20.0 & 161 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) \\ \hline
+}
+
+\subsection*{control distinguisher (random-random)} 
+\begin{itemize}
+\item no stable generations found
+\item average average maximum fitness after test vector change: 0.52
+\item Dieharder: 20/20
+\item STS NIST: 188/188
+\end{itemize} 
+
+\subsection*{Mystery of 0.52}
+\begin{tabular}{|c|r|*{6}{c|}} \hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{random}} & \multicolumn{6}{|c|}{test set size} \\ \cline{3-8}
+\multicolumn{2}{|c|}{} & 200 & 500 & 1000 & 2000 & 5000 & 10\,000 \\ \hline
+\multirow{5}*{\rotatebox{90}{population }}
+& 5 & - & - & (0.509) & - & - & - \\ \cline{2-8}
+& 10 & - & - & (0.514) & - & - & - \\ \cline{2-8}
+& 20 & (0.544) & (0.527) & (0.520) & (0.514) & (0.509) & (0.506) \\ \cline{2-8}
+& 50 & - & - & (0.526) & - & - & - \\ \cline{2-8}
+& 100 & - & - & (0.530) & - & - & - \\ \hline
+\end{tabular}
+
+\end{document}

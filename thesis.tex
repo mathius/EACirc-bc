@@ -66,27 +66,97 @@ Text ...
 
 \chapter{Statistical randomness testing}
 \label{chap:stat-rand-testing}
-Text ...
+\begin{itemize}
+\item intro to statistical testing of randomness
+\item STS-NIST
+\item Diehard
+\item Dieharder
+\end{itemize}
 
 \chapter{Limits and disadvantages of statistical testing}
 \label{chap:limits-stat-testing}
-Text ...
+\begin{itemize}
+\item idea -> test
+\item check only one specific property
+\item can only rarely be adapted to specific situation
+\item results interpretation (what is wrong?)
+\end{itemize}
 
 \chapter{Evolution based randomness testing}
 \label{chap:evo-based-testing}
-Text ...
+\begin{itemize}
+\item general description of GA
+\item idea behind EACirc
+\item previous evolution of EACirc (SensorSim -> bc, mgr -> today)
+\item capabilities of EACirc
+\begin{itemize}
+\item general object model (+picture)
+\item separate modules for projects
+\item separate modules for evaluators
+\item guaranteed bit-reproducibility
+\item computation recommencing (state, ...)
+\item static checker for pregenerated test vectors
+\end{itemize}
+\end{itemize}
+
+\chapter{Experiment settings and results}
+\label{chap:settings-results}
+
+\begin{itemize}
+\item general evolution settings
+\item main goal: finding strong distinguisher (over 99\% for 50 consecutive generations)
+\item if strong distinguisher -> average generation
+\item if not -> AAM after test set change
+\item statistical batteries STS-NIST and Dieharder for reference
+\item STS-NIST settings (lenghts, 2 test omitted)
+\item STS-NIST results interpretation (scores 0, 0.5, 1)
+\item Dieharder settings (lengths, tests roughly corresponding to Diehard)
+\item Dieharder results interpretation (scores 0, 0.5, 1)
+\end{itemize}
+
+\chapter{Control distinguishers}
+\label{chap:distinguish-control}
+
+\begin{itemize}
+\item introduction (what are reference points? what result are "normal" and "random"?)
+\item control distinguisher random-random
+\item dependence on number of test set and test set change frequency
+\item distinguishing Croatia from Germany (?)
+\end{itemize}
 
 \chapter{Distinguishing cipher outputs from random stream}
 \label{chap:distinguish-cipher}
-Text ...
+
+\begin{itemize}
+\item cipher modes (iv+key initialization frequency)
+\item tables with results
+\item case of LEX (not weakening the cipher, only making shorter output)
+\item case of TSC (producing binary stream of 0 for 1-8 rounds) => problems in 3 Dieharder tests
+\item conclusions
+\begin{itemize}
+\item more or less as statistical batteries
+\item dieharder better in some case than STS-NIST (is newer and some tests are redesigned)
+\item statistical tests has much more input data compared to EACirc
+\item using evolved distinguisher is quick
+\end{itemize}
+\end{itemize}
 
 \chapter{Analysis of Salsa20 output stream}
 \label{chap:analysis-salsa}
-Text ...
+\begin{itemize}
+\item learns current vectors quicker than other ciphers
+\item the case of six
+\end{itemize}
 
 \chapter{Distinguishing hash outputs from random stream}
 \label{chap:distinguish-hash}
-Text ...
+\begin{itemize}
+\item hash function settings (hash length)
+\item test vector generation method (4 byte counters starting from random point)
+\item looking for best test set change frequency
+\item tables with results
+\item conclusions (???)
+\end{itemize}
 
 \chapter{Conclusions and future work}
 \label{chap:conclusions}
