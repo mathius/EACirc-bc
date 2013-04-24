@@ -519,9 +519,10 @@ metal music (sample 1) &
 \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{8}{C|}} \cline{2-9}
 \multicolumn{1}{l||}{} & \multicolumn{8}{c|}{change frequency for test vector set} \\ \cline{2-9}
 \multicolumn{1}{l||}{} & 5 & 10 & 20 & 50 & 100 & 200 & 500 & 1000 \\ \hline \hline
-run-time & 70 m. & 52 m. & 42 m. & 37 m. & 32 m. & 28 m. & 23 m. & 20 m. \\ \hline
 30\,000 g. & (0.614) & (0.614) & (0.607) & (0.602) & (0.599) & (0.598) & (0.591) & (0.582) \\ \hline
-XY sets &  &  & & & & & & \\ \hline
+run-time & 70 m. & 52 m. & 42 m. & 37 m. & 32 m. & 28 m. & 23 m. & 20 m. \\ \hline \hline
+300 sets & (0.567) & (0.583) & (0.585) & (0.589) & (0.599) & (0.608) & (0.617) & (0.618) \\ \hline
+run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. 220 m. \\ \hline
 \end{tabularx}
 \renewcommand{\arraystretch}{1.0}
 \caption{Determining optimal change frequency for test vector set.}
@@ -534,6 +535,30 @@ XY sets &  &  & & & & & & \\ \hline
 \begin{itemize}
 \item ???
 \end{itemize}
+
+\begin{table}[htb]
+\centering
+%\renewcommand{\arraystretch}{1.2}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{8}{C|}} \cline{2-9}
+\multicolumn{1}{l||}{} & \multicolumn{8}{c|}{number of rounds} \\ \cline{2-9}
+\multicolumn{1}{l||}{} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline \hline
+ARIRANG & & & & & & & & \\ \hline
+Aurora & & & & & & & & \\ \hline
+Blake & & & & & & & & \\ \hline
+Blue Midnight Wish & & & & & & & & \\ \hline
+Cheetah & & & & & & & & \\ \hline
+CHI & & & & & & & & \\ \hline
+CRUNCH & & & & & & & & \\ \hline
+CubeHash & & & & & & & & \\ \hline
+DCH & & & & & & & & \\ \hline
+Dynamic SHA & & & & & & & & \\ \hline
+Dynamic SHA2 & & & & & & & & \\ \hline
+\end{tabularx}
+%\renewcommand{\arraystretch}{1.0}
+\caption{Random distinguishers for SHA-3 candidate functions.}
+\label{tab:hash-distinguishers}
+\end{table}
 
 \chapter{Conclusions and future work}
 \label{chap:conclusions}
