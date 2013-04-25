@@ -542,18 +542,18 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. 220 m. \\ \hline
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{8}{C|}} \cline{2-9}
 \multicolumn{1}{l||}{} & \multicolumn{8}{c|}{number of rounds} \\ \cline{2-9}
-\multicolumn{1}{l||}{} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline \hline
-ARIRANG & & & & & & & & \\ \hline
-Aurora & & & & & & & & \\ \hline
-Blake & & & & & & & & \\ \hline
-Blue Midnight Wish & & & & & & & & \\ \hline
-Cheetah & & & & & & & & \\ \hline
-CHI & & & & & & & & \\ \hline
-CRUNCH & & & & & & & & \\ \hline
-CubeHash & & & & & & & & \\ \hline
-DCH & & & & & & & & \\ \hline
-Dynamic SHA & & & & & & & & \\ \hline
-Dynamic SHA2 & & & & & & & & \\ \hline
+\multicolumn{1}{l||}{} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & full \\ \hline \hline
+ARIRANG & $n=694$ & $n=707$ & $n=467$ & $n=1071$ & (full) & -- & -- & (0.52) \\ \hline
+Aurora & $n=5614$ & (0.75) & (0.78) !!! & (0.52) & -- & -- & -- & (0.52) \\ \hline
+Blake & $n=474$ & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
+Blue Midnight Wish & (0.52) & -- & -- & -- & -- & -- & -- & (0.52) \\ \hline
+Cheetah & $n=181$ & $n=574$ & $n=708$ & (0.90) !!! & & & & (0.52) \\ \hline
+CHI & (0.52) & -- & -- & -- & -- & -- & -- & (0.52) \\ \hline
+CRUNCH & $n=104$ & $n=534$ & $n=954$ & & 34-(0.52) & & & (0.52) \\ \hline
+CubeHash & $n=104$ & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
+DCH & $n=104$ & (0.73) !!! & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
+Dynamic SHA & $n=484$ & $n=2337$ & $n=1773$ !!! & (0.95) !!! & & & & (0.52) \\ \hline
+Dynamic SHA2 & -- & (0.94) !!! & (0.74) & (0.75) & (0.57) & & & (0.52) \\ \hline
 \end{tabularx}
 %\renewcommand{\arraystretch}{1.0}
 \caption{Random distinguishers for SHA-3 candidate functions.}
