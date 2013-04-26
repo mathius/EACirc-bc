@@ -138,42 +138,164 @@ Text ...
 
 \chapter{Evolution based randomness testing}
 \label{chap:evo-based-testing}
-\begin{itemize}
-\item general description of GA
-\item idea behind EACirc
-\item previous evolution of EACirc (SensorSim -> bc, mgr -> today)
-\item capabilities of EACirc
-\begin{itemize}
-\item general object model (+picture)
-\item separate modules for projects
-\item separate modules for evaluators
-\item guaranteed bit-reproducibility
-\item computation recommencing (state, ...)
-\item static checker for pregenerated test vectors
-\end{itemize}
-\item EACirc is wider project beyond the scope of this thesis, thus project evolution, some parts are being redesigned
-\end{itemize}
-
-\chapter{Experiment settings and results}
-\label{chap:settings-results}
 
 \begin{itemize}
-\item general evolution settings
+\item introduction, need for other method for randomness testing
+\item idea: instead of math analysis we will let program guess the correct analysis for this case
+\item advantages will be: no prior math knowledge needed, can potentially discover new metrics fir statistical randomness
+\item we will use evolutionary algorithms, namely genetic programming
+\end{itemize}
+
+\section{Basic principles of genetic grogramming}
+\label{sec:basic-ga}
+
+\begin{itemize}
+\item inspired by biology, method of supervised learning
+\item we create population of random individuals (solvers)
+\item we evaluate fitness of each individual (pre-generated data along with solutions)
+\item so called "fitness function" - crucial part!
+\item we make crossover among the best (survival of the fittest)
+\item we randomly apply "mutation" (to avoid getting stuck in local optimum)
+\item we iterate untill desired success rate is achieved
+\item points to keep in mind when using GA
+\begin{itemize}
+\item only tasks with available partial solutions can be used (see next)
+\item small change in solver should result in small chenge in fitness
+\item designing the fitness function is crucial
+\item fine-tuning GA settings (mutation/crossover probability, population size) is important
+\end{itemize}
+\item generating data with solutions for learning can be computationally expensive
+\begin{itemize}
+\item possibility to use them multiple times
+\item risk of overlearning, individuals might learn to solve this particular instance of problem
+\end{itemize}
+\end{itemize}
+
+\section{Using software-emulated circuits}
+\label{sec:sw-circuits}
+
+\begin{itemize}
+\item represent individual in GP as a hardware-like circuit solving the problem
+\item circuit has gates with elementary functions and interconnecting wires
+\item circuits are emulated by software, internally represented as array of unsigned integers
+\item short description of functions
+\item it would be sufficient to allow nand only, however more functions improve understandability of evolved circuit for humans, also enables us to limit the circuit to small number of layers and nodes
+\item small similarity to neural networks, deep neural netowrks in particular
+\end{itemize}
+
+\section{General working principles of EACirc}
+\label{sec:eacirc-principles}
+
+\begin{itemize}
+\item EACirc is framwork for general problem solving using sw-emulated circuits and EA
+\item based on SensorSim developed at LaBAK, FI MUNI, further improved by Matej Pristak and Ondrej Dubovec
+\item main modules (+picture):
+\begin{itemize}
+\item GAlib (MIT), used for evolution
+\item project module, used for generating data for supervied learning (test vectors)
+\item circuitg emulator, used for running circuits
+\item evaluator, used for interpreting circuit outputs and computing fitness of individual circuits
+\item set of random generators, needed since computaion is randomized
+\item testing files, CATCH
+\item help libraries (tinyXML)
+\end{itemize}
+\item external static checker used for consistency-checking
+\end{itemize}
+
+\section{Current capabilities of EACirc}
+\label{sec:eacirc-capabilities}
+
+\begin{itemize}
+\item old core, basic capabilities of EA provided by GAlib and software emulation taken from work by Matej Pristak, originally from SensorSim
+\item main object model has been revised to uitlize the principle of modules, thus enabling integration of multiple projects and evaluators according to actual needs.
+\item guaranteed bit-reproducibility now - use of random generators revised, hierarchical system of generators created, any run can be reproduced by providing original input files and one central seed => crucial to experiment verification
+\item bit-reproducibility enabled us to implement computation recommencing - EACirc can save and load its complete internal state => useful for computation-expensive experiments (when the machine is rebooted, we can continue from last saved state instead of starting allover again)
+\item evolved circuits are exported to 4 different formats (from SensorSim or original work on EACirc?), binary (can be reloaded into EACirc if needed), text and graphical (using Graphviz) (used to ease humal analysis of evolved results) and C source code implementing the circuit (useful for independent verification of circuit work)
+\item new static checker created, circumvents most of the EACirc framework (especially circuit emulator), used for static checking on pre-generated test vectors
+\item project for distinguishing between eStream cipher output and random stream of data, taken from work by Matej Pristak and slightly revised to operate withing the new object model and allow more detailed configuration
+\item project for distinguishing between SHA-3 function output and random stream of data, ideas and hash functions implementations taken from Ondrej Dubovec, gest vector geenration reimplemented from scratch
+\item small project for distinguishing among external binary files
+\end{itemize}
+
+Most of the code that was taken over was revised and slightly refactor to ease the understanding of its function and to standardise naming and principles used in EACirc. For further details, use and developmetn documentation see EACirc wiki at GitHub.
+
+Note, that EACirc is wider project beyond the scope of this thesis. Some parts were added and/or redesigned in pre process, so not all experiments had all now-supported features. Coinfiguration files may not be compatible across versions, etc.
+
+\chapter{Experiment settings and output data}
+\label{chap:settings}
+
+\begin{itemize}
+\item introduction - this chapter will describe the settings used in the experiments...
+\item our reasons for using these settings
+\item description of output files
+\item interpretation of result numbers
+\end{itemize}
+
+\section{EACirc settings}
+\label{sec:settings-eacirc}
+
+\begin{itemize}
+\item most of the settings taken from Matej Pristak's thesis (with no optimality verification)
+\item GA settings (population size 20, prob mutation 0.05, prob crosover 0.20)
+\item 30000 generation with test vector sets changed every 100th generation (thus, 300 unique test sets altogether)
+\item circuit - 5 layers, 8 functions in layer, input 16 bytes, output 2 bytes, maximum of 4 connectors (?), all functions allowed except for READX
+\item distinguisher - correct output for stream 1 id 0x00, correct for stream 2 is 0xff
+\item evaluator - "agent based", each byte is separate output, less or more than 128
+\item fitness function = \#(correctly predicted vectors in set)/\#(all vectors in set)
+\item 1000 test vectors in each test set
+\item only distiguisher experiments, always used 500:500 (according to Matej Pristak, imballance causes test vectors to only guess what type is more frequent in current run)
+\item experiment-specific settings described in appropriate section with results
+\end{itemize}
+
+\section{EACirc output data}
+\label{sec:settings-eacirc-output}
+
+\begin{itemize}
 \item main goal: finding strong distinguisher (over 99\% for 50 consecutive generations)
 \item displayed average stable generation across 30 independent runs \\
 (stable = fitness over $99\%$ for at least next 50 test sets)
 \item if none stable generation was found, average average maximum fitness after test vector change is displayed in parentheses.
-\item statistical batteries STS-NIST and Dieharder for reference
-\item 250 MB of data used, same files for Dieharder and STS-NIST
-\item STS-NIST settings (lenghts, 2 test omitted)
-\item each test run 100 times on 1\,000\,000 bits
-\item some runs had problems with tests RandomExcursions and RandomExcursionsVariant, these tests are not included in the result
-\item STS-NIST results interpretation (scores 0, 1)
-\item Dieharder settings
-\item test corresponding to original Diehard (except for Diehard sums test)
-\item each test run once, length of the stream decided by test
-\item Dieharder results interpretation (scores 0, 0.5, 1)
-\item displayed number of tests passed out of total (pass=1, weak=0.5, fail=0)
+\end{itemize}
+
+\section{Random data sources}
+\label{sec:settings-random}
+
+\begin{itemize}
+\item EACirc is randomized algorithm -> need good random data source
+\item in most experiments a distinguisher from random data stream is being evolved => crucial to have extremely realiable random data source
+\item using quantum random data, generated by measuring quantum effects
+\item 2 different sources, HU Berlin, institute in Croatia
+\item these 2 sources thoroughly compared, see \autoref{sec:control-germany-croatia}
+\end{itemize}
+
+\section{Settings and output data for statistical test batteries}
+\label{sec:settings-statistics}
+
+\begin{itemize}
+\item to compare our results with existing statistical batteries, statistical randomness of all generated streams was checked using STS NIST and Dieharder
+\item 250 MB of data generated for statistical testing, same streams used for both STS NIST and Dieharder
+\item STS NIST
+\begin{itemize}
+\item 100 runs, 100000 bits per run (=> ~11.92 MB used for testing)
+\item all tests were run, significance level of ???
+\item some runs had problems with tests RandomExcursions and RandomExcursionsVariant, to ensure statistical accuracy of results, these test are ommited in results
+\item for each test, following stats are computed:
+\begin{itemize}
+\item p-value for each run - if this p-value is out of bounds of the interval determined by the significance level, the run is considered failed
+\item the number of passed runs is infered
+\item the cumullative p-value of all 100 runs
+\item if either the cumulative p-value or the number of passed runs for this particular test is out bounds of the interval determined by the significance level, this test is considered as failed
+\end{itemize}
+\item results expressed as cumullative score for the entire stream, 0 for each failed test, 1 for each passed test. expressed as part of total 162
+\end{itemize}
+\item Dieharder
+\begin{itemize}
+\item test corresponding to original Diehard (except for Diehard sums test, due to probable error in test implementation)
+\item 1 run of each test, stream length determined by the test itself (comes from design of Dieharder, we want to prevent from revinding the file)
+\item total data used for testing: ??? MB (smallest test: ??, biggest test: ??)
+\item each test interpreted as PASSED, WEAK or FAILED (significance levels of ???)
+\item results for stream again in the form of cumullative score (0 for failed, 0.5 for weak, 1 for passed), out of total 20
+\end{itemize}
 \end{itemize}
 
 \chapter{Control distinguishers}
@@ -290,7 +412,7 @@ Text ...
 \begin{tabularx}{22cm}{|c|>{\raggedright\arraybackslash}p{2.5cm}*{4}{||C|C|C}|} \cline{3-14}
 
 \multicolumn{2}{l||}{} & \multicolumn{3}{c||}{random streams} & \multicolumn{3}{c||}{noise} &
-\multicolumn{3}{c||}{noise (oscillating)} & \multicolumn{3}{c|}{metal music} \\ \cline{3-14}
+\multicolumn{3}{c||}{noise (mp3 compression)} & \multicolumn{3}{c|}{metal music} \\ \cline{3-14}
 
 \multicolumn{2}{l||}{} &  
 \multicolumn{1}{c|}{\rotatedHeader{random\\stream 1}} & 
@@ -299,41 +421,41 @@ Text ...
 \multicolumn{1}{c|}{\rotatedHeader{white noise}} & 
 \multicolumn{1}{c|}{\rotatedHeader{pink noise}} & 
 \multicolumn{1}{c||}{\rotatedHeader{brown noise}} & 
-\multicolumn{1}{c|}{\rotatedHeader{white noise\\(oscillating)}} & 
-\multicolumn{1}{c|}{\rotatedHeader{pink noise\\(oscillating)}} & 
-\multicolumn{1}{c||}{\rotatedHeader{brown noise\\(oscillating)}} & 
+\multicolumn{1}{c|}{\rotatedHeader{white noise\\(mp3 compression)}} & 
+\multicolumn{1}{c|}{\rotatedHeader{pink noise\\(mp3 compression)}} & 
+\multicolumn{1}{c||}{\rotatedHeader{brown noise\\(mp3 compression)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{metal music\\(sample 1)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{metal music\\(sample 2)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{metal music\\(sample 3)}} \\ \cline{3-14} \hline \hline
 
 \multirow{3}{*}[-20pt]{\rotatedHeader{random}} &
 random stream 1 & 
-n/a & (0.52) & (0.52) & (0.91) & (0.96) & (0.97) & (0.87) & (0.93) & (0.95) & (0.79) & (0.84) & (0.88) \\ \cline{2-14}
+n/a & (0.52) & (0.52) & (0.52) & (0.80) & (0.84) & (0.53) & (0.92) & (0.89) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
 & random stream 2 &
-(0.52) & n/a & (0.52) & (0.82) & (0.85) & (0.83) & (0.86) & (0.91) & (0.96) & (0.89) & (0.85) & (0.87) \\ \cline{2-14}
+(0.52) & n/a & (0.52) & (0.52) & (0.83) & (0.83) & (0.53) & (0.85) & (0.83) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
 & random stream 3 & 
-(0.52) & (0.52) & n/a & (0.94) & (0.96) & (0.95) & (0.95) & (0.96) & (0.91) & (0.82) & (0.88) & (0.87) \\ \hline \hline
+(0.52) & (0.52) & n/a & (0.52) & (0.94) & (0.91) & (0.53) & (0.82) & (0.83) & (0.00) & (0.00) & (0.00) \\ \hline \hline
 \multirow{3}{*}[-20pt]{\rotatedHeader{noise}} & 
 white noise (constant) &
-(0.91) & (0.82) & (0.94) & n/a & (0.71) & (0.84) & (0.59) & (0.80) & (0.96) & (0.78) & (0.80) & (0.79) \\ \cline{2-14}
+(0.52) & (0.52) & (0.52) & n/a & (0.83) & (0.81) & (0.53) & (0.88) & (0.93) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
 & pink noise (constant) &
-(0.96) & (0.85) & (0.96) & (0.71) & n/a & (0.72) & (0.70) & (0.63) & (0.68) & (0.70) & (0.74) & (0.75) \\ \cline{2-14}
+(0.80) & (0.83) & (0.94) & (0.83) & n/a & (0.76) & (0.92) & (0.53) & (0.79) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
 & brown noise (constant) &
-(0.97) & (0.83) & (0.95) & (0.84) & (0.72) & n/a & (0.80) & (0.65) & (0.53) & (0.80) & (0.73) & (0.83) \\ \hline \hline
+(0.84) & (0.83) & (0.91) & (0.81) & (0.76) & n/a & (0.88) & (0.76) & (0.55) & (0.00) & (0.00) & (0.00) \\ \hline \hline
 \multirow{3}{*}[-10pt]{\rotatedHeader{noise (osc.)}} & 
 white noise (oscillating) &
-(0.87) & (0.86) & (0.95) & (0.59) & (0.70) & (0.80) & n/a & (0.80) & (0.84) & (0.80) & (0.80) & (0.80) \\ \cline{2-14}
+(0.53) & (0.53) & (0.53) & (0.53) & (0.92) & (0.88) & n/a & (0.95) & (0.86) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
 & pink noise (oscillating) &
-(0.93) & (0.91) & (0.96) & (0.80) & (0.63) & (0.65) & (0.80) & n/a & (0.62) & (0.81) & (0.84) & (0.82) \\ \cline{2-14}
+(0.92) & (0.85) & (0.82) & (0.88) & (0.53) & (0.76) & (0.95) & n/a & (0.77) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
 & brown noise (oscillating) &
-(0.95) & (0.96) & (0.91) & (0.96) & (0.68) & (0.53) & (0.84) & (0.62) & n/a & (0.75) & (0.84) & (0.86) \\ \hline \hline
+(0.89) & (0.83) & (0.83) & (0.93) & (0.79) & (0.55) & (0.86) & (0.77) & n/a & (0.00) & (0.00) & (0.00) \\ \hline \hline
 \multirow{3}{*}[-5pt]{\rotatedHeader{metal music}} & 
 metal music (sample 1) &
-(0.79) & (0.89) & (0.82) & (0.78) & (0.70) & (0.80) & (0.80) & (0.81) & (0.75) & n/a & (0.54) & (0.54) \\ \cline{2-14}
+(0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & n/a & (0.00) & (0.00) \\ \cline{2-14}
 & metal music (sample 2) &
-(0.84) & (0.85) & (0.88) & (0.80) & (0.74) & (0.73) & (0.80) & (0.84) & (0.84) & (0.54) & n/a & (0.57) \\ \cline{2-14}
+(0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & n/a & (0.00) \\ \cline{2-14}
 & metal music (sample 3) &
-(0.88) & (0.87) & (0.87) & (0.97) & (0.75) & (0.83) & (0.80) & (0.82) & (0.86) & (0.54) & (0.57) & n/a \\ \cline{1-14}
+(0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & n/a \\ \cline{1-14}
 \end{tabularx}
 \caption{Distinguishing random streams and uncompressed audio (noise, oscillating noise, metal music).}
 \label{tab:uncompressed-audio}
