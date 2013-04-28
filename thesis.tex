@@ -402,6 +402,8 @@ Note, that EACirc is wider project beyond the scope of this thesis. Some parts w
 \item given samples of metal music nearly cannot be distinguished from one another
 \end{itemize}
 \item most of the runs have slow rising tendency in fitness \\ => if more generations, the average maximum value might be slightly higher
+\item
+\item noise after 128kbs mp3 compression had ~480 kB
 \end{itemize}
 
 \begin{landscape}
@@ -411,8 +413,8 @@ Note, that EACirc is wider project beyond the scope of this thesis. Some parts w
 \newcolumntype{C}{>{\centering \begin{lrbox}{\temp} \arraybackslash}X<{\end{lrbox} \m{\unhbox\temp} \arraybackslash}}
 \begin{tabularx}{22cm}{|c|>{\raggedright\arraybackslash}p{2.5cm}*{4}{||C|C|C}|} \cline{3-14}
 
-\multicolumn{2}{l||}{} & \multicolumn{3}{c||}{random streams} & \multicolumn{3}{c||}{noise} &
-\multicolumn{3}{c||}{noise (mp3 compression)} & \multicolumn{3}{c|}{metal music} \\ \cline{3-14}
+\multicolumn{2}{l||}{} & \multicolumn{3}{c||}{random streams} & \multicolumn{3}{c||}{noise (true)} &
+\multicolumn{3}{c||}{noise (via mp3)} & \multicolumn{3}{c|}{metal music} \\ \cline{3-14}
 
 \multicolumn{2}{l||}{} &  
 \multicolumn{1}{c|}{\rotatedHeader{random\\stream 1}} & 
@@ -421,41 +423,41 @@ Note, that EACirc is wider project beyond the scope of this thesis. Some parts w
 \multicolumn{1}{c|}{\rotatedHeader{white noise}} & 
 \multicolumn{1}{c|}{\rotatedHeader{pink noise}} & 
 \multicolumn{1}{c||}{\rotatedHeader{brown noise}} & 
-\multicolumn{1}{c|}{\rotatedHeader{white noise\\(mp3 compression)}} & 
-\multicolumn{1}{c|}{\rotatedHeader{pink noise\\(mp3 compression)}} & 
-\multicolumn{1}{c||}{\rotatedHeader{brown noise\\(mp3 compression)}} & 
+\multicolumn{1}{c|}{\rotatedHeader{white noise\\(via mp3)}} & 
+\multicolumn{1}{c|}{\rotatedHeader{pink noise\\(via mp3)}} & 
+\multicolumn{1}{c||}{\rotatedHeader{brown noise\\(via mp3)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{metal music\\(sample 1)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{metal music\\(sample 2)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{metal music\\(sample 3)}} \\ \cline{3-14} \hline \hline
 
 \multirow{3}{*}[-20pt]{\rotatedHeader{random}} &
 random stream 1 & 
-n/a & (0.52) & (0.52) & (0.52) & (0.80) & (0.84) & (0.53) & (0.92) & (0.89) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
+n/a & (0.52) & (0.52) & (0.52) & (0.80) & (0.84) & (0.59) & (0.93) & (0.89) & (0.84) & (0.87) & (0.83) \\ \cline{2-14}
 & random stream 2 &
-(0.52) & n/a & (0.52) & (0.52) & (0.83) & (0.83) & (0.53) & (0.85) & (0.83) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
+(0.52) & n/a & (0.52) & (0.52) & (0.83) & (0.83) & (0.57) & (0.82) & (0.84) & (0.90) & (0.85) & (0.82) \\ \cline{2-14}
 & random stream 3 & 
-(0.52) & (0.52) & n/a & (0.52) & (0.94) & (0.91) & (0.53) & (0.82) & (0.83) & (0.00) & (0.00) & (0.00) \\ \hline \hline
-\multirow{3}{*}[-20pt]{\rotatedHeader{noise}} & 
-white noise (constant) &
-(0.52) & (0.52) & (0.52) & n/a & (0.83) & (0.81) & (0.53) & (0.88) & (0.93) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
-& pink noise (constant) &
-(0.80) & (0.83) & (0.94) & (0.83) & n/a & (0.76) & (0.92) & (0.53) & (0.79) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
-& brown noise (constant) &
-(0.84) & (0.83) & (0.91) & (0.81) & (0.76) & n/a & (0.88) & (0.76) & (0.55) & (0.00) & (0.00) & (0.00) \\ \hline \hline
-\multirow{3}{*}[-10pt]{\rotatedHeader{noise (osc.)}} & 
-white noise (oscillating) &
-(0.53) & (0.53) & (0.53) & (0.53) & (0.92) & (0.88) & n/a & (0.95) & (0.86) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
-& pink noise (oscillating) &
-(0.92) & (0.85) & (0.82) & (0.88) & (0.53) & (0.76) & (0.95) & n/a & (0.77) & (0.00) & (0.00) & (0.00) \\ \cline{2-14}
-& brown noise (oscillating) &
-(0.89) & (0.83) & (0.83) & (0.93) & (0.79) & (0.55) & (0.86) & (0.77) & n/a & (0.00) & (0.00) & (0.00) \\ \hline \hline
+(0.52) & (0.52) & n/a & (0.52) & (0.94) & (0.91) & (0.58) & (0.83) & (0.83) & (0.89) & (0.83) & (0.85) \\ \hline \hline
+\multirow{3}{*}[-10pt]{\rotatedHeader{noise (true)}} & 
+white noise (true) &
+(0.52) & (0.52) & (0.52) & n/a & (0.83) & (0.81) & (0.59) & (0.87) & (0.89) & (0.86) & (0.93) & (0.81) \\ \cline{2-14}
+& pink noise (true) &
+(0.80) & (0.83) & (0.94) & (0.83) & n/a & (0.76) & (0.86) & (0.52) & (0.76) & (0.65) & (0.65) & (0.66) \\ \cline{2-14}
+& brown noise (true) &
+(0.84) & (0.83) & (0.91) & (0.81) & (0.76) & n/a & (0.86) & (0.76) & (0.56) & (0.71) & (0.69) & (0.68) \\ \hline \hline
+\multirow{3}{*}[-10pt]{\rotatedHeader{noise (mp3)}} & 
+white noise (via mp3) &
+(0.59) & (0.57) & (0.58) & (0.59) & (0.86) & (0.86) & n/a & (0.91) & (0.83) & (0.84) & (0.80) & (0.78) \\ \cline{2-14}
+& pink noise (via mp3) &
+(0.93) & (0.82) & (0.83) & (0.87) & (0.52) & (0.76) & (0.91) & n/a & (0.78) & (0.63) & (0.68) & (0.70) \\ \cline{2-14}
+& brown noise (via mp3) &
+(0.89) & (0.84) & (0.83) & (0.89) & (0.76) & (0.56) & (0.83) & (0.78) & n/a & (0.71) & (0.69) & (0.67) \\ \hline \hline
 \multirow{3}{*}[-5pt]{\rotatedHeader{metal music}} & 
 metal music (sample 1) &
-(0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & n/a & (0.00) & (0.00) \\ \cline{2-14}
+(0.84) & (0.90) & (0.89) & (0.86) & (0.65) & (0.71) & (0.84) & (0.63) & (0.71) & n/a & (0.54) & (0.56) \\ \cline{2-14}
 & metal music (sample 2) &
-(0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & n/a & (0.00) \\ \cline{2-14}
+(0.87) & (0.85) & (0.83) & (0.93) & (0.65) & (0.69) & (0.80) & (0.68) & (0.69) & (0.54) & n/a & (0.53) \\ \cline{2-14}
 & metal music (sample 3) &
-(0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & (0.00) & n/a \\ \cline{1-14}
+(0.83) & (0.82) & (0.85) & (0.81) & (0.66) & (0.68) & (0.78) & (0.70) & (0.67) & (0.56) & (0.53) & n/a \\ \cline{1-14}
 \end{tabularx}
 \caption{Distinguishing random streams and uncompressed audio (noise, oscillating noise, metal music).}
 \label{tab:uncompressed-audio}
