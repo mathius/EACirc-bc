@@ -33,6 +33,10 @@
 % adjusting hyphenation penalties
 \tolerance=10000
 \hyphenpenalty=500
+% space between paragraphs
+\setlength{\parskip}{0.6em plus0.2em minus0.2em}
+% set correct spacing in itemize
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 % FI THESIS settings
 \thesistitle{Usage of evolvable circuit \\for statistical testing \\of randomness}
 \thesissubtitle{Bachelor thesis}
@@ -42,8 +46,6 @@
 \thesisyear{spring 2013}
 \thesisadvisor{RNDr.\ Petr Švenda,\ Ph.D.}
 \thesislang{en}
-% set correct spacing in itemize
-\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 
 % new commands for results table headers
 \newcommand{\m}[1]{\multirow{2}*{#1}}
@@ -93,48 +95,97 @@ Text ...
 \chapter{Statistical randomness testing}
 \label{chap:stat-rand-testing}
 
-\begin{itemize}
-\item idea: statistic (maths) -> test
-\item fast
-\item universal
-\item usage: assess quality of (pseudo)random data, ???
+The goal of randomness testing is to determine, whether the data provided is \textit{random}. 
+The problem comes with the definition of randomness, since in truly random data, 
+each fixed subsequence (e.\,g. sequence of a hundred zeroes) has the same probability of appearing.
+Thus, statistical metrics have been developed to asses the matter of randomness.
+
+All the statistical randomness tests are based on mathematical properties that hold for
+\textit{most} of the random sequences with a sufficient length.
+A simple example of such property states that in each binary sequence, the number of ones and zeroes should be 
+approximately the same. It is crucial to be aware, that this will not hold for \textit{all} sequences (see the example above),
+but the probability of randomly generating such sequence sharply decreases when increasing the length of the assessed data.
+
+Randomness testing based on statistical properties of data has its drawbacks and benefits, main of which are discussed below.
+\begin{itemize} \rightskip=2em
+\item \textbf{Speed}\\
+Once the tests are implemented, they do not require excessive amount of time to perform -- 
+the data is usually processed once in a linear fashion.
+\item \textbf{Universality}\\
+Statistical tests can by applied to any binary data regardless of its origin -- they perform equally well. 
+This can be viewed both as an advantage and disadvantage, since tests cannot be effortlessly adapted to specific situations.
+\item \textbf{One-way design}\\
+The creation of new test must be preceded by the idea and analysis of some useful statistical property. This part can be highly 
+non-trivial and usually requires a team of skilled mathematicians.
+\item \textbf{Results interpretation}\\
+The ever-present ambiguity in statistical measurements sometimes makes the results interpretation a highly non-trivial task.
+It is crucial to understand what do the results indicate and what they do not. The above-mentioned finite sequence of binary zeroes
+fails most of the statistical randomness tests, but its generation is just as probable 
+as any other fixed binary sequence of the same length.
+Put in another words, even the true random generator may produce non-random looking sequences once in a while.
 \end{itemize}
+
+\noindent
+In practise, statistical randomness testing is being widely used in fields where the quality of random data is crucial, 
+such as cryptography. To ease the assessment process, several statistical randomness testing suites have been developed, 
+some of which are discussed below.
 
 \section{Statistical Test Suite by NIST}
 \label{sec:sts-nist}
 
-\begin{itemize}
-\item nist standard
-\item short description (?)
-\end{itemize}
+Perhaps the most widely used battery of statistical tests is the Statistical Testing Suite 
+by National Institute of Standards and Technology (STS NIST).
+The primary motivations for developing this test suite was the need of standardised tests for detecting non-randomness 
+in binary (pseudo)random sequences utilized in cryptographic applications. As well as designing the tests,
+NIST provides their reference implementation and guidance in their use and application. \cite{web NIST}
+
+The battery consists of 15 different tests, some of which can be run with several parameters. 
+For detailed description of the tests, see the original documentation \cite{sts nist documentation}. 
+The implementation provided by NIST supports variable input data length and arbitrary number of independent data streams. 
+The testing results provide the cumulative p-value of all data streams and the number of passed runs for each test 
+according to the set significance level. 
+Detailed setting used for the purposes of this thesis can be found in \autoref{sec:settings-statistics}.
 
 \section{Diehard battery of tests}
 \label{sec:diehard}
 
-\begin{itemize}
-\item author
-\item one of the first and most-well known in those years
-\item old, but still considered "gold standard" along with sts-nist
-\item short description of tests (?)
-\end{itemize}
+The second, informal, standard of statistical randomness testing is the Diehard Battery of Tests of Randomness, 
+developed by George Marsaglia over several years at Florida State University. \cite{diehard website} 
+Although now becoming slightly outdated, they were one of the first and most-well known 
+in the pioneering years of statistical testing of randomness. 
+For long, the Diehard Battery of Tests was considered a golden standard along with STS NIST.
+
+The battery consist of 12 different tests. The original implementation, documentation and tests description are still available,
+but since the code has not been revised from its creation in 1995, we chose not to use Marsaglia's original implementation.
 
 \section{Dieharder: A Random Number Test Suite}
 \label{sec:dieharder}
 
-\begin{itemize}
-\item framework idea
-\item progress: diehard -> sts-nist -> new
-\end{itemize}
+Dieharder, as its predecessors, aims to ease the testing of (pseudo)random generators and data for a variety purposes in research 
+and cryptography. Developed by Robert G. Brown at the Duke University, it is designed to be as extensible as possible, 
+allowing easy implementation of new tests and generators for testing. Most of the tests used allow for 
+modifying the default parameters, enabling advanced users to fine-tune the testing process.
+According to its creators, it is intended to be the ``Swiss army knife of random number test suite'', 
+or if you prefer, ``the last suite you'll ever ware'' for testing random numbers. \cite{dieharder web}
 
-\section{Limits and disadvantages of statistical testing}
+After designing the testing framework, the development team gradually reimplemented and improved the original tests from 
+the Diehard Battery of Tests of Randomness (see \autoref{sec:diehard}), 
+the tests from STS NIST (see \autoref{sec:sts-nist}) and began to prepare and implement their own new tests.
+The suite now contains 31 different tests from various sources. Tests can be run selectively.
+The testing results provide the cumulative p-value for each test and a verdict of \textsc{PASS}, \textsc{WEAK} or \textsc{FAIL}
+according to the set significance level.
+Detailed setting used for the purposes of this thesis can be found in \autoref{sec:settings-statistics}.
+
+\section{Drawbacks of human-designed statistical tests}
 \label{sec:limits-stat-testing}
 
-\begin{itemize}
-\item idea -> test (idea is always the predecessor)
-\item check only one specific property
-\item can only rarely be adapted to specific situation
-\item results interpretation (what is wrong?)
-\end{itemize}
+Although convenient in some ways, statistical randomness testing based on human-designed tests has several important drawbacks.
+As mentioned above, the test creation must be preceded by an idea of mathematical property and its thorough analysis, 
+which can be extremely time- and people-consuming. Further on, the tests are limited to one particular property and
+adapting them to specific situation requires beginning the process of test creation all over again.
+
+Both of the above-mentioned problems would be resolved if tests of comparable quality could be generated automatically, without 
+the help of human specialists. Such concept and its comparison with human-generated tests is presented in the following chapters.
 
 \chapter{Evolution based randomness testing}
 \label{chap:evo-based-testing}
@@ -384,26 +435,25 @@ Note, that EACirc is wider project beyond the scope of this thesis. Some parts w
 \item 12 files
 \begin{itemize}
 \item 3 quantum random files
-\item 3 noise files (white, pink, brown)
-\item 3 noise files with oscillating volume (2 cycles in given 30 seconds)
+\item 3 noise files (white, pink, Brown), generated by SoX
+\item 3 noise files via intermediate mp3 compression (2 channels, 16bits, 44.1 kHz => bitrate of 128kbps)
+\item noise after 128kbs mp3 compression had ~480 kB
 \item 3 samples of transcendental khaoblack metal music
 \end{itemize}
-\item each file is 30sec of uncompressed WAV audio (5.3MB)
+\item each file is 30sec of uncompressed WAV audio (5.3MB) (including quantum random files, wav header generated by SoX)
 \item evolving distinguisher for each pair
 \item interpretation of results (\autoref{tab:uncompressed-audio}):
 \begin{itemize}
 \item quantum random stream are undistinguishable (we already know)
-\item random stream 2 is more "noise-like" \\ => reminds us to use random data cautiously, and use statistics to evaluate results
-\item uncompressed WAV audio is quite easily distinguishable from random stream of data (generally over 80\%)
-\item different types of noise can be quite successfully distinguished from one another (generally over 70\%)
-\item it is difficult to distinguish noise from its oscillating version (around 58\%)
-\item when using oscillating noise for distinguishing, fitness is not oscillating \\ => volume is not statistically important in these sample noise files
-\item given samples of metal music can be quite successfully distinguished from noise
-\item given samples of metal music nearly cannot be distinguished from one another
+\item generated white noise is true (undistinguishable from random)
+\item pink and Brown noise are different, distinguishable (good result, since pink and Brown noise are generated by filtering white noise and are biased towards lower frequencies)
+\item different types of noise can be quite successfully distinguished from one another (generally over 75\%)
+\item mp3 compression has small, but detectable effect on the sound (nearly undetectable by unskilled human ear, but successfully shifts the distinguisher success to cca 0.58)
+\item comparing noise and mp3 compressed and decompressed noise of the same kind is difficult
+\item used metal samples are nearly indistinguishable from each other on the binary level (although the differences are easily detectable by human ear)
+\item used metal samples can be reliably distinguished from white noise (which is, in fact only a stream of random data) - general success over 80\%. Less so from pink and Brown noise - general success around 65\%.
 \end{itemize}
 \item most of the runs have slow rising tendency in fitness \\ => if more generations, the average maximum value might be slightly higher
-\item
-\item noise after 128kbs mp3 compression had ~480 kB
 \end{itemize}
 
 \begin{landscape}
@@ -422,7 +472,7 @@ Note, that EACirc is wider project beyond the scope of this thesis. Some parts w
 \multicolumn{1}{c||}{\rotatedHeader{random\\stream 3}} & 
 \multicolumn{1}{c|}{\rotatedHeader{white noise}} & 
 \multicolumn{1}{c|}{\rotatedHeader{pink noise}} & 
-\multicolumn{1}{c||}{\rotatedHeader{brown noise}} & 
+\multicolumn{1}{c||}{\rotatedHeader{Brown noise}} & 
 \multicolumn{1}{c|}{\rotatedHeader{white noise\\(via mp3)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{pink noise\\(via mp3)}} & 
 \multicolumn{1}{c||}{\rotatedHeader{brown noise\\(via mp3)}} & 
@@ -442,14 +492,14 @@ white noise (true) &
 (0.52) & (0.52) & (0.52) & n/a & (0.83) & (0.81) & (0.59) & (0.87) & (0.89) & (0.86) & (0.93) & (0.81) \\ \cline{2-14}
 & pink noise (true) &
 (0.80) & (0.83) & (0.94) & (0.83) & n/a & (0.76) & (0.86) & (0.52) & (0.76) & (0.65) & (0.65) & (0.66) \\ \cline{2-14}
-& brown noise (true) &
+& Brown noise (true) &
 (0.84) & (0.83) & (0.91) & (0.81) & (0.76) & n/a & (0.86) & (0.76) & (0.56) & (0.71) & (0.69) & (0.68) \\ \hline \hline
 \multirow{3}{*}[-10pt]{\rotatedHeader{noise (mp3)}} & 
 white noise (via mp3) &
 (0.59) & (0.57) & (0.58) & (0.59) & (0.86) & (0.86) & n/a & (0.91) & (0.83) & (0.84) & (0.80) & (0.78) \\ \cline{2-14}
 & pink noise (via mp3) &
 (0.93) & (0.82) & (0.83) & (0.87) & (0.52) & (0.76) & (0.91) & n/a & (0.78) & (0.63) & (0.68) & (0.70) \\ \cline{2-14}
-& brown noise (via mp3) &
+& Brown noise (via mp3) &
 (0.89) & (0.84) & (0.83) & (0.89) & (0.76) & (0.56) & (0.83) & (0.78) & n/a & (0.71) & (0.69) & (0.67) \\ \hline \hline
 \multirow{3}{*}[-5pt]{\rotatedHeader{metal music}} & 
 metal music (sample 1) &
@@ -459,7 +509,7 @@ metal music (sample 1) &
 & metal music (sample 3) &
 (0.83) & (0.82) & (0.85) & (0.81) & (0.66) & (0.68) & (0.78) & (0.70) & (0.67) & (0.56) & (0.53) & n/a \\ \cline{1-14}
 \end{tabularx}
-\caption{Distinguishing random streams and uncompressed audio (noise, oscillating noise, metal music).}
+\caption{Distinguishing random streams and uncompressed audio (noise, compressed noise, metal music).}
 \label{tab:uncompressed-audio}
 \end{table}
 \end{landscape}
@@ -646,7 +696,7 @@ metal music (sample 1) &
 30\,000 g. & (0.614) & (0.614) & (0.607) & (0.602) & (0.599) & (0.598) & (0.591) & (0.582) \\ \hline
 run-time & 70 m. & 52 m. & 42 m. & 37 m. & 32 m. & 28 m. & 23 m. & 20 m. \\ \hline \hline
 300 sets & (0.567) & (0.583) & (0.585) & (0.589) & (0.599) & (0.608) & (0.617) & (0.618) \\ \hline
-run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. 220 m. \\ \hline
+run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hline
 \end{tabularx}
 \renewcommand{\arraystretch}{1.0}
 \caption{Determining optimal change frequency for test vector set.}
@@ -671,13 +721,13 @@ ARIRANG & $n=694$ & $n=707$ & $n=467$ & $n=1071$ & (full) & -- & -- & (0.52) \\ 
 Aurora & $n=5614$ & (0.75) & (0.78) !!! & (0.52) & -- & -- & -- & (0.52) \\ \hline
 Blake & $n=474$ & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
 Blue Midnight Wish & (0.52) & -- & -- & -- & -- & -- & -- & (0.52) \\ \hline
-Cheetah & $n=181$ & $n=574$ & $n=708$ & (0.90) !!! & & & & (0.52) \\ \hline
+Cheetah & $n=181$ & $n=574$ & $n=708$ & (0.90) !!! & (0.86)!!! & (0.52) & -- & (0.52) \\ \hline
 CHI & (0.52) & -- & -- & -- & -- & -- & -- & (0.52) \\ \hline
-CRUNCH & $n=104$ & $n=534$ & $n=954$ & & 34-(0.52) & & & (0.52) \\ \hline
+CRUNCH & $n=104$ & $n=534$ & $n=954$ & 10-$n=1327$ & 17-$n=774$ & 34-(0.52) & & (0.52) \\ \hline
 CubeHash & $n=104$ & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
 DCH & $n=104$ & (0.73) !!! & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
-Dynamic SHA & $n=484$ & $n=2337$ & $n=1773$ !!! & (0.95) !!! & & & & (0.52) \\ \hline
-Dynamic SHA2 & -- & (0.94) !!! & (0.74) & (0.75) & (0.57) & & & (0.52) \\ \hline
+Dynamic SHA & $n=484$ & $n=2337$ & $n=1773$ !!! & (0.95) !!! & (0.74) & (0.61) & (0.59) & (0.52) \\ \hline
+Dynamic SHA2 & -- & (0.94) !!! & (0.74) & (0.75) & (0.57) & (0.60) & & (0.52) \\ \hline
 \end{tabularx}
 %\renewcommand{\arraystretch}{1.0}
 \caption{Random distinguishers for SHA-3 candidate functions.}
