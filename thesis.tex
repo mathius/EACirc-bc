@@ -285,14 +285,15 @@ while retaining a comparable expressive power.
 To some extent, the structure of a software circuit resembles artificial neural networks 
 (deep belief belief neural networks in particular). Notable differences are in
 the learning mechanism and circuit dimensions (neural networks usually use very small number of layers). 
-The function of individual nodes is different as well, since all nodes node in artificial neural networks use weighed sum.
+The function of individual nodes is different as well, since all nodes node in artificial neural networks perform the same function.
 
 \section{EACirc: framework for automatic problem solving}
 \label{sec:eacirc-principles}
 
 Combining the principles of genetic programming and software circuits, we developed EACirc, the framework for automatic
-problem solving. The initial version of EACirc was created by (titul?) Petr Švenda at 
-the Laboratory of Security and Applied Cryptography, Masaryk University \cite{labak} based on SensorSim \cite{sensorsim} application.
+problem solving. The initial version of EACirc was created by Petr Švenda at 
+the Laboratory of Security and Applied Cryptography, Masaryk University \cite{labak} and was loosely based on SensorSim,
+locally developed application for simulation of sensor network \cite{sensorsim}.
 This initial version provided the main shared functionality: evolutionary capabilities, software circuit emulation
 and basic fitness evaluation. Later on, the application was improved by Matej Pristak and Ondrej Dubovec 
 (as their master and bachelor theses, respectively).
@@ -339,21 +340,55 @@ EACirc framework comes with an assortment of scripts, used mainly for downloadin
 \section{Current capabilities of EACirc}
 \label{sec:eacirc-capabilities}
 
+EACirc has a variety of other functions improving the core features of evolutionary algorithms and software circuit emulation.
+This section provides a short and by no means exhaustive list of them.
+
 \begin{itemize}
-\item old core, basic capabilities of EA provided by GAlib and software emulation taken from work by Matej Pristak, originally from SensorSim
-\item main object model has been revised to uitlize the principle of modules, thus enabling integration of multiple projects and evaluators according to actual needs.
-\item guaranteed bit-reproducibility now - use of random generators revised, hierarchical system of generators created, any run can be reproduced by providing original input files and one central seed => crucial to experiment verification
-\item bit-reproducibility enabled us to implement computation recommencing - EACirc can save and load its complete internal state => useful for computation-expensive experiments (when the machine is rebooted, we can continue from last saved state instead of starting allover again)
-\item evolved circuits are exported to 4 different formats (from SensorSim or original work on EACirc?), binary (can be reloaded into EACirc if needed), text and graphical (using Graphviz) (used to ease humal analysis of evolved results) and C source code implementing the circuit (useful for independent verification of circuit work)
-\item new static checker created, circumvents most of the EACirc framework (especially circuit emulator), used for static checking on pre-generated test vectors
-\item project for distinguishing between eStream cipher output and random stream of data, taken from work by Matej Pristak and slightly revised to operate withing the new object model and allow more detailed configuration
-\item project for distinguishing between SHA-3 function output and random stream of data, ideas and hash functions implementations taken from Ondrej Dubovec, gest vector geenration reimplemented from scratch
-\item small project for distinguishing among external binary files
+\item \textbf{Bit-reproducibility}\\
+Bit-reproducibility is essential for the most research projects, since it enables replication and verification of the results.
+EACirc uses genetic programming, which is fundamentally a randomized algorithm. Therefore, a hierarchy of random
+generators with strictly defined scope of usage and seeding process was developed. This allowed us to replicate an experiment
+by just providing the same input files and a fixed central seed.
+\item \textbf{Computation recommencing}\\
+After reaching bit-to-bit determinism, we implemented the ability to recommence older computations. 
+To allow for this, EACirc is capable of saving and loading its entire internal state to a set of XML-structured files.
+This feature is especially useful for computation-expensive experiments -- when the machine is rebooted, we can continue from last saved state instead of starting all over again.
+\item \textbf{Multi-format output}\\
+For easy reusing and analysis, the evolved circuits are output in 4 different formats:
+\begin{itemize}
+\item binary output (useful for reloading the circuits into EACirc),
+\item graph \textsc{dot} output (serves as a visual aid to human analyst),
+\item simple text output (application-independent export format) and
+\item program output (in the form of a stand-alone C program used for static analysis).
+\end{itemize}
+\noindent
+The \textsc{dot} graph format can be easily displayed using the Graphviz library \cite{graphviz} and thus 
+facilitates manual analysis done by humans after the computation.\\
+This functionality was implemented as early as the first version of EACirc. 
+\item \textbf{Static checker for circuits in C}\\
+Static checker is used to verify the success of evolved circuits exported as C programs. 
+The verification uses pre-generated test vectors
+and circumvents most parts of the EACirc framework, mainly the evolution and software circuit emulation.
+The independence of this process is of utmost importance, since it provides supporting evidence for the reached results.
+\item \textbf{Modular object model}\\
+When redesigning the object model, the principle of modules was utilized, thus enabling integration of multiple projects 
+and evaluators according to actual needs. This greatly improved framework's flexibility and extensibility.
+Currently, the following three projects (experiments) are implemented:
+\begin{itemize}
+\item Project for distinguishing between the output of eStream candidate ciphers and random stream of data was taken from the work of 
+Matej Prišťák.
+It was slightly revised to operate within the new object model and allow more detailed configuration.
+\item Project for distinguishing between the output of SHA-3 candidate functions and random stream of data was inspired by the work of 
+Ondrej Dubovec.
+Hash functions implementations were taken over, but the test vector generation process was reimplemented from scratch. 
+\item A small project for distinguishing among external binary files.
+\end{itemize}
 \end{itemize}
 
-Note, that EACirc is a project beyond the scope of this thesis. Some parts were added and/or redesigned in pre process, so
+\noindent
+Note, that EACirc is a project beyond the scope of this thesis. Some parts were added and/or redesigned in the process, so
 different experiments may have incompatible configuration files and may have produced incomparable results.
-For further details, user and development documentation, see EACirc wiki at GitHub \cite{eacirc-github}.
+For further details, user and development documentation, see EACirc wiki at GitHub \cite{eacirc-github}.	
 
 \chapter{Experiment settings and output data}
 \label{chap:settings}
