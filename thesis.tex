@@ -25,6 +25,10 @@
 \usepackage{array}
 % enable page rotation
 \usepackage{pdflscape}
+% bibliography management
+\usepackage[backend=biber,bibstyle=ieee-alphabetic,citestyle=alphabetic,url=true,hyperref=auto,block=ragged,abbreviate=true
+]{biblatex}
+\addbibresource{thesis.bib}
 % generating hyperlinks in document
 \usepackage{url}
 \usepackage[plainpages=false,pdfpagelabels,colorlinks=true]{hyperref}
@@ -146,10 +150,10 @@ Perhaps the most widely used battery of statistical tests is the Statistical Tes
 by National Institute of Standards and Technology (STS NIST).
 The primary motivations for developing this test suite was the need of standardised tests for detecting non-randomness 
 in binary (pseudo)random sequences utilized in cryptographic applications. As well as designing the tests,
-NIST provides their reference implementation and guidance in their use and application. \cite{web NIST}
+NIST provides their reference implementation and guidance in their use and application. \parencite{sts-nist}
 
 The battery consists of 15 different tests, some of which can be run with several parameters. 
-For detailed description of the tests, see the original documentation \cite{sts nist documentation}. 
+For detailed description of the tests, see the original documentation \parencite{sts-nist-documentation}. 
 The implementation provided by NIST supports variable input data length and arbitrary number of independent data streams. 
 The testing results provide the combined p-value of all data streams and the number of passed runs for each test 
 according to the set significance level. 
@@ -159,7 +163,7 @@ Detailed setting used for the purposes of this thesis can be found in \autoref{s
 \label{sec:diehard}
 
 The second (unofficial) standard of statistical randomness testing is the Diehard Battery of Tests of Randomness, 
-developed by George Marsaglia over several years at Florida State University. \cite{diehard website} 
+developed by George Marsaglia over several years at Florida State University. \parencite{diehard} 
 Although now becoming slightly outdated, they were one of the first and most-well known 
 in the pioneering years of statistical testing of randomness. 
 For long, the Diehard Battery of Tests was considered a golden standard along with STS NIST.
@@ -175,7 +179,7 @@ and cryptography. Developed by Robert G. Brown at the Duke University, it is des
 allowing easy implementation of new tests and generators for testing. Most of the tests used allow for 
 modifying the default parameters, enabling advanced users to fine-tune the testing process.
 According to its creators, it is intended to be the ``Swiss army knife of random number test suite'', 
-or if you prefer, ``the last suite you'll ever ware'' for testing random numbers. \cite{dieharder web}
+or if you prefer, ``the last suite you'll ever ware'' for testing random numbers. \parencite{dieharder}
 
 After designing the testing framework, the development team gradually reimplemented and improved the original tests from 
 the Diehard Battery of Tests of Randomness (see \autoref{sec:diehard}), 
@@ -293,8 +297,8 @@ The function of individual nodes is different as well, since all nodes node in a
 
 Combining the principles of genetic programming and software circuits, we developed EACirc, the framework for automatic
 problem solving. The initial version of EACirc was created by Petr Švenda at 
-the Laboratory of Security and Applied Cryptography, Masaryk University \cite{labak} and was loosely based on SensorSim,
-locally developed application for simulation of sensor network \cite{sensorsim}.
+the Laboratory of Security and Applied Cryptography, Masaryk University \parencite{labak} and was loosely based on SensorSim,
+locally developed application for simulation of sensor network \parencite{sensor-sim}.
 This initial version provided the main shared functionality: evolutionary capabilities, software circuit emulation
 and basic fitness evaluation. Later on, the application was improved by Matej Prišťák and Ondrej Dubovec 
 (as their master and bachelor theses, respectively).
@@ -305,7 +309,7 @@ to ease the understanding of its function and to standardise naming and programm
 Currently, the framework consist of the following main parts:
 \begin{itemize}
 \item \textbf{Evolutionary core}\\
-The core evolutionary features are provided by GAlib, a C++ Library of Genetic Algorithm Components developed at MIT \cite{galib}.
+The core evolutionary features are provided by GAlib, a C++ Library of Genetic Algorithm Components developed at MIT \parencite{galib}.
 The library, when parametrized by function callbacks (e.\,g.\ function for mutation, sexual crossover, fitness function, \dots),
 handles the main evolutionary actions.
 \item \textbf{Circuit emulator}\\
@@ -327,10 +331,10 @@ To satisfy the varying needs, several generator types are implemented: true quan
 configurable biased generator and low-entropy MD5-based generator.
 \item \textbf{Self-tests}\\
 For the ease of development, EACirc provides a handful of self-tests. Running these tests ensures the consistency
-of seeding and data manipulation. Tests are implemented using CATCH, a C++ Automated Test Cases in Headers \cite{catch}.
+of seeding and data manipulation. Tests are implemented using CATCH, a C++ Automated Test Cases in Headers \parencite{catch}.
 \item \textbf{XML manipulating library}\\
 Most of the files produced and processed by the framework are XML-structured files. All these files are handles via
-TinyXML, a simple, small, minimal, C++ XML parser library \cite{tinyxml}.
+TinyXML, a simple, small, minimal, C++ XML parser library \parencite{tinyxml}.
 \item \textbf{Static checker}\\
 Although the static checker shares some code with the main framework, it is built as an independent application.
 It is designed to verify obtained results (evolved circuits) by circumventing both the genetic manipulations and circuit emulator.
@@ -363,7 +367,7 @@ For easy reusing and analysis, the evolved circuits are output in 4 different fo
 \item program output (in the form of a stand-alone C program used for static analysis).
 \end{itemize}
 \noindent
-The \textsc{dot} graph format can be easily displayed using the Graphviz library \cite{graphviz} and thus 
+The \textsc{dot} graph format can be easily displayed using the Graphviz library \parencite{graphviz} and thus 
 facilitates manual analysis done by humans after the computation.\\
 This functionality was implemented as early as the first version of EACirc. 
 \item \textbf{Static checker for circuits in C}\\
@@ -389,7 +393,7 @@ Hash functions implementations were taken over, but the test vector generation p
 \noindent
 Note, that EACirc is a project beyond the scope of this thesis. Some parts were added and/or redesigned in the process, so
 different experiments may have incompatible configuration files and may have produced incomparable results.
-For further details, user and development documentation, see EACirc wiki at GitHub \cite{eacirc-github}.	
+For further details, user and development documentation, see EACirc wiki at GitHub \parencite{eacirc-github}.	
 
 \chapter{Experiment settings and output data}
 \label{chap:settings}
@@ -449,9 +453,9 @@ Fortunately, quantum physics provides randomness with inherent unpredictability 
 We acquired several hundred megabytes of quantum random data from the following on-line services:
 \begin{itemize}
 \item \textit{Quantum Random Bit Generation Service}\\
-provided by Ruđer Bošković Institute in Zagreb, Croatia \cite{qrng-source-croatia} and
+provided by Ruđer Bošković Institute in Zagreb, Croatia \parencite{qrng-service-croatia} and
 \item \textit{High Bit Rate Quantum Random Number Generator Service}\\
-provided by Humboldt University of Berlin, Germany \cite{qrng-source-germany}.
+provided by Humboldt University of Berlin, Germany \parencite{qrng-service-germany}.
 \end{itemize}
 The data from both sources have been thoroughly tested and compared, for details and results 
 see \autoref{sec:control-germany-croatia}.
@@ -968,5 +972,8 @@ Waterfall & (0.52) & & & & & & (0.52) \\ \hline
 \end{itemize}
 \item fixing functions in layers
 \end{itemize}
+
+% print complete bibliography
+\printbibliography
 
 \end{document}

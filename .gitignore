@@ -8,3 +8,9 @@
 *.out
 *.toc
 *.synctex.gz
+
+# BiBLaTeX auxiliary files
+*.bbl
+*.blg
+*.bcf
+*.run.xml
