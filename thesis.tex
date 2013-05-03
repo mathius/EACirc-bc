@@ -151,7 +151,7 @@ NIST provides their reference implementation and guidance in their use and appli
 The battery consists of 15 different tests, some of which can be run with several parameters. 
 For detailed description of the tests, see the original documentation \cite{sts nist documentation}. 
 The implementation provided by NIST supports variable input data length and arbitrary number of independent data streams. 
-The testing results provide the cumulative p-value of all data streams and the number of passed runs for each test 
+The testing results provide the combined p-value of all data streams and the number of passed runs for each test 
 according to the set significance level. 
 Detailed setting used for the purposes of this thesis can be found in \autoref{sec:settings-statistics}.
 
@@ -181,7 +181,7 @@ After designing the testing framework, the development team gradually reimplemen
 the Diehard Battery of Tests of Randomness (see \autoref{sec:diehard}), 
 the tests from STS NIST (see \autoref{sec:sts-nist}) and began to prepare and implement their own new tests.
 The suite now contains 31 different tests from various sources. Tests can be run selectively.
-The testing results provide the cumulative p-value for each test and a verdict of \textsc{pass}, \textsc{weak} or \textsc{fail}
+The testing results provide the combined p-value for each test and a verdict of \textsc{passed}, \textsc{weak} or \textsc{failed}
 according to the set significance levels.
 Detailed settings used for the purposes of this thesis can be found in \autoref{sec:settings-statistics}.
 
@@ -397,7 +397,7 @@ For further details, user and development documentation, see EACirc wiki at GitH
 This chapter summarizes the configuration of EACirc used in the experiments presented in later chapters.
 The accounts of random data used are given and EACirc outputs are described. 
 In most experiments, our performance is compared to traditional batteries of statistical tests (STS NIST, Dieharder)
-therefore settings and outputs of these batteries is provided as well.
+therefore settings and output description of these batteries is provided as well.
 
 \section{EACirc settings}
 \label{sec:settings-eacirc}
@@ -406,18 +406,26 @@ Most of the general settings (evolution and circuit parameters) were taken from 
 The experiments supporting these parameters values were not reproduced, except for a few -- for details,
 see \autoref{chap:distinguish-control}.
 
-The evolution works with a population of size 20, with a sexual crossover probability of 20\,\% and a mutation probability
+The evolution works with a population of 20 individuals, with a sexual crossover probability of 20\,\% and a mutation probability
 set to 5\,\%. In each case (if not stated otherwise), we evolve 30\,000 generations with the test vector set
-(learning data) changing every 100${}^{th}$ generation. Thus, a total of 300 unique test vector sets is used for each run.
+(learning data) changing every 100\textsuperscript{th} generation. Thus, a total of 300 unique test vector sets is used in each run.
 
-The circuit dimensions are limited to 5 layers with the maximum of 8 function nodes per layer. It processes up to 16 input bytes
+The circuit dimensions are limited to 5 layers with a maximum of 8 function nodes per layer. It processes up to 16 input bytes
 and produces 2 output bytes. Because of bad experience in previous work, using the \textsc{readx} function is forbidden.
-Except for it, all implemented functions are allowed.
+All other implemented functions are allowed.
 
 Each testing set consists of 1\,000 independent vectors, exactly half of which is truly random. 
-According to research done by Matej Prišťák, the imbalance in test vectors made the circuit learn what type is more frequent
+According to research done by Matej Prišťák, the imbalance in test vectors would make the circuit learn what type is more frequent
 in the particular set instead of developing a deterministic distinguisher. 
 The order of random and non-random vectors in the set is not fixed.
+Hence (\autoref{eq:sdfs}), all the results output by EACirc are based on a sample of about 2.5\,MB of assessed data.
+\begin{equation}
+\label{eq:sdfs}
+\Sigma = \frac{30000 \text{ generations}}{100 \; \frac{\text{generations}}{\text{test set}}}
+         \cdot \frac{1}{2} \cdot 1000 \; \frac{\text{vector}}{\text{test set}}
+         \cdot 16 \; \frac{\text{bytes}}{\text{vector}}
+         \approx 2.29 \text{\,MB}
+\end{equation}
 
 The expected circuit output is always \texttt{0x00} (zero byte) for a non-random vector and \texttt{0xff} (full byte) 
 for a random one.
@@ -437,55 +445,71 @@ Eacirc requires a good source of randomness, since the the distinguishing proces
 with a stream of data we declare to be random. All the achieved results therefore rise and fall 
 on the quality of this referential stream.
 
-
-
+Fortunately, quantum physics provides randomness with inherent unpredictability based on measuring quantum effects of photons. 
+We acquired several hundred megabytes of quantum random data from the following on-line services:
 \begin{itemize}
-\item EACirc is randomized algorithm -> need good random data source
-\item in most experiments a distinguisher from random data stream is being evolved => crucial to have extremely realiable random data source
-\item using quantum random data, generated by measuring quantum effects
-\item 2 different sources, HU Berlin, institute in Croatia
-\item these 2 sources thoroughly compared, see \autoref{sec:control-germany-croatia}
+\item \textit{Quantum Random Bit Generation Service}\\
+provided by Ruđer Bošković Institute in Zagreb, Croatia \cite{qrng-source-croatia} and
+\item \textit{High Bit Rate Quantum Random Number Generator Service}\\
+provided by Humboldt University of Berlin, Germany \cite{qrng-source-germany}.
 \end{itemize}
+The data from both sources have been thoroughly tested and compared, for details and results 
+see \autoref{sec:control-germany-croatia}.
 
 \section{EACirc output data}
 \label{sec:settings-eacirc-output}
 
+The randomized nature of evolutionary algorithms calls for multiple executions of each experiment due to variation in results.
+For the most of the following experiments, we performed 30 independent runs. The final result presented is the average
+of these 30 executions.
+
+In each run, the maximum population success rate in the generations just after the change of test vectors are examined.
+In our setting, this concerns the 1\textsuperscript{st}, 101\textsuperscript{st}, 201\textsuperscript{st}, \dots{} 
+and 29901\textsuperscript{st} generation.
+The presented results are of 2 types, depending on how good the found distinguishers are.
 \begin{itemize}
-\item main goal: finding strong distinguisher (over 99\% for 50 consecutive generations)
-\item displayed average stable generation across 30 independent runs \\
-(stable = fitness over $99\%$ for at least next 50 test sets)
-\item if none stable generation was found, average average maximum fitness after test vector change is displayed in parentheses.
+\item If \textit{strong distinguishers} were found, we show the average number of generations needed
+to reach them. For our purposes, a population of strong distinguishers has a maximum success rate in generations just
+after the change of test vectors over 99\,\% during at least 50 consecutive test vector sets (5\,000 generations).
+We call these distinguishers strong, because of their anticipated high success rate on streams they have not been learning on so far.
+\item If a population of strong distinguishers was not reached during the evolution, 
+we present the average value of maximal success rates in generations just after the change of test vectors,
+further averaged across all 30 runs. This average average maximum (\textsc{aam}) is presented in parentheses.
 \end{itemize}
 
 \section{Settings and output data for statistical test batteries}
 \label{sec:settings-statistics}
 
+To compare our results with existing statistical tests, all experiments were replicated using standard batteries of statistical
+randomness tests (STS NIST and Dieharder). 
+For each setting in EACirc, an external file with 250\,MB of the assessed stream was created.
+The same stream was used for both STS NIST and Dieharder tests. For further information on STS NIST and Dieharder, 
+see \autoref{chap:stat-rand-testing}.
+
+STS NIST was run on 100 sub-streams, each consisting of 1\,000\,000 bits. This amounts to about 11.92\,MB of assessed data.
+All 15 available test were run in all supported configurations. Some runs had problems with tests \textit{Random Excursions} 
+and \textit{Random Excursions Variant} (they considered no or less than 100 sub-streams during these test), 
+so to ensure statistical accuracy of results, these test are omitted from the results.
+For each test, the following results are output:
 \begin{itemize}
-\item to compare our results with existing statistical batteries, statistical randomness of all generated streams was checked using STS NIST and Dieharder
-\item 250 MB of data generated for statistical testing, same streams used for both STS NIST and Dieharder
-\item STS NIST
-\begin{itemize}
-\item 100 runs, 100000 bits per run (=> ~11.92 MB used for testing)
-\item all tests were run, significance level of ???
-\item some runs had problems with tests RandomExcursions and RandomExcursionsVariant, to ensure statistical accuracy of results, these test are ommited in results
-\item for each test, following stats are computed:
-\begin{itemize}
-\item p-value for each run - if this p-value is out of bounds of the interval determined by the significance level, the run is considered failed
-\item the number of passed runs is infered
-\item the cumullative p-value of all 100 runs
-\item if either the cumulative p-value or the number of passed runs for this particular test is out bounds of the interval determined by the significance level, this test is considered as failed
+\item the number of passed runs (a run is declared failed, if its p-value lies out of the interval determined by the significance
+level of $\alpha = 0.01$) and
+\item the combined p-value of all 100 runs of the test.
 \end{itemize}
-\item results expressed as cumullative score for the entire stream, 0 for each failed test, 1 for each passed test. expressed as part of total 162
-\end{itemize}
-\item Dieharder
-\begin{itemize}
-\item test corresponding to original Diehard (except for Diehard sums test, due to probable error in test implementation)
-\item 1 run of each test, stream length determined by the test itself (comes from design of Dieharder, we want to prevent from revinding the file)
-\item total data used for testing: ??? MB (smallest test: ??, biggest test: ??)
-\item each test interpreted as PASSED, WEAK or FAILED (significance levels of ???)
-\item results for stream again in the form of cumullative score (0 for failed, 0.5 for weak, 1 for passed), out of total 20
-\end{itemize}
-\end{itemize}
+The result of all tests with all supported variants (162 tests in total, 2 tests excluded as mentioned above) 
+is summarized in a cumulative score. The score assigns 1 to a test with both number of passed tests and the
+combined p-value within the significance interval and assigning 0 otherwise. 
+In summary, a fraction of 162/162 denotes a random stream (all tests passed) while a value of 0/162 denotes a highly non-random
+stream (no test passed).
+
+From the Dieharder suite, only the test corresponding to the original Diehard collection were used.
+The only exception is the \textit{Diehard Sums Test} which was omitted, since the Dieharder community claims it has a couple of
+implementation bugs and thus should not be used at all. Each of the chosen tests was rune just once, but was let
+to process as much data as it required. Running the whole set processed about 582\,MB altogether with the smallest test
+consuming about 3\,MB and the largest one about 127\,MB. Each test was labelled as \textsc{passed}, \textsc{weak} or \textsc{failed}
+according to the threshold interval it falls within. The value of $\tau_{weak} = 0.005$ and $\tau_{fail} = 0.000001$ were used.
+The result of the whole suite (20 tests in total) is again summarized in a cumulative score assigning 1 to a \textsc{passed} test,
+0.5 to a \textsc{weak} test and 0 to a \textsc{failed} test.
 
 \chapter{Control distinguishers}
 \label{chap:distinguish-control}
