@@ -26,7 +26,12 @@
 % enable page rotation
 \usepackage{pdflscape}
 % bibliography management
-\usepackage[backend=biber,bibstyle=ieee-alphabetic,citestyle=alphabetic,url=true,hyperref=auto,block=ragged,abbreviate=true
+\usepackage[backend=biber, 		% use biber as backend instead of BiBTeX
+	bibstyle=ieee-alphabetic, 	% bibliography style: IEEE with alphabetic citations
+	citestyle=alphabetic, 		% citation style
+	url=true, 					% display urls in bibliography
+	hyperref=auto,				% detect hyperref and create links
+	block=ragged 				% format bibliography into blocks, ragged on right
 ]{biblatex}
 \addbibresource{thesis.bib}
 % generating hyperlinks in document
@@ -297,11 +302,11 @@ The function of individual nodes is different as well, since all nodes node in a
 
 Combining the principles of genetic programming and software circuits, we developed EACirc, the framework for automatic
 problem solving. The initial version of EACirc was created by Petr Švenda at 
-the Laboratory of Security and Applied Cryptography, Masaryk University \parencite{labak} and was loosely based on SensorSim,
+the Laboratory of Security and Applied Cryptography, Masaryk University and was loosely based on SensorSim,
 locally developed application for simulation of sensor network \parencite{sensor-sim}.
 This initial version provided the main shared functionality: evolutionary capabilities, software circuit emulation
 and basic fitness evaluation. Later on, the application was improved by Matej Prišťák and Ondrej Dubovec 
-(as their master and bachelor theses, respectively).
+(as their master and bachelor theses, respectively \parencite{thesis-pristak, thesis-dubovec}).
 
 Afterwards, the object model of the entire project was redesigned and a handful of new features was added by myself. 
 Most of the code that was taken over was revised and refactored as necessary
@@ -406,7 +411,7 @@ therefore settings and output description of these batteries is provided as well
 \section{EACirc settings}
 \label{sec:settings-eacirc}
 
-Most of the general settings (evolution and circuit parameters) were taken from Matej Prišťák's thesis. 
+Most of the general settings (evolution and circuit parameters) were taken from Matej Prišťák's thesis \parencite{thesis-pristak}. 
 The experiments supporting these parameters values were not reproduced, except for a few -- for details,
 see \autoref{chap:distinguish-control}.
 
@@ -422,9 +427,9 @@ Each testing set consists of 1\,000 independent vectors, exactly half of which i
 According to research done by Matej Prišťák, the imbalance in test vectors would make the circuit learn what type is more frequent
 in the particular set instead of developing a deterministic distinguisher. 
 The order of random and non-random vectors in the set is not fixed.
-Hence (\autoref{eq:sdfs}), all the results output by EACirc are based on a sample of about 2.5\,MB of assessed data.
+Hence (\autoref{eq:eacirc-data-use}), all the results output by EACirc are based on a sample of about 2.5\,MB of assessed data.
 \begin{equation}
-\label{eq:sdfs}
+\label{eq:eacirc-data-use}
 \Sigma = \frac{30000 \text{ generations}}{100 \; \frac{\text{generations}}{\text{test set}}}
          \cdot \frac{1}{2} \cdot 1000 \; \frac{\text{vector}}{\text{test set}}
          \cdot 16 \; \frac{\text{bytes}}{\text{vector}}
@@ -518,25 +523,35 @@ The result of the whole suite (20 tests in total) is again summarized in a cumul
 \chapter{Control distinguishers}
 \label{chap:distinguish-control}
 
-\begin{itemize}
-\item introduction -- the need of reference numbers before analysis
-\item we need to define what does it mean "indistinguishable" in our setting
-\item we use quantum random data from Humboldt Universitat and Quantum random bit generator service as a standard for randomness
-\end{itemize}
+Before performing the experiments themselves, we need to acquire reference results -- what does it mean
+streams are indistinguishable from random in out context? Is the referential random data indistinguishable from random?
+What is the \textsc{aam} value for the distinguishers?
 
 \section{Looking for non-randomness in quantum random data}
 \label{sec:control-random-random}
 
+The first control experiment tries to distinguish quantum random data from other quantum random data.
+We use 193\,MB of data obtained from Quantum Random Bit Generator Service (for details, see \autoref{sec:settings-random}).
+We presume to fail at this and thus establish the randomness of the assessed data stream.
+
+Using the standard statistical batteries confirmed out expectations -- all 20 tests of Dieharder passed as well as
+all 162 tests of STS NIST. Running EACirc yielded the \textsc{aam} value of 0.52 with runs differing in 3\textsuperscript{rd}
+or 4\textsuperscript{th} decimal place.
+
+We anticipated that the difference of obtained \textsc{aam} from the naïve value of 0.50 was influenced by population size
+and the amount of test vector in a set. This reasoning was based on the following two facts:
 \begin{itemize}
-\item trying to distinguish quantum random data from quantum random data \\ => we presume to fail
-\item using random data from Quantum random bit generator service
-\item statistical batteries: data are random (Dieharder: 20/20, STS NIST: 188/188)
-\item evolution: no stable distinguisher found, AAM of 0.52 (differences in various runs in 3rd or 4th decimal place)
-\item presumption: dependence on test set size and population size
-\item presumption confirmed (\autoref{tab:random-set-size-change}), AAM decreases with smaller population and bigger test set size
+\item \textsc{aam} value is based on fitness of the currently best individual in population (it's a maximum fitness) and thus
+larger populations might have a better chance of getting a score above 0.50.
+\item With the increasing number of test vectors in a set, the probability of just guessing correctly decreases.
 \end{itemize}
 
-\begin{table}[htb]
+\noindent
+The performed experiments (\autoref{tab:random-set-size-change}) confirmed our presumptions: the \textsc{aam} value decreases
+with decreasing population size and increasing size of test vector set. We can thus conclude that in our settings the \textsc{aam}
+value of 0.52 corresponds to indistinguishable streams.
+
+\begin{table}[h]
 \centering
 \renewcommand{\arraystretch}{1.2}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
@@ -558,23 +573,22 @@ The result of the whole suite (20 tests in total) is again summarized in a cumul
 \section{Distinguishing quantum random data from different sources}
 \label{sec:control-germany-croatia}
 
-\begin{itemize}
-\item distinguishing streams of quantum random data from Humboldt University and streams of quantum random data from Ruđer Bošković Institute
-\begin{itemize}
-\item Quantum Random Bit Generator Service, Centre for Informatics and Computing, Ruđer Bošković Institute, Zagreb, Croatia
-\item Quantum Random Number Generator Service, Department of Physics, Humboldt University, Berlin, Germany
-\end{itemize}
-\item 6 files of 5 MB from each source
-\item fixed initial reading offsets as (0,0) \\ => same data from given file in each run
-\item looking for distinguisher for each pair
-\item interpretation of results (\autoref{tab:control-germany-croatia}):
-\begin{itemize}
-\item data from both sources are equally random for our purposes
-\item there is no single statistically different stream in these \\=>they can be used interchangeably 
-\end{itemize}
-\end{itemize}
+Secondly, we want to compare quantum random data streams obtained from two different sources (for details, 
+see \autoref{sec:settings-random}). We prepared 6 independent files of 5\,MB from each source, and attempted to find
+a distinguisher for each pair. The initial reading offset was set to 0 in each of the files so that 
+each file produced the same stream every time it was used.
 
-\begin{table}[htb]
+For each pair, the computation was run just once (instead of 30 times). The results are summarized in 
+\autoref{tab:control-germany-croatia} -- for each pair the average of the maximum population fitness in the generations
+just after the test vector change is displayed (this would correspond to the \textsc{aam} value, if 30 runs
+were performed for each pair).
+
+The results oscillate closely around 0.52 indicating indistinguishable streams (see \autoref{sec:control-random-random}).
+We can thus conclude that, for our purposes, both sources are equally random and equally reliable. 
+Since no of the tested files expressed any statistically significant deviation from the others, we can use these files
+interchangeably.
+
+\begin{table}[h]
 \centering
 \renewcommand{\arraystretch}{1.2}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
@@ -597,29 +611,45 @@ The result of the whole suite (20 tests in total) is again summarized in a cumul
 \section{Uncompressed audio streams}
 \label{sec:distinguishing-audio}
 
+The third and last of the control experiments compares the set of audio files. We considered a set of 12 files -- 3 quantum random
+data files, 3 uncompressed audio files with white, pink and Brownian noise, the same noise files with intermediate mp3 compression
+and 3 samples of uncompressed black-metal music.
+
+The quantum random data files had about 5\,MB and were turned into a listenable file by adding a \textsc{wav} header 
+instructing to interpret the data as 2-channel, 16\,bit/sample, 44.1\,kHz PCM-encoded audio.
+The 30 seconds (about 5.3\,MB) samples of white, pink and Brownian noise in the same audio format were generated using SoX
+\parencite{sox}. The third subset was created from the above-mentioned generated noises by mp3 compression (bitrate of 
+128\,kbps) and decompression back to the PCM-encoded audio. Note, that after compression the files
+took about 480\,kB each (compared to 5.3\,MB of the uncompressed version).
+The last three were 30 seconds samples of transcendental khaoblack metal by Abbey ov Thelema \parencite{abbey-ov-thelema}
+all taken from the band's promo called \textit{MMXII: Here \& Now - At the Threshold ov End Times}.
+
+We again attempted to develop a distinguisher for each pair of these files, again setting initial reading offset to 0
+and performing just one execution per file combination. Our hypotheses included the following:
 \begin{itemize}
-\item 12 files
-\begin{itemize}
-\item 3 quantum random files
-\item 3 noise files (white, pink, Brown), generated by SoX
-\item 3 noise files via intermediate mp3 compression (2 channels, 16bits, 44.1 kHz => bitrate of 128kbps)
-\item noise after 128kbs mp3 compression had ~480 kB
-\item 3 samples of transcendental khaoblack metal music
+\item the quantum random files will be indistinguishable from each other (assumption based on results from 
+\autoref{sec:control-germany-croatia}),
+\item the noise will be very similar to quantum random data (especially the white noise), but it may be able to be told apart,
+\item the different noise types will be similar to each other,
+\item the compressed and decompressed noise will be easily distinguishable from both the uncompressed noise and quantum random data
+files (even though they cannot be easily differentiated by human ear),
+\item the provided samples of metal music will be equally easily told apart from the other files, both uncompressed and re-compressed.
 \end{itemize}
-\item each file is 30sec of uncompressed WAV audio (5.3MB) (including quantum random files, wav header generated by SoX)
-\item evolving distinguisher for each pair
-\item interpretation of results (\autoref{tab:uncompressed-audio}):
+
+\noindent
+The results are presented in the usual way in \autoref{tab:control-audio} (the part below the diagonal is mirrored to
+facilitate analysis). From the analysis the the values, we accept most of the hypotheses:
 \begin{itemize}
-\item quantum random stream are undistinguishable (we already know)
-\item generated white noise is true (undistinguishable from random)
-\item pink and Brown noise are different, distinguishable (good result, since pink and Brown noise are generated by filtering white noise and are biased towards lower frequencies)
-\item different types of noise can be quite successfully distinguished from one another (generally over 75\%)
-\item mp3 compression has small, but detectable effect on the sound (nearly undetectable by unskilled human ear, but successfully shifts the distinguisher success to cca 0.58)
-\item comparing noise and mp3 compressed and decompressed noise of the same kind is difficult
-\item used metal samples are nearly indistinguishable from each other on the binary level (although the differences are easily detectable by human ear)
-\item used metal samples can be reliably distinguished from white noise (which is, in fact only a stream of random data) - general success over 80\%. Less so from pink and Brown noise - general success around 65\%.
-\end{itemize}
-\item most of the runs have slow rising tendency in fitness \\ => if more generations, the average maximum value might be slightly higher
+\item quantum random stream are undistinguishable (average maximum success rate of 0.52, see \autoref{sec:control-random-random}
+for details),
+\item generated white noise is completely undistinguishable from random data files,
+\item pink and Brownian noise are easily told apart from each other or the quantum random files (success rate generally over 80\,\%),
+\item mp3 compression has small, but detectable effect on the sound (although nearly undetectable by unskilled human ear, 
+it successfully shifts the distinguisher success rate to about 0.58 when comparing with an uncompressed noise of the same kind),
+\item used metal samples can be reliably distinguished from white noise (general success over 80\,\%), 
+less so from pink and Brownian noise (success rate only around 65\,\%),
+\item used metal samples are nearly indistinguishable from each other on the binary level 
+(although the differences are easily detectable by human ear).
 \end{itemize}
 
 \begin{landscape}
@@ -676,7 +706,7 @@ metal music (sample 1) &
 (0.83) & (0.82) & (0.85) & (0.81) & (0.66) & (0.68) & (0.78) & (0.70) & (0.67) & (0.56) & (0.53) & n/a \\ \cline{1-14}
 \end{tabularx}
 \caption{Distinguishing random streams and uncompressed audio (noise, compressed noise, metal music).}
-\label{tab:uncompressed-audio}
+\label{tab:control-audio}
 \end{table}
 \end{landscape}
 
@@ -893,9 +923,9 @@ CRUNCH & $n=104$ & $n=534$ & $n=954$ & 10-$n=1327$ & 17-$n=774$ & 34-(0.52) & (0
 CubeHash & $n=104$ & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
 DCH & $n=104$ & (0.73) !!! & (0.52) & -- & -- & -- & (0.52) \\ \hline
 Dynamic SHA & $n=484$ & $n=2337$ & $n=1773$ !!! & (0.95) !!! & (0.74) & (0.61) & (0.52) \\ \hline
-Dynamic SHA & from 6 -> & (0.59) & & & & & \\ \hline
+Dynamic SHA & from 6 -> & (0.59) & (0.59) & & & & \\ \hline
 Dynamic SHA2 & -- & (0.94) !!! & (0.74) & (0.75) & (0.57) & (0.60) & (0.52) \\ \hline
-Dynamic SHA2 & from 6 -> & & & & & & \\ \hline
+Dynamic SHA2 & from 6 -> & (0.60) & & & & & \\ \hline
 \end{tabularx}
 %\renewcommand{\arraystretch}{1.0}
 \caption{Random distinguishers for SHA-3 candidate functions.}
@@ -909,23 +939,23 @@ Dynamic SHA2 & from 6 -> & & & & & & \\ \hline
 \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{7}{C|}} \cline{2-8}
 \multicolumn{1}{l||}{} & \multicolumn{7}{c|}{number of rounds} \\ \cline{2-8}
 \multicolumn{1}{l||}{} & 0 & 1 & 2 & 3 & 4 & 5 & full \\ \hline \hline
-ECHO & -- & (0.73) !!! & & & & & (0.52) \\ \hline
-ESSENCE & 8-(0.52) & & & & & & (0.52) \\ \hline
-Fugue & (0.52) & & & & & & (0.52) \\ \hline
-Grøstl & $n=8651$ !!! & & & & & & (0.52) \\ \hline
-Hamsi & $n=12408$ !!! & & & & & & (0.52) \\ \hline
-JH & $n=581$ & & & & & & (0.52) \\ \hline
-Lesamnta & $n=791$ & & & & & & (0.52) \\ \hline
-Luffa & $n=604$ & & & & & & (0.52) \\ \hline
-MD6 & $n=101$ & & & & & & (0.52) \\ \hline
-Sarmal & (0.52) & & & & & & (0.52) \\ \hline
-SHAvite-3 & (0.52) & & & & & & (0.52) \\ \hline
-SIMD & $n=5428$ & & & & & & (0.52) \\ \hline
-Tangle & $n=714$ & & & & & & (0.52) \\ \hline
-Twister & $n=474$ & & & & & & (0.52) \\ \hline
-Vortex & $n=104$ & & & & & & $n=1257$ \\ \hline
-WaMM & $n=1171$ & & & & & & (0.52) \\ \hline
-Waterfall & (0.52) & & & & & & (0.52) \\ \hline
+ECHO & -- & (0.73) !!! & (0.52) & -- & -- & -- & (0.52) \\ \hline
+ESSENCE & 8-(0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
+Fugue & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
+Grøstl & $n=8651$ !!! & (0.58) & & & & & (0.52) \\ \hline
+Hamsi & $n=12408$ !!! & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
+JH & $n=581$ & $n=4398$ & & & & & (0.52) \\ \hline
+Lesamnta & $n=791$ & $n=568$ & & & & & (0.52) \\ \hline
+Luffa & $n=604$ & $n=2011$ & & & & & (0.52) \\ \hline
+MD6 & $n=101$ & $n=1281$ & & & & & (0.52) \\ \hline
+Sarmal & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
+SHAvite-3 & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
+SIMD & $n=5428$ & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
+Tangle & $n=714$ & $n=6868$ & & & & & (0.52) \\ \hline
+Twister & $n=474$ & $n=717$ & & & & & (0.52) \\ \hline
+Vortex & $n=104$ & -- & -- & -- & -- & -- & $n=1257$ \\ \hline
+WaMM & $n=1171$ & $n=5631$ & & & & & (0.52) \\ \hline
+Waterfall & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
 \end{tabularx}
 %\renewcommand{\arraystretch}{1.0}
 \caption{Random distinguishers for SHA-3 candidate functions.}
@@ -973,6 +1003,8 @@ Waterfall & (0.52) & & & & & & (0.52) \\ \hline
 \item fixing functions in layers
 \end{itemize}
 
+% include citations not cited specifically
+\nocite{*}
 % print complete bibliography
 \printbibliography
 

@@ -8,6 +8,7 @@
 *.out
 *.toc
 *.synctex.gz
+*.dvi
 
 # BiBLaTeX auxiliary files
 *.bbl
