@@ -279,7 +279,7 @@ Connectors may only link adjacent layers, but may cross each other (contrary to 
 An example of such hardware-like circuit can be seen in \autoref{fig:circuit}.
 
 In the current solution design, we consider only simple nodes operating on bytes. The supported functions are:
-\begin{itemize}
+\begin{itemize} \rightskip=2em
 \item common bit-manipulating functions (\textsc{or, and, xor, nor, nand, rotl, rotr, bitselector}),
 \item simple arithmetical functions (\textsc{sum, subs, add, mult, div}),
 \item identity function (\textsc{nop}) and
@@ -500,7 +500,7 @@ All 15 available test were run in all supported configurations. Some runs had pr
 and \textit{Random Excursions Variant} (they considered no or less than 100 sub-streams during these test), 
 so to ensure statistical accuracy of results, these test are omitted from the results.
 For each test, the following results are output:
-\begin{itemize}
+\begin{itemize} \rightskip=2em
 \item the number of passed runs (a run is declared failed, if its p-value lies out of the interval determined by the significance
 level of $\alpha = 0.01$) and
 \item the combined p-value of all 100 runs of the test.
@@ -540,7 +540,7 @@ or 4\textsuperscript{th} decimal place.
 
 We anticipated that the difference of obtained \textsc{aam} from the naïve value of 0.50 was influenced by population size
 and the amount of test vector in a set. This reasoning was based on the following two facts:
-\begin{itemize}
+\begin{itemize} \rightskip=2em
 \item \textsc{aam} value is based on fitness of the currently best individual in population (it's a maximum fitness) and thus
 larger populations might have a better chance of getting a score above 0.50.
 \item With the increasing number of test vectors in a set, the probability of just guessing correctly decreases.
@@ -626,7 +626,7 @@ all taken from the band's promo called \textit{MMXII: Here \& Now - At the Thres
 
 We again attempted to develop a distinguisher for each pair of these files, again setting initial reading offset to 0
 and performing just one execution per file combination. Our hypotheses included the following:
-\begin{itemize}
+\begin{itemize} \rightskip=2em
 \item the quantum random files will be indistinguishable from each other (assumption based on results from 
 \autoref{sec:control-germany-croatia}),
 \item the noise will be very similar to quantum random data (especially the white noise), but it may be able to be told apart,
@@ -639,7 +639,7 @@ files (even though they cannot be easily differentiated by human ear),
 \noindent
 The results are presented in the usual way in \autoref{tab:control-audio} (the part below the diagonal is mirrored to
 facilitate analysis). From the analysis the the values, we accept most of the hypotheses:
-\begin{itemize}
+\begin{itemize} \rightskip=2em
 \item quantum random stream are undistinguishable (average maximum success rate of 0.52, see \autoref{sec:control-random-random}
 for details),
 \item generated white noise is completely undistinguishable from random data files,
@@ -713,42 +713,63 @@ metal music (sample 1) &
 \chapter{Distinguishing cipher outputs from random stream}
 \label{chap:distinguish-cipher}
 
-\begin{itemize}
-\item introduction, idea, running EACirc along with statistical batteries
-\item stream ciphers from eStream competition
-\end{itemize}
-
-\section{Stream ciphers used}
-\label{sec:estream-ciphers}
-
-\begin{itemize}
-\item ciphers except for ?? (why??)
-\item from last phase
-\item those that could be limited in rounds are tested in weaker variant as well
-\item differences from Metej Pristak thesis
-\end{itemize}
+Inspired by the research done by Matej Prišťák \parencite{thesis-pristak}, we analysed randomness of stream cipher outputs.
+The analysis used either EACirc, Dieharder or STS NIST with settings described earlier (\autoref{chap:settings}).
+We only considered stream ciphers from the recent eStream competition \parencite{estream-competition},
+since we could use the unified cipher interface (API) prescribed in the competition.
 
 \section{Generating binary stream from stream ciphers}
 \label{sec:estream-settings}
 
-\begin{itemize}
-\item cipher modes (iv+key initialization frequency)
-\item case of LEX (not weakening the cipher, only making shorter output)
-\item case of TSC (producing binary stream of 0 for 1-8 rounds) => problems in 3 Dieharder tests
+From 34 candidates in the eStream competition, 23 were potentially usable for testing (due to renamed or updated versions, 
+problems with compilation, \dots). Out of these, we limited ourselves to only 7 (Decim, Grain, FUBUKI, Hermes, LEX, Salsa20 and TSC),
+since these had internal structure that allowed for a simple reduction of complexity by reducing a number of internal rounds.
+For all used ciphers, the implementation from the last successful phase of the competition was taken. 
+The ciphers were tested unlimited and then for all lower number of rounds until reaching distinguishability from a random stream.
+
+As opposed to our previous research, we considered three modes with respect to the frequency of cipher initialization and key change:
+\begin{itemize} \rightskip=2em
+\item The cipher initialization is performed just once (at the beginning of the computation) and the key is fixed for
+all the generated test vectors and sets. Even when the sets change, new test vectors are generated using the same key.
+\item Every test set is generated using different key. All test vectors in a particular set are generated with the same key.
+The cipher is reinitialized when the key is changed, i.\,e.\ at set change.
+\item Every single test vector is generated using a different key and a freshly initialized cipher.
 \end{itemize}
+For every setting, each mode was considered separately. Keys were generated randomly and initialization vectors and plaintexts
+were fixed to binary zeroes.
 
 \section{Results interpretation}
 \label{sec:estream-results}
 
-\begin{itemize}
-\item ???
-\item more or less as statistical batteries
-\item dieharder better in some case than STS-NIST (is newer and some tests are redesigned)
-\item statistical tests has much more input data compared to EACirc
-\item using evolved distinguisher is quick
+Before coming to the results, two things must be noted:
+\begin{itemize} \rightskip=2em
+\item The internal structure of LEX responds specifically to the limitation of number of rounds.
+LEX prepares 4 output bytes during every round (other bytes default to binary zero). 
+Limitation of internal rounds therefore only limits the number
+of output bytes, not their strength/randomness.
+\item During the first 8 rounds, TSC only fills internal memory structures and thus produces no output. The output of these rounds
+is therefore a default stream of binary zeroes. Such stream also causes 4 of the Dieharder tests to get stuck --
+the score from the remaining 16 tests is presented with an asterisk (*).
 \end{itemize}
 
-\begin{table}[htb]
+\noindent
+The results of the described distinguisher experiments can be seen in \autoref{tab:estream-grain}, \autoref{tab:estream-decim},
+\autoref{tab:estream-fubuki}, \autoref{tab:estream-hermes}, \autoref{tab:estream-lex}, \autoref{tab:estream-salsa} and 
+\autoref{tab:estream-tsc}. The value of $n$ indicates average number of generations needed to reach a population of
+strong dintinguishers while the number in parentheses expresses the \textsc{aam} value in case such a generation has not been
+found. For detailed description of the data meanings see \autoref{sec:settings-eacirc-output}. We also remind the reader
+that the value of 0.52 indicates the stream is indistinguishable from random (for reasoning, see \autoref{sec:control-random-random}).
+
+In summary, the results indicate that in this case, EACirc performs more or less the same as standard statistical batteries.
+Although it did not always find a population of strong distinguishers, it found a population with significantly better
+success rate than random guessing in most of the cases (Decim being the most prominent exception).
+Dieharder sometimes performed better than STS NIST, but it has to be taken into consideration that it is newer
+and made decision based on a much larger sample. In general, both statistical batteries processed longer stream than EACirc
+(for detailed numbers see \autoref{chap:settings}). Regarding the matters of speed, EACirc had a comparably longer learning phase,
+but usually provided a distinguisher working working in far less time than statistical batteries.
+\medskip
+
+\begin{table}[hb]
 \centering
 \resultsTable{
 1 & 0.0 & 0 & $n=2681$ & 0.0 & 0 & (0.85) & 0.0 & 5 & $n=1431$ \\ \hline
@@ -799,7 +820,7 @@ metal music (sample 1) &
 \begin{table}[htb]
 \centering
 \resultsTable{
-1 & 0.0 & 0 & $n=148$ & 0.0 & 0 & $n=7274$ & 3.0 & 1 & $n=154$ \\ \hline
+1 & 0.0 & 0 & $n=148$ & 0.0 & 0 & $n=7274$ & 3.0 & 1${}^{*}$ & $n=154$ \\ \hline
 2 & 4.0 & 1 & $n=221$ & 4.0 & 1 & $n=304$ & 3.5 & 1 & $n=254$ \\ \hline
 3 & 0.5 & 1 & $n=378$ & 3.5 & 1 & $n=491$ & 4.0 & 1 & $n=361$ \\ \hline
 4 & 20.0 & 162 & (0.52) & 19.5 & 162 & (0.52) & 20.0 & 161 & (0.52) \\ \hline \hline
