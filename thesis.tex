@@ -56,10 +56,13 @@
 \thesisadvisor{RNDr.\ Petr Švenda,\ Ph.D.}
 \thesislang{en}
 
-% new commands for results table headers
+% ===== NEW COMMANDS (TABLES) =====
+% verrical centering in 2 row cell
 \newcommand{\m}[1]{\multirow{2}*{#1}}
+% rotated (one or multi line) table cell
 \newcommand{\rotatedHeader}[2][l]{\rotatebox{90}{\begin{tabular}[#1]{@{}l}#2\end{tabular}}}
-\newcommand{\resultsTable}[1]{%
+% results table for eStream
+\newcommand{\resultsTableEstream}[1]{%
 \newcolumntype{C}{>{\centering\arraybackslash}X}%
 \begin{tabularx}{\textwidth}{|r*{3}{||S[table-format=2.1]|S[table-format=3.0]|C}|} \hline
 \multirow{1}*{\raisebox{-\height-0.3cm}{\rotatebox{90}{\# of rounds}}} & \multicolumn{9}{c|}{IV and key reinitialization} \\ \cline{2-10}
@@ -71,6 +74,28 @@
 & \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & \rotatedHeader{EACirc\\(\textsc{aam})} \\ \hline \hline
 #1
 \end{tabularx}}
+% results table for SHA-3
+\newcommand{\resultsTableSha}[1]{%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+\begin{tabularx}{7cm}{|r||S[table-format=2.1]|S[table-format=3.0]|C|} \hline
+\raisebox{0cm}{\rotatebox{90}{\# of rounds }} & 
+\multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & 
+\multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & 
+\rotatedHeader{EACirc\\(\textsc{aam})} \\ \hline \hline
+#1
+\end{tabularx}}
+% two column part
+\newcommand{\twoColumns}[2]{%
+\begin{minipage}{0.47\textwidth}
+\centering
+#1
+\end{minipage}
+\hfill
+\begin{minipage}{0.47\textwidth}
+\centering
+#2
+\end{minipage}
+}
 
 % ===== BEGIN DOCUMENT =====
 \begin{document}
@@ -771,7 +796,7 @@ but usually provided a distinguisher working working in far less time than stati
 
 \begin{table}[hb]
 \centering
-\resultsTable{
+\resultsTableEstream{
 1 & 0.0 & 0 & $n=2681$ & 0.0 & 0 & (0.85) & 0.0 & 5 & $n=1431$ \\ \hline
 2 & 0.5 & 0 & (0.54) & 1.0 & 0 & (0.54) & 15.5 & 146 & (0.52) \\ \hline
 3 & 1.0 & 0 & (0.53) & 1.0 & 0 & (0.53) & 15.0 & 160 & (0.52) \\ \hline
@@ -787,7 +812,7 @@ but usually provided a distinguisher working working in far less time than stati
 
 \begin{table}[htb]
 \centering
-\resultsTable{
+\resultsTableEstream{
 1 & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) & 18.0 & 162 & (0.52) \\ \hline \hline
 4 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline
 }
@@ -797,7 +822,7 @@ but usually provided a distinguisher working working in far less time than stati
 
 \begin{table}[htb]
 \centering
-\resultsTable{
+\resultsTableEstream{
 1 & 0.0 & 0 & $n=221$ & 0.0 & 0 & (0.67) & 18.5 & 162 & (0.52) \\ \hline
 2 & 0.0 & 0 & $n=471$ & 0.5 & 0 & (0.66) & 20.0 & 162 & (0.52) \\ \hline
 3 & 19.5 & 160 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline \hline
@@ -809,7 +834,7 @@ but usually provided a distinguisher working working in far less time than stati
 
 \begin{table}[htb]
 \centering
-\resultsTable{
+\resultsTableEstream{
 1 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline \hline
 10 & 20.0 & 160 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) \\ \hline
 }
@@ -819,7 +844,7 @@ but usually provided a distinguisher working working in far less time than stati
 
 \begin{table}[htb]
 \centering
-\resultsTable{
+\resultsTableEstream{
 1 & 0.0 & 0 & $n=148$ & 0.0 & 0 & $n=7274$ & 3.0 & 1${}^{*}$ & $n=154$ \\ \hline
 2 & 4.0 & 1 & $n=221$ & 4.0 & 1 & $n=304$ & 3.5 & 1 & $n=254$ \\ \hline
 3 & 0.5 & 1 & $n=378$ & 3.5 & 1 & $n=491$ & 4.0 & 1 & $n=361$ \\ \hline
@@ -832,7 +857,7 @@ but usually provided a distinguisher working working in far less time than stati
 
 \begin{table}[htb]
 \centering
-\resultsTable{
+\resultsTableEstream{
 1 & 5.5 & 1 & (0.87) & 8.5 & 1 & (0.67) & 17.5 & 161 & (0.52) \\ \hline
 2 & 5.5 & 1 & (0.87) & 7.0 & 1 & (0.67) & 19.5 & 162 & (0.52) \\ \hline
 3 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 19.5 & 161 & (0.52) \\ \hline \hline
@@ -844,7 +869,7 @@ but usually provided a distinguisher working working in far less time than stati
 
 \begin{table}[htb]
 \centering
-\resultsTable{
+\resultsTableEstream{
 1--8 & 0.0${}^{*}$ & 0 & $n=104$ & 0.0${}^{*}$ & 0 & $n=101$ & 0.0${}^{*}$ & 0 & $n=104$ \\ \hline
 9 & 1.0 & 1 & $n=234$ & 1.5 & 1 & $n=491$ & 2.0 & 1 & $n=121$ \\ \hline
 10 & 2.0 & 13 & $n=188$ & 3.0 & 13 & $n=218$ & 3.0 & 12 & $n=158$ \\ \hline
@@ -867,28 +892,30 @@ but usually provided a distinguisher working working in far less time than stati
 \chapter{Distinguishing hash outputs from random stream}
 \label{chap:distinguish-hash}
 
-\begin{itemize}
-\item introduction, idea
-\item hash function candidates from SHA-3
-\end{itemize}
+Similar experiments as done in \autoref{chap:distinguish-cipher} were performed on candidate hash functions from SHA-3 competition
+\parencite{sha3-competition}
+(inspired by research done by Ondrej Dubovec \parencite{thesis-dubovec}).
+As in eStream ciphers, we utilized the unified hash function interface (API) prescribed in the competition.
+We analysed the randomness of streams produces as a concatenation of hash digests.
+The usual settings for EACirc, Dieharder and STS NIST were used (see \autoref{chap:settings} for details).
 
-\section{Hash functions used}
-\label{sec:hash-functions}
-
-\begin{itemize}
-\item except for 2 (?? source code size, compilation)
-\item from last phase
-\item those that could be limited in rounds are tested in weaker variant as well
-\item differences from Ondrej Dubovec Bc thesis
-\end{itemize}
-
-\section{Generating binary stream from hash functions}
+\section{Generating stream from hash function outputs}
 \label{sec:hash-settings}
 
-\begin{itemize}
-\item length set to 256b
-\item hashing 4 byte counters starting from random value (in fact, cutting each hash in half)
-\end{itemize}
+From 64 hash functions that entered the competition, 51 were selected to the first round. 
+Out of these, 42 were potentially usable for testing (due to source code size, speed and compilation problems).
+The implementations (taken from the last successful phase of the competition) and
+modifications limiting the number of rounds in these functions were taken over from previous work \parencite{thesis-dubovec}
+and revised. In the end, 19 most promising candidates were chosen: ARIRANG, Aurora, Blake, Cheetah, CubeHash, DCH, 
+Dynamic SHA, Dynamic SHA2, ECHO, Grøstl, Hamsi, JH, Lesamnta, Luffa, MD6, SIMD, Tangle, Twister and WaMM.
+These were the candidates which could be successfully limited in complexity and while their full version produced a random-looking
+output, their most limited version did not. All these hash function were subsequently tested unlimited and
+then for all lower number of rounds until reaching distinguishability from a random stream.
+
+As opposed to the work we were inspired by, we generated continuous output stream by hashing a simple 4-byte counter starting
+from a randomly generated value. We obtained a 256-bit digest, which we cut in half to produce 2 independent test vector inputs
+of 16 bytes each. In case of generating a continuous stream (for the purposes of Dieharder and STS NIST), we concatenated 
+the digests.
 
 \section{Determining optimal set change frequency}
 \label{sec:hash-set-change-freqency}
@@ -928,65 +955,216 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 \end{itemize}
 
 \begin{table}[htb]
-\centering
-%\renewcommand{\arraystretch}{1.2}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{7}{C|}} \cline{2-8}
-\multicolumn{1}{l||}{} & \multicolumn{7}{c|}{number of rounds} \\ \cline{2-8}
-\multicolumn{1}{l||}{} & 0 & 1 & 2 & 3 & 4 & 5 & full \\ \hline \hline
-ARIRANG & $n=694$ & $n=707$ & $n=467$ & $n=1071$ & (full) & -- & (0.52) \\ \hline
-Aurora & $n=5614$ & (0.75) & (0.78) !!! & (0.52) & -- & -- & (0.52) \\ \hline
-Blake & $n=474$ & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
-Blue Midnight Wish & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
-Cheetah & $n=181$ & $n=574$ & $n=708$ & (0.90) !!! & (0.86)!!! & (0.52) & (0.52) \\ \hline
-CHI & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
-CRUNCH & $n=104$ & $n=534$ & $n=954$ & 10-$n=1327$ & 17-$n=774$ & 34-(0.52) & (0.52) \\ \hline
-CubeHash & $n=104$ & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
-DCH & $n=104$ & (0.73) !!! & (0.52) & -- & -- & -- & (0.52) \\ \hline
-Dynamic SHA & $n=484$ & $n=2337$ & $n=1773$ !!! & (0.95) !!! & (0.74) & (0.61) & (0.52) \\ \hline
-Dynamic SHA & from 6 -> & (0.59) & (0.59) & & & & \\ \hline
-Dynamic SHA2 & -- & (0.94) !!! & (0.74) & (0.75) & (0.57) & (0.60) & (0.52) \\ \hline
-Dynamic SHA2 & from 6 -> & (0.60) & & & & & \\ \hline
-\end{tabularx}
-%\renewcommand{\arraystretch}{1.0}
-\caption{Random distinguishers for SHA-3 candidate functions.}
-\label{tab:hash-distinguishers}
+\twoColumns{
+\resultsTableSha{
+0 & 0.0 & 0 & $n=694$ \\ \hline
+1 & 0.0 & 0 & $n=707$ \\ \hline
+2 & 0.0 & 0 & $n=467$ \\ \hline
+3 & 0.0 & 0 & $n=1071$ \\ \hline \hline
+4 & 20.0 & 161 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for ARIRANG output.}
+\label{tab:sha3-arirang}
+\bigskip
+\resultsTableSha{
+0 & 0.0 & 1 & $n=5614$ \\ \hline
+1 & 0.0 & 1 & $n=4101$ [1] \\ \hline
+2 & 0.5 & 132 & $n=13201$ [1] \\ \hline
+3 & 0.5 & 132 & (0.52) \\ \hline
+4 & 20.0 & & \\ \hline \hline
+17 & 19.5 & 161 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Aurora output.}
+\label{tab:sha3-aurora}
+\bigskip
+\resultsTableSha{
+0 & 0.0 & 0 & $n=474$ \\ \hline
+1 & 0.0 & 0 & (0.52) \\ \hline
+2 & 20.0 & & \\ \hline \hline
+14 & 20.0 & 159 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Blake output.}
+\label{tab:sha3-blake}
+}{
+\resultsTableSha{
+0 & 0.0 & 1 & $n=181$ \\ \hline
+1 & 0.0 & 1 & $n=574$ \\ \hline
+2 & 0.0 & 0 & $n=708$ \\ \hline
+3 & 0.0 & 0 & $n=14659$ [12] \\ \hline
+4 & 0.0 & 1 & $n=16870$ [10] \\ \hline
+5 & 0.0 & 1 & (0.52) \\ \hline
+6 & 20.0 & & \\ \hline \hline
+16 & 20.0 & 162 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Cheetah output.}
+\label{tab:sha3-cheetah}
+\bigskip
+\resultsTableSha{
+0 & 0.0 & 0 & $n=104$ \\ \hline
+1 & 0.0 & 0 & (0.52) \\ \hline
+2 & 20.0 &  & \\ \hline \hline
+8 & 20.0 & 162 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for CubeHash output.}
+\label{tab:sha3-cubehash}
+\bigskip
+\resultsTableSha{
+0 & 0.0${}^{*}$ & 0 & $n=104$ \\ \hline
+1 & 0.0${}^{*}$ & 0 & $n=17260$ [5] \\ \hline
+2 & 19.5 & 162 & (0.52) \\ \hline
+4 & 20.0 & 162 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for DCH output.}
+\label{tab:sha3-dch}
+}
 \end{table}
 
 \begin{table}[htb]
-\centering
-%\renewcommand{\arraystretch}{1.2}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{7}{C|}} \cline{2-8}
-\multicolumn{1}{l||}{} & \multicolumn{7}{c|}{number of rounds} \\ \cline{2-8}
-\multicolumn{1}{l||}{} & 0 & 1 & 2 & 3 & 4 & 5 & full \\ \hline \hline
-ECHO & -- & (0.73) !!! & (0.52) & -- & -- & -- & (0.52) \\ \hline
-ESSENCE & 8-(0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
-Fugue & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
-Grøstl & $n=8651$ !!! & (0.58) & & & & & (0.52) \\ \hline
-Hamsi & $n=12408$ !!! & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
-JH & $n=581$ & $n=4398$ & & & & & (0.52) \\ \hline
-Lesamnta & $n=791$ & $n=568$ & & & & & (0.52) \\ \hline
-Luffa & $n=604$ & $n=2011$ & & & & & (0.52) \\ \hline
-MD6 & $n=101$ & $n=1281$ & & & & & (0.52) \\ \hline
-Sarmal & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
-SHAvite-3 & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
-SIMD & $n=5428$ & (0.52) & -- & -- & -- & -- & (0.52) \\ \hline
-Tangle & $n=714$ & $n=6868$ & & & & & (0.52) \\ \hline
-Twister & $n=474$ & $n=717$ & & & & & (0.52) \\ \hline
-Vortex & $n=104$ & -- & -- & -- & -- & -- & $n=1257$ \\ \hline
-WaMM & $n=1171$ & $n=5631$ & & & & & (0.52) \\ \hline
-Waterfall & (0.52) & -- & -- & -- & -- & -- & (0.52) \\ \hline
-\end{tabularx}
-%\renewcommand{\arraystretch}{1.0}
-\caption{Random distinguishers for SHA-3 candidate functions.}
-\label{tab:hash-distinguishers2}
+\twoColumns{
+\resultsTableSha{
+0 & 0.0 &  & $n=484$ \\ \hline
+1 & 0.0 &  & $n=2337$ \\ \hline
+2 & 0.0 &  & $n=1773$ \\ \hline
+3 & 0.0 &  & $n=12731$ [10] \\ \hline
+4 & 0.0 &  & (0.74) \\ \hline
+5 & 0.5 &  & (0.61) \\ \hline
+6 & 3.0 &  & (0.59) \\ \hline
+7 & 3.0 &  & (0.59) \\ \hline
+8 & 20.0 &  & (0.52) \\ \hline \hline
+16 & 20.0 & & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Dynamic SHA output.}
+\label{tab:sha3-dsha}
+\bigskip
+\resultsTableSha{
+1 &  &  & $n=15886$ [13] \\ \hline
+2 &  &  & (0.74) \\ \hline
+3 &  &  & (0.75) \\ \hline
+4 &  &  & (0.57) \\ \hline
+5 &  &  & (0.60) \\ \hline
+6 &  &  & (0.60) \\ \hline
+7 &  &  & (0.61) \\ \hline 
+8 &  &  &  \\ \hline \hline
+17 &  & & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Dynamic SHA2 output.}
+\label{tab:sha3-dsha2}
+\bigskip
+\resultsTableSha{
+1 & 9.0 &  & $n=10501$ [3] \\ \hline
+2 & 9.0 &  & (0.52) \\ \hline
+3 &  &  &  \\ \hline \hline
+8 & 20.0 &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for ECHO output.}
+\label{tab:sha3-echo}
+}{
+\resultsTableSha{
+0 & 0.0 &  & $n=6285$ [25] \\ \hline
+1 & 0.0 &  & (0.58) \\ \hline
+2 & 12.5 &  & (0.58) \\ \hline
+3 & 12.5 &  &  \\ \hline
+4 &  &  &  \\ \hline \hline
+10 & 20.0 &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Grøstl output.}
+\label{tab:sha3-grostl}
+\bigskip
+\resultsTableSha{
+0 & 2.5 &  & $n=10376$ [24] \\ \hline
+1 & 2.5 &  & (0.52) \\ \hline
+2 &  &  &  \\ \hline \hline
+3 & 20.0 &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Hamsi output.}
+\label{tab:sha3-hamsi}
+\bigskip
+\resultsTableSha{
+0 & 0.0 &  & $n=581$ \\ \hline
+1 & 0.0 &  & $n=4397$ \\ \hline
+2 & 0.0 &  & $n=5984$ \\ \hline
+3 & 0.0 &  &  \\ \hline
+4 &  &  & \\ \hline \hline
+42 & 20.0 &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for JH output.}
+\label{tab:sha3-jh}
+}
+\end{table}
+
+\begin{table}[htb]
+\twoColumns{
+\resultsTableSha{
+0 &  &  & $n=791$ \\ \hline
+1 &  &  & $n=568$ \\ \hline
+2 &  &  & $n=504$ \\ \hline
+3 &  &  &  \\ \hline \hline
+32 &  & & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Lesamnta  output.}
+\label{tab:sha3-lesamnta}
+\bigskip
+\resultsTableSha{
+0 &  &  & $n=604$ \\ \hline
+1 &  &  & $n=1073$ [29] \\ \hline
+2 &  &  & $n=2074$ \\ \hline
+3 &  &  &  \\ \hline \hline
+8 &  &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Luffa output.}
+\label{tab:sha3-luffa}
+\bigskip
+\resultsTableSha{
+0 &  &  & $n=101$ \\ \hline
+1 &  &  & $n=1281$ \\ \hline
+2 &  &  & $n=1084$ \\ \hline
+3 &  &  &  \\ \hline \hline
+104 &  &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for MD6 output.}
+\label{tab:sha3-md6}
+}{
+\resultsTableSha{
+0 & 0.0 &  & $n=4697$ [28] \\ \hline
+1 & 0.0 &  & (0.52) \\ \hline
+1 &  &  &  \\ \hline \hline
+4 & 19.5 &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for SIMD output.}
+\label{tab:sha3-simd}
+\bigskip
+\resultsTableSha{
+0 &  &  & $n=714$ \\ \hline
+1 &  &  & $n=6868$ \\ \hline
+2 &  &  & $n=2518$ \\ \hline
+3 &  &  &  \\ \hline \hline
+80 &  &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Tangle output.}
+\label{tab:sha3-tangle}
+\bigskip
+\resultsTableSha{
+0 &  &  & $n=474$ \\ \hline
+1 &  &  & $n=718$ \\ \hline
+2 &  &  & $n=524$ \\ \hline
+3 &  &  &  \\ \hline \hline
+9 &  &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Twister output.}
+\label{tab:sha3-twister}
+\bigskip
+\resultsTableSha{
+0 &  &  & $n=1171$ \\ \hline
+1 &  &  & $n=5631$ \\ \hline \hline
+2 &  &  & (0.52) \\ \hline
+}
+\caption{Random distinguishers for WaMM output.}
+\label{tab:sha3-wamm}
+}
 \end{table}
 
 \chapter{Conclusions and future work}
 \label{chap:conclusions}
-
-
 
 \section{Conclusions based on experimental data}
 \label{sec:outro-conclusions}
