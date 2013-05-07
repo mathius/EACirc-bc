@@ -117,7 +117,8 @@ Abstract will be here.
 \end{ThesisAbstract}
 
 \begin{ThesisKeyWords}
-Keywords will be here.
+statistical randomness testing, random distinguisher, evolutionary algorithms, genetic programming, software circuit, 
+hash function, SHA-3, stream ciphers, eStream
 \end{ThesisKeyWords}
 
 \MainMatter
@@ -340,7 +341,7 @@ Currently, the framework consist of the following main parts:
 \begin{itemize}
 \item \textbf{Evolutionary core}\\
 The core evolutionary features are provided by GAlib, a C++ Library of Genetic Algorithm Components developed at MIT \parencite{galib}.
-The library, when parametrized by function callbacks (e.\,g.\ function for mutation, sexual crossover, fitness function, \dots),
+The library, when parametrized by function callbacks (e.\,g.\ function for mutation, sexual crossover, fitness function,~\dots),
 handles the main evolutionary actions.
 \item \textbf{Circuit emulator}\\
 The emulator simulates the behaviour of the circuit loaded from numerical representation. It plays a crucial role in
@@ -778,10 +779,9 @@ the score from the remaining 16 tests is presented with an asterisk (*).
 \end{itemize}
 
 \noindent
-The results of the described distinguisher experiments can be seen in \autoref{tab:estream-grain}, \autoref{tab:estream-decim},
-\autoref{tab:estream-fubuki}, \autoref{tab:estream-hermes}, \autoref{tab:estream-lex}, \autoref{tab:estream-salsa} and 
+The results of the described distinguisher experiments can be seen in \autoref{tab:estream-grain} to
 \autoref{tab:estream-tsc}. The value of $n$ indicates average number of generations needed to reach a population of
-strong dintinguishers while the number in parentheses expresses the \textsc{aam} value in case such a generation has not been
+strong distinguishers while the number in parentheses expresses the \textsc{aam} value in case such a generation has not been
 found. For detailed description of the data meanings see \autoref{sec:settings-eacirc-output}. We also remind the reader
 that the value of 0.52 indicates the stream is indistinguishable from random (for reasoning, see \autoref{sec:control-random-random}).
 
@@ -906,8 +906,8 @@ From 64 hash functions that entered the competition, 51 were selected to the fir
 Out of these, 42 were potentially usable for testing (due to source code size, speed and compilation problems).
 The implementations (taken from the last successful phase of the competition) and
 modifications limiting the number of rounds in these functions were taken over from previous work \parencite{thesis-dubovec}
-and revised. In the end, 19 most promising candidates were chosen: ARIRANG, Aurora, Blake, Cheetah, CubeHash, DCH, 
-Dynamic SHA, Dynamic SHA2, ECHO, Grøstl, Hamsi, JH, Lesamnta, Luffa, MD6, SIMD, Tangle, Twister and WaMM.
+and revised. In the end, 18 most promising candidates were chosen: ARIRANG, Aurora, Blake, Cheetah, CubeHash, DCH, 
+Dynamic SHA, Dynamic SHA2, ECHO, Grøstl, Hamsi, JH, Lesamnta, Luffa, MD6, SIMD, Tangle, and Twister.
 These were the candidates which could be successfully limited in complexity and while their full version produced a random-looking
 output, their most limited version did not. All these hash function were subsequently tested unlimited and
 then for all lower number of rounds until reaching distinguishability from a random stream.
@@ -920,15 +920,26 @@ the digests.
 \section{Determining optimal set change frequency}
 \label{sec:hash-set-change-freqency}
 
-\begin{itemize}
-\item previously,we used change every 100 generations
-\item 100 was taken from Matej Pristak's thesis
-\item Ondrej proposes 10 as best, however, data is not provided
-\item interpretation of results (\autoref{tab:hash-set-change-freqency}):
-\begin{itemize}
-\item ???
-\end{itemize}
-\end{itemize}
+In the previous work \parencite{thesis-dubovec}, Ondrej Dubovec claims that optimal test set change frequency is once
+per 10 generations. However, not enough evidence supporting this hypothesis is provided. Since in other experiments in this thesis
+we changed test vector set once in 100 generations (a setting taken over from Matej Prišťák's work \parencite{thesis-pristak}), 
+we decided to re-test the optimality of this setting.
+
+We performed reference computation on Dynamic SHA limited to 5 rounds. The \textsc{aam} values for the usual 30\,000 generations
+along with the estimate runtime are displayed in the first two rows of \autoref{tab:hash-set-change-freqency}.
+From these results it seems that decreasing the test set use period increases the success rate, which we considered slightly
+counter-intuitive (since the circuits work with the same vectors only for a very limited time).
+
+It must noted, however, that circuits in these experiments had extremely different amounts of data -- only 30 sets of test vectors
+in case of changing the set once in 1\,000 generations compared to astounding 6\,000 different test sets when changing every 
+5\textsuperscript{th} generation. To even out these differences, we re-run the experiments while using exactly 300 unique test sets
+in each case. The results can be seen in the bottom two lines of the same table. In this case we see a completely reversed
+behaviour.
+
+All in all, we decided to keep the setting of changing the test set every 100\textsuperscript{th} generation.
+Doing so is a acceptable trade-off between circuit success rate and required run time. 
+Furthermore, we retain settings similar to the previous experiments, which facilitates the comparison of the results.
+\bigskip
 
 \begin{table}[htb]
 \centering
@@ -937,7 +948,7 @@ the digests.
 \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{8}{C|}} \cline{2-9}
 \multicolumn{1}{l||}{} & \multicolumn{8}{c|}{change frequency for test vector set} \\ \cline{2-9}
 \multicolumn{1}{l||}{} & 5 & 10 & 20 & 50 & 100 & 200 & 500 & 1000 \\ \hline \hline
-30\,000 g. & (0.614) & (0.614) & (0.607) & (0.602) & (0.599) & (0.598) & (0.591) & (0.582) \\ \hline
+30\,000 gen. & (0.614) & (0.614) & (0.607) & (0.602) & (0.599) & (0.598) & (0.591) & (0.582) \\ \hline
 run-time & 70 m. & 52 m. & 42 m. & 37 m. & 32 m. & 28 m. & 23 m. & 20 m. \\ \hline \hline
 300 sets & (0.567) & (0.583) & (0.585) & (0.589) & (0.599) & (0.608) & (0.617) & (0.618) \\ \hline
 run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hline
@@ -950,9 +961,31 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 \section{Results interpretation}
 \label{sec:hash-results}
 
-\begin{itemize}
-\item ???
-\end{itemize}
+The results of the above-introduced experiments are summarized in \autoref{tab:sha3-arirang} to \autoref{tab:sha3-twister} 
+in the usual way. 
+The value of $n$ indicates average number of generations needed to reach a population of
+strong distinguishers while the number in parentheses expresses the \textsc{aam} value in case such a generation has not been
+found. For detailed description of the data meanings see \autoref{sec:settings-eacirc-output}. 
+A number in brackets following the average generation indicates that only this many
+out of total 30 runs reached a stable population of strong distinguishers. We also remind the reader
+that the value of 0.52 indicates the stream is indistinguishable from random (for reasoning, see \autoref{sec:control-random-random}).
+
+Notice the asterisk in Dieharder results in \autoref{tab:sha3-dch} which indicates 4 test got stuck by
+the input data, effectively reducing the number of tests to 16 (situation similar to \autoref{tab:estream-tsc}).
+
+In summary, the results indicate that in this case, EACirc performs slightly worse than standard statistical batteries.
+Although in most of the cases it either found a population of strong distinguishers or a statistically significant variation
+from a neutral success rate of 0.52, it can be seen that it often failed in the last round successfully distinguished
+by statistical batteries. Once again, when interpreting these results, we must be aware of the imbalance of test data
+available to statistical batteries and EACirc (for detailed numbers see \autoref{chap:settings}).
+
+Another observation worth noting is the consistency of the results within the 30 runs of the same experiment.
+Previously (mainly \autoref{chap:distinguish-cipher}), all the results within an experiment were consistent 
+(all 30 runs reached more or less the same results).
+The computations presented in this chapter display the variations characteristic to evolutionary algorithms -- 
+only some of the runs are successful (the randomized evolution in the other just did not succeed).
+It may be interesting to consider a larger amount of runs in border cases, where statistical batteries were successful
+but EACirc was not.
 
 \begin{table}[htb]
 \twoColumns{
@@ -971,7 +1004,7 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 1 & 0.0 & 1 & $n=4101$ [1] \\ \hline
 2 & 0.5 & 132 & $n=13201$ [1] \\ \hline
 3 & 0.5 & 132 & (0.52) \\ \hline
-4 & 20.0 & & \\ \hline \hline
+4 & 20.0 & 160 & (0.52) \\ \hline \hline
 17 & 19.5 & 161 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Aurora output.}
@@ -980,7 +1013,7 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 \resultsTableSha{
 0 & 0.0 & 0 & $n=474$ \\ \hline
 1 & 0.0 & 0 & (0.52) \\ \hline
-2 & 20.0 & & \\ \hline \hline
+2 & 20.0 & 162 & (0.52) \\ \hline \hline
 14 & 20.0 & 159 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Blake output.}
@@ -993,7 +1026,7 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 3 & 0.0 & 0 & $n=14659$ [12] \\ \hline
 4 & 0.0 & 1 & $n=16870$ [10] \\ \hline
 5 & 0.0 & 1 & (0.52) \\ \hline
-6 & 20.0 & & \\ \hline \hline
+6 & 20.0 & 161 & (0.52) \\ \hline \hline
 16 & 20.0 & 162 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Cheetah output.}
@@ -1002,7 +1035,7 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 \resultsTableSha{
 0 & 0.0 & 0 & $n=104$ \\ \hline
 1 & 0.0 & 0 & (0.52) \\ \hline
-2 & 20.0 &  & \\ \hline \hline
+2 & 20.0 & 161 & (0.52) \\ \hline \hline
 8 & 20.0 & 162 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for CubeHash output.}
@@ -1022,70 +1055,74 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 \begin{table}[htb]
 \twoColumns{
 \resultsTableSha{
-0 & 0.0 &  & $n=484$ \\ \hline
-1 & 0.0 &  & $n=2337$ \\ \hline
-2 & 0.0 &  & $n=1773$ \\ \hline
-3 & 0.0 &  & $n=12731$ [10] \\ \hline
-4 & 0.0 &  & (0.74) \\ \hline
-5 & 0.5 &  & (0.61) \\ \hline
-6 & 3.0 &  & (0.59) \\ \hline
-7 & 3.0 &  & (0.59) \\ \hline
-8 & 20.0 &  & (0.52) \\ \hline \hline
-16 & 20.0 & & (0.52) \\ \hline
+0 & 0.0 & 0 & $n=484$ \\ \hline
+1 & 0.0 & 0 & $n=2337$ \\ \hline
+2 & 0.0 & 1 & $n=1773$ \\ \hline
+3 & 0.0 & 1 & $n=12731$ [10] \\ \hline
+4 & 0.0 & 18 & (0.74) \\ \hline
+5 & 0.5 & 18 & (0.61) \\ \hline
+6 & 3.0 & 16 & (0.59) \\ \hline
+7 & 3.0 & 17 & (0.59) \\ \hline
+8 & 20.0 & 162 & (0.52) \\ \hline \hline
+16 & 20.0 & 160 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Dynamic SHA output.}
 \label{tab:sha3-dsha}
 \bigskip
 \resultsTableSha{
-1 &  &  & $n=15886$ [13] \\ \hline
-2 &  &  & (0.74) \\ \hline
-3 &  &  & (0.75) \\ \hline
-4 &  &  & (0.57) \\ \hline
-5 &  &  & (0.60) \\ \hline
-6 &  &  & (0.60) \\ \hline
-7 &  &  & (0.61) \\ \hline 
-8 &  &  &  \\ \hline \hline
-17 &  & & (0.52) \\ \hline
+1 & 1.0 &  & $n=15886$ [13] \\ \hline
+2 & 1.0 &  & (0.74) \\ \hline
+3 & 0.0 &  & (0.75) \\ \hline
+4 & 0.0 &  & (0.57) \\ \hline
+5 & 3.5 &  & (0.60) \\ \hline
+6 & 3.5 &  & (0.60) \\ \hline
+7 & 4.0 &  & (0.61) \\ \hline 
+8 & 4.0 &  & (0.60) \\ \hline
+9 & 3.5 &  & \\ \hline
+10 & 3.5 &  &  \\ \hline
+11 &  &  &  \\ \hline \hline
+17 & 20.0 & & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Dynamic SHA2 output.}
 \label{tab:sha3-dsha2}
 \bigskip
 \resultsTableSha{
-1 & 9.0 &  & $n=10501$ [3] \\ \hline
-2 & 9.0 &  & (0.52) \\ \hline
-3 &  &  &  \\ \hline \hline
-8 & 20.0 &  & (0.52) \\ \hline
+1 & 9.0 & 24 & $n=10501$ [3] \\ \hline
+2 & 9.0 & 24 & (0.52) \\ \hline
+3 & 20.0 &  &  \\ \hline \hline
+8 & 20.0 & 161 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for ECHO output.}
 \label{tab:sha3-echo}
 }{
 \resultsTableSha{
-0 & 0.0 &  & $n=6285$ [25] \\ \hline
-1 & 0.0 &  & (0.58) \\ \hline
-2 & 12.5 &  & (0.58) \\ \hline
-3 & 12.5 &  &  \\ \hline
-4 &  &  &  \\ \hline \hline
-10 & 20.0 &  & (0.52) \\ \hline
+0 & 0.0 & 0 & $n=6285$ [25] \\ \hline
+1 & 0.0 & 0 & (0.58) \\ \hline
+2 & 12.5 & 52 & (0.58) \\ \hline
+3 & 12.5 & 52 & (0.52) \\ \hline
+4 & 20.0 &  &  \\ \hline \hline
+10 & 20.0 & 162 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Grøstl output.}
 \label{tab:sha3-grostl}
 \bigskip
 \resultsTableSha{
-0 & 2.5 &  & $n=10376$ [24] \\ \hline
-1 & 2.5 &  & (0.52) \\ \hline
-2 &  &  &  \\ \hline \hline
-3 & 20.0 &  & (0.52) \\ \hline
+0 & 2.5 & 1 & $n=10376$ [24] \\ \hline
+1 & 2.5 & 1 & (0.52) \\ \hline
+2 & 19.5 &  &  \\ \hline \hline
+3 & 20.0 & 162 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Hamsi output.}
 \label{tab:sha3-hamsi}
 \bigskip
 \resultsTableSha{
-0 & 0.0 &  & $n=581$ \\ \hline
-1 & 0.0 &  & $n=4397$ \\ \hline
-2 & 0.0 &  & $n=5984$ \\ \hline
-3 & 0.0 &  &  \\ \hline
-4 &  &  & \\ \hline \hline
-42 & 20.0 &  & (0.52) \\ \hline
+0 & 0.0 & 0 & $n=581$ \\ \hline
+1 & 0.0 & 0 & $n=4397$ \\ \hline
+2 & 0.0 & 1 & $n=5984$ \\ \hline
+3 & 0.0 & 1 & $n=3674$ \\ \hline
+4 & 0.0 &  & \\ \hline
+5 &  &  & \\ \hline \hline
+42 & 20.0 & 162 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for JH output.}
 \label{tab:sha3-jh}
@@ -1095,21 +1132,25 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 \begin{table}[htb]
 \twoColumns{
 \resultsTableSha{
-0 &  &  & $n=791$ \\ \hline
-1 &  &  & $n=568$ \\ \hline
-2 &  &  & $n=504$ \\ \hline
-3 &  &  &  \\ \hline \hline
-32 &  & & (0.52) \\ \hline
+0 & 0.0 &  & $n=791$ \\ \hline
+1 & 0.0 &  & $n=568$ \\ \hline
+2 & 0.0 &  & $n=504$ \\ \hline
+3 & 0.0 &  & (0.52) \\ \hline
+4 &  &  &  \\ \hline \hline
+32 & 20.0 & & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Lesamnta  output.}
 \label{tab:sha3-lesamnta}
 \bigskip
 \resultsTableSha{
-0 &  &  & $n=604$ \\ \hline
-1 &  &  & $n=1073$ [29] \\ \hline
-2 &  &  & $n=2074$ \\ \hline
-3 &  &  &  \\ \hline \hline
-8 &  &  & (0.52) \\ \hline
+0 & 0.0 &  & $n=604$ \\ \hline
+1 & 0.0 &  & $n=1073$ [29] \\ \hline
+2 & 0.0 &  & $n=2074$ \\ \hline
+3 & 0.0 &  & $n=3735$ [29] \\ \hline
+4 & 0.0 &  &  \\ \hline
+5 & 0.0 &  &  \\ \hline
+6 &  &  &  \\ \hline \hline
+8 & 20.0 &  & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Luffa output.}
 \label{tab:sha3-luffa}
@@ -1118,17 +1159,18 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 0 &  &  & $n=101$ \\ \hline
 1 &  &  & $n=1281$ \\ \hline
 2 &  &  & $n=1084$ \\ \hline
-3 &  &  &  \\ \hline \hline
+3 &  &  & $n=631$ \\ \hline
+4 &  &  &  \\ \hline \hline 
 104 &  &  & (0.52) \\ \hline
 }
 \caption{Random distinguishers for MD6 output.}
 \label{tab:sha3-md6}
 }{
 \resultsTableSha{
-0 & 0.0 &  & $n=4697$ [28] \\ \hline
-1 & 0.0 &  & (0.52) \\ \hline
-1 &  &  &  \\ \hline \hline
-4 & 19.5 &  & (0.52) \\ \hline
+0 & 0.0 & 1 & $n=4697$ [28] \\ \hline
+1 & 0.0 & 1 & (0.52) \\ \hline
+2 & 19.5 &  &  \\ \hline \hline
+4 & 19.5 & 161 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for SIMD output.}
 \label{tab:sha3-simd}
@@ -1137,7 +1179,8 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 0 &  &  & $n=714$ \\ \hline
 1 &  &  & $n=6868$ \\ \hline
 2 &  &  & $n=2518$ \\ \hline
-3 &  &  &  \\ \hline \hline
+3 &  &  & (0.85) \\ \hline
+4 &  &  &  \\ \hline \hline
 80 &  &  & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Tangle output.}
@@ -1147,19 +1190,20 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 0 &  &  & $n=474$ \\ \hline
 1 &  &  & $n=718$ \\ \hline
 2 &  &  & $n=524$ \\ \hline
-3 &  &  &  \\ \hline \hline
+3 &  &  & $n=1247$ \\ \hline
+4 &  &  &  \\ \hline \hline
 9 &  &  & (0.52) \\ \hline
 }
 \caption{Random distinguishers for Twister output.}
 \label{tab:sha3-twister}
-\bigskip
-\resultsTableSha{
-0 &  &  & $n=1171$ \\ \hline
-1 &  &  & $n=5631$ \\ \hline \hline
-2 &  &  & (0.52) \\ \hline
-}
-\caption{Random distinguishers for WaMM output.}
-\label{tab:sha3-wamm}
+%\bigskip
+%\resultsTableSha{
+%0 &  &  & $n=1171$ \\ \hline
+%1 &  &  & $n=5631$ \\ \hline \hline
+%2 &  &  & (0.52) \\ \hline
+%}
+%\caption{Random distinguishers for WaMM output.}
+%\label{tab:sha3-wamm}
 }
 \end{table}
 
@@ -1200,6 +1244,14 @@ run-time & 4 m. & 6 m. & 9 m. & 19 m. & 32 m. & 57 m. & 115 m. & 220 m. \\ \hlin
 \item histogram of outputs in nodes
 \end{itemize}
 \item fixing functions in layers
+\end{itemize}
+
+\appendix
+\chapter{Contents of the CD}
+
+\begin{itemize}
+\item something
+\item something2
 \end{itemize}
 
 % include citations not cited specifically
