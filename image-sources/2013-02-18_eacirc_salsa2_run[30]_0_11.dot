@@ -1,0 +1,56 @@
+digraph EACircuit {
+rankdir=BT;
+edge [dir=none];
+size="6,6";
+ordering=out;
+node [color=lightblue2, style=filled];
+"IN_0";
+"IN_1";
+"IN_2";
+"IN_3";
+"IN_4";
+"IN_5";
+"IN_6";
+"IN_7";
+"IN_8";
+"IN_9";
+"IN_10";
+"IN_11";
+"IN_12";
+"IN_13";
+"IN_14";
+"IN_15";
+{ rank=same; "1_3_NAN"; "1_5_NOR"; }
+"1_3_NAN" -> "IN_4";
+"1_3_NAN" -> "IN_5";
+"1_3_NAN" -> "IN_6";
+"1_3_NAN" -> "IN_10";
+"1_3_NAN" -> "IN_11";
+"1_3_NAN" -> "IN_12";
+"1_3_NAN" -> "IN_14";
+"1_3_NAN" -> "IN_15";
+"1_5_NOR" -> "IN_6";
+{ rank=same; "2_3_SUB"; "2_5_ROR_2"; }
+"2_3_SUB" -> "1_3_NAN" [color=red];
+"2_3_SUB" -> "1_5_NOR";
+"2_5_ROR_2" -> "1_5_NOR" [color=red];
+{ rank=same; "3_1_AND"; "3_3_NOP"; "3_4_SUM"; }
+"3_1_AND" -> "2_3_SUB";
+"3_3_NOP" -> "2_3_SUB" [color=red];
+"3_4_SUM" -> "2_5_ROR_2";
+{ rank=same; "4_0_NAN"; "4_1_NAN"; "4_3_SUB"; }
+"4_0_NAN" -> "3_1_AND";
+"4_1_NAN" -> "3_1_AND";
+"4_3_SUB" -> "3_3_NOP";
+"4_3_SUB" -> "3_3_NOP" [color=red];
+"4_3_SUB" -> "3_4_SUM";
+{ rank=same; "5_0_OR_"; "5_1_OR_"; }
+"5_0_OR_" -> "4_1_NAN";
+"5_0_OR_" -> "4_3_SUB";
+"5_1_OR_" -> "4_0_NAN";
+"5_1_OR_" -> "4_3_SUB";
+node [color=red];
+"0_OUT" -> "5_0_OR_";
+node [color=red];
+"1_OUT" -> "5_1_OR_";
+}

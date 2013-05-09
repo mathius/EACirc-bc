@@ -1,0 +1,53 @@
+digraph EACircuit {
+rankdir=BT;
+edge [dir=none];
+size="6,6";
+ordering=out;
+node [color=yellow, style=filled];
+"IN_0";
+"IN_1";
+node [color=green, style=filled];
+"IN_2";
+"IN_3";
+node [color=lightblue2, style=filled];
+{ rank=same; "1_0_NOR"; "1_1_ROL_5"; "1_2_AND"; "1_3_NOP"; }
+"1_0_NOR" -> "IN_0";
+"1_0_NOR" -> "IN_3";
+"1_1_ROL_5" -> "IN_1" ;
+"1_2_AND" -> "IN_1";
+"1_2_AND" -> "IN_2";
+"1_3_NOP" -> "IN_3" ;
+{ rank=same; "2_0_ROL_0"; "2_1_SUM"; "2_2_ADD"; "2_3_ROR_6";} 
+"2_0_ROL_0" -> "1_0_NOR" ; 
+"2_1_SUM" -> "1_0_NOR";
+"2_1_SUM" -> "1_1_ROL_5";
+"2_2_ADD" -> "1_2_AND" ;
+"2_2_ADD" -> "1_3_NOP";
+"2_3_ROR_6" -> "1_3_NOP" ;
+{ rank=same; "3_0_SUB"; "3_1_OR_"; "3_2_SUB"; "3_3_DIV";} 
+"3_0_SUB" -> "2_0_ROL_0" ;
+"3_0_SUB" -> "2_2_ADD";
+"3_1_OR_" -> "2_0_ROL_0";
+"3_1_OR_" -> "2_2_ADD";
+"3_2_SUB" -> "2_2_ADD" ;
+"3_3_DIV" -> "2_2_ADD";
+"3_3_DIV" -> "2_3_ROR_6" ;
+{ rank=same; "4_0_BSL_3"; "4_1_DIV"; "4_2_NAN"; "4_3_ADD"; }
+"4_0_BSL_3" -> "3_0_SUB" ;
+"4_1_DIV" -> "3_1_OR_" ;
+"4_1_DIV" -> "3_2_SUB";
+"4_1_DIV" -> "3_3_DIV";
+"4_2_NAN" -> "3_2_SUB";
+"4_3_ADD" -> "3_3_DIV" ;
+node [color=yellow];
+"0_OUT" -> "4_0_BSL_3";
+node [color=yellow];
+"1_OUT" -> "4_1_DIV";
+node [color=red];
+"2_OUT" -> "4_2_NAN";
+node [color=red];
+"3_OUT" -> "4_3_ADD";
+
+
+
+} 
