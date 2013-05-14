@@ -95,7 +95,7 @@
 % results table for SHA-3
 \newcommand{\resultsTableSha}[1]{%
 \newcolumntype{C}{>{\centering\arraybackslash}X}%
-\begin{tabularx}{7cm}{|r||S[table-format=2.1]|S[table-format=3.0]|C|} \hline
+\begin{tabularx}{7.2cm}{|r||S[table-format=2.1]|S[table-format=3.0]|C|} \hline
 \raisebox{0cm}{\rotatebox{90}{\# of rounds }} & 
 \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & 
 \multicolumn{1}{c|}{\rotatedHeader{\textsc{Sts Nist}\\(x/162)}} & 
@@ -1030,8 +1030,9 @@ The computations presented in this chapter display the variations characteristic
 only some of the runs are successful (the randomized evolution in the other just did not succeed).
 It may be interesting to consider a larger amount of runs in border cases, where statistical batteries were successful
 but EACirc was not.
+\vfill
 
-\begin{table}[htb]
+\begin{table}[h]
 \twoColumns{
 \resultsTableSha{
 0 & 0.0 & 0 & $n=694$ \\ \hline
@@ -1053,7 +1054,7 @@ but EACirc was not.
 }
 \caption{Random distinguishers for Aurora output.}
 \label{tab:sha3-aurora}
-\bigskip
+}{
 \resultsTableSha{
 0 & 0.0 & 0 & $n=474$ \\ \hline
 1 & 0.0 & 0 & (0.52) \\ \hline
@@ -1062,7 +1063,7 @@ but EACirc was not.
 }
 \caption{Random distinguishers for Blake output.}
 \label{tab:sha3-blake}
-}{
+\bigskip
 \resultsTableSha{
 0 & 0.0 & 1 & $n=181$ \\ \hline
 1 & 0.0 & 1 & $n=574$ \\ \hline
@@ -1075,7 +1076,11 @@ but EACirc was not.
 }
 \caption{Random distinguishers for Cheetah output.}
 \label{tab:sha3-cheetah}
-\bigskip
+}
+\end{table}
+
+\begin{table}[htb]
+\twoColumns{
 \resultsTableSha{
 0 & 0.0 & 0 & $n=104$ \\ \hline
 1 & 0.0 & 0 & (0.52) \\ \hline
@@ -1093,11 +1098,7 @@ but EACirc was not.
 }
 \caption{Random distinguishers for DCH output.}
 \label{tab:sha3-dch}
-}
-\end{table}
-
-\begin{table}[htb]
-\twoColumns{
+\bigskip
 \resultsTableSha{
 0 & 0.0 & 0 & $n=484$ \\ \hline
 1 & 0.0 & 0 & $n=2337$ \\ \hline
@@ -1112,7 +1113,7 @@ but EACirc was not.
 }
 \caption{Random distinguishers for Dynamic SHA output.}
 \label{tab:sha3-dsha}
-\bigskip
+}{
 \resultsTableSha{
 1 & 1.0 & 1 & $n=15886$ [13] \\ \hline
 2 & 1.0 & 1 & (0.74) \\ \hline
@@ -1140,7 +1141,11 @@ but EACirc was not.
 }
 \caption{Random distinguishers for ECHO output.}
 \label{tab:sha3-echo}
-}{
+}
+\end{table}
+
+\begin{table}[htb]
+\twoColumns{
 \resultsTableSha{
 0 & 0.0 & 0 & $n=6285$ [25] \\ \hline
 1 & 0.0 & 0 & (0.58) \\ \hline
@@ -1174,11 +1179,7 @@ but EACirc was not.
 }
 \caption{Random distinguishers for JH output.}
 \label{tab:sha3-jh}
-}
-\end{table}
-
-\begin{table}[htb]
-\twoColumns{
+}{
 \resultsTableSha{
 0 & 0.0 & 0 & $n=791$ \\ \hline
 1 & 0.0 & 0 & $n=568$ \\ \hline
@@ -1203,7 +1204,11 @@ but EACirc was not.
 }
 \caption{Random distinguishers for Luffa output.}
 \label{tab:sha3-luffa}
-\bigskip
+}
+\end{table}
+
+\begin{table}[htb]
+\twoColumns{
 \resultsTableSha{
 0 & 0.0${}^{*}$ & 0 & $n=101$ \\ \hline
 1 & 0.0${}^{*}$ & 0 & $n=1281$ \\ \hline
@@ -1220,6 +1225,21 @@ but EACirc was not.
 }
 \caption{Random distinguishers for MD6 output.}
 \label{tab:sha3-md6}
+\bigskip
+\resultsTableSha{
+0 & 0.0 & 0 & $n=474$ \\ \hline
+1 & 0.0 & 0 & $n=718$ \\ \hline
+2 & 0.0 & 0 & $n=524$ \\ \hline
+3 & 0.0 & 0 & $n=1247$ \\ \hline
+4 & 0.0 & 0 & $n=1334$ \\ \hline
+5 & 0.0 & 0 & $n=411$ \\ \hline
+6 & 0.0 & 0 & $n=524$ \\ \hline
+7 & 0.0 & 0 & (0.52) \\ \hline
+8 & 20.0 & 161 & (0.52) \\ \hline \hline
+9 & 20.0 & 162 & (0.52) \\ \hline
+}
+\caption{Random distinguishers for Twister output.}
+\label{tab:sha3-twister}
 }{
 \resultsTableSha{
 0 & 0.0 & 1 & $n=4697$ [28] \\ \hline
@@ -1256,29 +1276,6 @@ but EACirc was not.
 }
 \caption{Random distinguishers for Tangle output.}
 \label{tab:sha3-tangle}
-\bigskip
-\resultsTableSha{
-0 & 0.0 & 0 & $n=474$ \\ \hline
-1 & 0.0 & 0 & $n=718$ \\ \hline
-2 & 0.0 & 0 & $n=524$ \\ \hline
-3 & 0.0 & 0 & $n=1247$ \\ \hline
-4 & 0.0 & 0 & $n=1334$ \\ \hline
-5 & 0.0 & 0 & $n=411$ \\ \hline
-6 & 0.0 & 0 & $n=524$ \\ \hline
-7 & 0.0 & 0 & (0.52) \\ \hline
-8 & 20.0 & 161 & (0.52) \\ \hline \hline
-9 & 20.0 & 162 & (0.52) \\ \hline
-}
-\caption{Random distinguishers for Twister output.}
-\label{tab:sha3-twister}
-%\bigskip
-%\resultsTableSha{
-%0 &  &  & $n=1171$ \\ \hline
-%1 &  &  & $n=5631$ \\ \hline \hline
-%2 &  &  & (0.52) \\ \hline
-%}
-%\caption{Random distinguishers for WaMM output.}
-%\label{tab:sha3-wamm}
 }
 \end{table}
 
