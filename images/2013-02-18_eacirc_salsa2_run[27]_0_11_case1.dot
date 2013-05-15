@@ -1,0 +1,68 @@
+digraph EACircuit {
+rankdir=BT;
+edge [dir=none];
+size="6,6";
+ordering=out;
+node [color=lightblue2, style=filled];
+"IN_0";
+"IN_1";
+"IN_2";
+"IN_3";
+"IN_4";
+"IN_5";
+"IN_6";
+"IN_7";
+"IN_8";
+"IN_9";
+"IN_10";
+"IN_11";
+"IN_12";
+"IN_13";
+"IN_14";
+"IN_15";
+{ rank=same; "1_2_DIV"; "1_3_OR_"; "1_5_NOP"; "1_6_ROR_1"; }
+"1_2_DIV" -> "IN_2" [color=red];
+"1_2_DIV" -> "IN_7";
+"1_2_DIV" -> "IN_12";
+"1_2_DIV" -> "IN_14";
+"1_3_OR_" -> "IN_1";
+"1_3_OR_" -> "IN_4";
+"1_3_OR_" -> "IN_5";
+"1_3_OR_" -> "IN_8";
+"1_3_OR_" -> "IN_9";
+"1_3_OR_" -> "IN_14";
+"1_3_OR_" -> "IN_15";
+"1_5_NOP" -> "IN_5" [color=red];
+"1_6_ROR_1" -> "IN_6" [color=red];
+{ rank=same; "2_1_CONST_1"; "2_2_NOR"; "2_3_BSL_3"; "2_5_SUB"; }
+"2_2_NOR" -> "1_2_DIV";
+"2_3_BSL_3" -> "1_3_OR_" [color=red];
+"2_5_SUB" -> "1_5_NOP";
+"2_5_SUB" -> "1_5_NOP" [color=red];
+"2_5_SUB" -> "1_6_ROR_1";
+{ rank=same; "3_0_SUM"; "3_1_NOR"; "3_2_CONST_80"; "3_3_NAN"; }
+"3_0_SUM" -> "2_2_NOR";
+"3_0_SUM" -> "2_3_BSL_3";
+"3_1_NOR" -> "2_1_CONST_1";
+"3_3_NAN" -> "2_5_SUB";
+{ rank=same; "4_1_MUL"; "4_2_ADD"; "4_3_ROL_4"; }
+"4_1_MUL" -> "3_0_SUM";
+"4_1_MUL" -> "3_1_NOR";
+"4_1_MUL" -> "3_1_NOR" [color=red];
+"4_1_MUL" -> "3_3_NAN";
+"4_2_ADD" -> "3_2_CONST_80";
+"4_2_ADD" -> "3_2_CONST_80" [color=red];
+"4_2_ADD" -> "3_3_NAN";
+"4_3_ROL_4" -> "3_3_NAN" [color=red];
+{ rank=same; "5_0_OR_"; "5_1_OR_"; }
+"5_0_OR_" -> "4_1_MUL";
+"5_0_OR_" -> "4_2_ADD";
+"5_0_OR_" -> "4_3_ROL_4";
+"5_1_OR_" -> "4_1_MUL";
+"5_1_OR_" -> "4_2_ADD";
+"5_1_OR_" -> "4_3_ROL_4";
+node [color=red];
+"0_OUT" -> "5_0_OR_";
+node [color=red];
+"1_OUT" -> "5_1_OR_";
+}
