@@ -184,6 +184,15 @@ A simple example of such a property states that in each binary sequence the numb
 approximately the same. It is crucial to be aware, that this will not hold for \textit{all} sequences (see the example above),
 but the probability of randomly generating such a sequence sharply decreases with the increasing length.
 
+Paragraph summarising statistical batteries \autoref{fig:workflow-statistical-batteries}.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=\textwidth]{images/workflow-statistical-batteries}
+\caption{Simplified work-flow of statistical batteries such as STS NIST or Dieharder.}
+\label{fig:workflow-statistical-batteries}
+\end{figure}
+
 Randomness testing based on statistical properties of data has both drawbacks and benefits, main of which are discussed below.
 \begin{myItemize}
 \item \textbf{Speed}\\
@@ -337,7 +346,14 @@ Each node is responsible for computation of a simple function on its inputs (e.\
 Circuit nodes are positioned into layers, where outputs from one layer are connected to inputs of the next. Input of the whole
 circuit is used as an input for the first layer and output of the last layer is considered the output of the entire circuit.
 Connectors may only link adjacent layers, but may cross each other (contrary to real single-layer hardware circuits).
-An example of such hardware-like circuit can be seen in \autoref{fig:circuit}.
+An example of such hardware-like circuit can be seen in \autoref{fig:circuit-example}.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=\textwidth]{images/circuit-final}
+\caption{Simple example of software-emulated circuit.}
+\label{fig:circuit-example}
+\end{figure}
 
 In the current solution design, we consider only simple nodes operating on bytes. The supported functions are:
 \begin{myItemize}
@@ -362,7 +378,17 @@ The function of individual nodes is different as well, since all nodes in artifi
 \label{sec:eacirc-principles}
 
 Combining the principles of genetic programming and software circuits, we developed EACirc, the framework for automatic
-problem solving. The initial version of EACirc was created by Petr Švenda at 
+problem solving. %TBD more info on general working principles
+A simplified work-flow of the testing process can be seen in \autoref{fig:workflow-eacirc}.
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=\textwidth]{images/workflow-eacirc}
+\caption{Simplified work-flow of the testing process in EACirc.}
+\label{fig:workflow-eacirc}
+\end{figure}
+
+The initial version of EACirc was created by Petr Švenda at 
 the Laboratory of Security and Applied Cryptography, Masaryk University \parencite{labak}.
 This initial version provided the main shared functionality: evolutionary capabilities, software circuit emulation
 and basic fitness evaluation. Later on, the application was improved by Matej Prišťák and Ondrej Dubovec 
@@ -928,8 +954,15 @@ but usually provided a distinguisher working working in far less time than stati
 \label{chap:analysis-salsa}
 \begin{myItemize}
 \item learns current vectors quicker than other ciphers
-\item the case of six
+\item the case of six, see \autoref{fig:salsa20-case1}
 \end{myItemize}
+
+\begin{figure}[b!]
+\centering
+\includegraphics[width=\textwidth]{images/case1-final}
+\caption{Analysis of a distinguisher evolved for Salsa20 limited to 2 rounds (pruned version of the circuit is displayed).}
+\label{fig:salsa20-case1}
+\end{figure}
 
 \chapter{Distinguishing hash outputs from random stream}
 \label{chap:distinguish-hash}
