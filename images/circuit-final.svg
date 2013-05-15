@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Creator: CorelDRAW -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="173.226mm" height="72.7232mm" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 173.226 72.7232"
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="172.286mm" height="72.9232mm" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 173.231 73.3232"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <font id="FontID0" font-variant="normal" style="fill-rule:nonzero" font-style="normal" font-weight="400,700">
@@ -238,219 +238,227 @@ viewBox="0 0 173.226 72.7232"
   <style type="text/css">
    <![CDATA[
     @font-face { font-family:"Arial";src:url("#FontID0") format(svg)}
-    .str2 {stroke:black;stroke-width:0.3}
-    .str0 {stroke:black;stroke-width:0.3;stroke-linejoin:round}
-    .str1 {stroke:black;stroke-width:0.4;stroke-linejoin:round;stroke-dasharray:0.800000 0.400000}
+    .str2 {stroke:black;stroke-width:0.502742}
+    .str0 {stroke:black;stroke-width:0.502742;stroke-linejoin:round}
+    .str1 {stroke:black;stroke-width:0.502742;stroke-linejoin:round;stroke-dasharray:1.005485 0.502742}
     .fil4 {fill:none}
     .fil1 {fill:none;fill-rule:nonzero}
     .fil3 {fill:black}
     .fil2 {fill:black}
     .fil5 {fill:black;fill-rule:nonzero}
     .fil0 {fill:#CCCCCC;fill-rule:nonzero}
-    .fnt0 {font-weight:bold;font-size:2.4287;font-family:'Arial'}
-    .fnt1 {font-weight:normal;font-size:2.8222;font-family:'Arial'}
-    .fnt2 {font-weight:bold;font-size:3.5278;font-family:'Arial'}
+    .fnt0 {font-weight:bold;font-size:2.44202;font-family:'Arial'}
+    .fnt1 {font-weight:normal;font-size:2.83768;font-family:'Arial'}
+    .fnt2 {font-weight:bold;font-size:3.54715;font-family:'Arial'}
    ]]>
   </style>
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_104821968">
-   <path id="path3686" class="fil0" d="M79.4583 3.9115c0,1.7914 -2.3812,3.2446 -5.3176,3.2446 -2.9372,0 -5.3184,-1.4532 -5.3184,-3.2446 0,-1.7925 2.3812,-3.2455 5.3184,-3.2455 2.9364,0 5.3176,1.453 5.3176,3.2455z" inkscape:connector-curvature="0"/>
-   <path id="path3694" class="fil0" d="M105.959 3.9115c0,1.7914 -2.3806,3.2446 -5.3176,3.2446 -2.9372,0 -5.3178,-1.4532 -5.3178,-3.2446 0,-1.7925 2.3806,-3.2455 5.3178,-3.2455 2.937,0 5.3176,1.453 5.3176,3.2455z" sodipodi:role="line" inkscape:connector-curvature="0"/>
-   <path id="path3702" class="fil0" d="M123.987 3.9115c0,1.7914 -2.3812,3.2446 -5.3176,3.2446 -2.9372,0 -5.3178,-1.4532 -5.3178,-3.2446 0,-1.7925 2.3806,-3.2455 5.3178,-3.2455 2.9364,0 5.3176,1.453 5.3176,3.2455z" sodipodi:role="line" inkscape:connector-curvature="0"/>
-   <path id="path3710" class="fil0" d="M141.114 3.9115c0,1.7914 -2.3804,3.2446 -5.3176,3.2446 -2.9372,0 -5.3176,-1.4532 -5.3176,-3.2446 0,-1.7925 2.3804,-3.2455 5.3176,-3.2455 2.9372,0 5.3176,1.453 5.3176,3.2455z" sodipodi:role="line" inkscape:connector-curvature="0"/>
-   <path id="path3718" class="fil0" d="M82.9728 16.8911c0,1.7922 -3.9547,3.2455 -8.8321,3.2455 -4.8782,0 -8.8328,-1.4533 -8.8328,-3.2455 0,-1.7916 3.9546,-3.2448 8.8328,-3.2448 4.8774,0 8.8321,1.4532 8.8321,3.2448z" sodipodi:role="line" inkscape:connector-curvature="0"/>
-   <path id="path3734" class="fil0" d="M106.841 16.8911c0,1.7922 -4.632,3.2455 -10.346,3.2455 -5.7145,0 -10.3467,-1.4533 -10.3467,-3.2455 0,-1.7916 4.6322,-3.2448 10.3467,-3.2448 5.714,0 10.346,1.4532 10.346,3.2448z" inkscape:connector-curvature="0"/>
-   <path id="path3746" class="fil0" d="M127.358 16.8911c0,1.7922 -3.8899,3.2455 -8.6882,3.2455 -4.7983,0 -8.6882,-1.4533 -8.6882,-3.2455 0,-1.7916 3.8899,-3.2448 8.6882,-3.2448 4.7983,0 8.6882,1.4532 8.6882,3.2448z" inkscape:connector-curvature="0"/>
-   <path id="path3762" class="fil0" d="M147.909 16.8911c0,1.7922 -3.8899,3.2455 -8.6881,3.2455 -4.7983,0 -8.6873,-1.4533 -8.6873,-3.2455 0,-1.7916 3.889,-3.2448 8.6873,-3.2448 4.7982,0 8.6881,1.4532 8.6881,3.2448z" inkscape:connector-curvature="0"/>
-   <path id="path3774" class="fil0" d="M84.4867 29.8713c0,1.7924 -4.6323,3.2456 -10.346,3.2456 -5.7145,0 -10.3468,-1.4532 -10.3468,-3.2456 0,-1.7923 4.6323,-3.2447 10.3468,-3.2447 5.7137,0 10.346,1.4524 10.346,3.2447z" inkscape:connector-curvature="0"/>
-   <path id="path3786" class="fil0" d="M105.327 29.8713c0,1.7924 -3.9546,3.2456 -8.8321,3.2456 -4.8779,0 -8.8326,-1.4532 -8.8326,-3.2456 0,-1.7923 3.9547,-3.2447 8.8326,-3.2447 4.8775,0 8.8321,1.4524 8.8321,3.2447z" inkscape:connector-curvature="0"/>
-   <path id="path3802" class="fil0" d="M125.915 29.8713c0,1.7924 -3.8899,3.2456 -8.6881,3.2456 -4.7983,0 -8.6873,-1.4532 -8.6873,-3.2456 0,-1.7923 3.889,-3.2447 8.6873,-3.2447 4.7982,0 8.6881,1.4524 8.6881,3.2447z" inkscape:connector-curvature="0"/>
-   <path id="path3818" class="fil0" d="M149.982 29.8713c0,1.7924 -4.656,3.2456 -10.4007,3.2456 -5.7438,0 -10.3997,-1.4532 -10.3997,-3.2456 0,-1.7923 4.6559,-3.2447 10.3997,-3.2447 5.7447,0 10.4007,1.4524 10.4007,3.2447z" inkscape:connector-curvature="0"/>
-   <path id="path3830" class="fil0" d="M83.4415 42.8517c0,1.7924 -3.761,3.2446 -8.3995,3.2446 -4.6394,0 -8.4003,-1.4522 -8.4003,-3.2446 0,-1.7922 3.7609,-3.2455 8.4003,-3.2455 4.6385,0 8.3995,1.4533 8.3995,3.2455z" inkscape:connector-curvature="0"/>
-   <path id="path3846" class="fil0" d="M105.58 42.8517c0,1.7924 -3.8249,3.2446 -8.5434,3.2446 -4.7191,0 -8.5443,-1.4522 -8.5443,-3.2446 0,-1.7922 3.8252,-3.2455 8.5443,-3.2455 4.7185,0 8.5434,1.4533 8.5434,3.2455z" inkscape:connector-curvature="0"/>
-   <path id="path3862" class="fil0" d="M125.627 42.8517c0,1.7924 -3.7609,3.2446 -8.4003,3.2446 -4.6385,0 -8.3995,-1.4522 -8.3995,-3.2446 0,-1.7922 3.761,-3.2455 8.3995,-3.2455 4.6394,0 8.4003,1.4533 8.4003,3.2455z" inkscape:connector-curvature="0"/>
-   <path id="path3874" class="fil0" d="M145.476 42.8517c0,1.7924 -3.6067,3.2446 -8.0571,3.2446 -4.4497,0 -8.0572,-1.4522 -8.0572,-3.2446 0,-1.7922 3.6075,-3.2455 8.0572,-3.2455 4.4504,0 8.0571,1.4533 8.0571,3.2455z" inkscape:connector-curvature="0"/>
-   <path id="path3890" class="fil0" d="M85.0457 55.832c0,1.7917 -4.4788,3.2447 -10.0037,3.2447 -5.5257,0 -10.0046,-1.453 -10.0046,-3.2447 0,-1.7922 4.4789,-3.2454 10.0046,-3.2454 5.5249,0 10.0037,1.4532 10.0037,3.2454z" inkscape:connector-curvature="0"/>
-   <path id="path3902" class="fil0" d="M105.274 55.832c0,1.7917 -3.6076,3.2447 -8.0571,3.2447 -4.4505,0 -8.0573,-1.453 -8.0573,-3.2447 0,-1.7922 3.6068,-3.2454 8.0573,-3.2454 4.4495,0 8.0571,1.4532 8.0571,3.2454z" inkscape:connector-curvature="0"/>
-   <path id="path3922" class="fil0" d="M125.915 55.832c0,1.7917 -3.8899,3.2447 -8.6881,3.2447 -4.7983,0 -8.6873,-1.453 -8.6873,-3.2447 0,-1.7922 3.889,-3.2454 8.6873,-3.2454 4.7982,0 8.6881,1.4532 8.6881,3.2454z" inkscape:connector-curvature="0"/>
-   <path id="path3934" class="fil0" d="M146.467 55.832c0,1.7917 -3.8898,3.2447 -8.6881,3.2447 -4.7982,0 -8.6881,-1.453 -8.6881,-3.2447 0,-1.7922 3.8899,-3.2454 8.6881,-3.2454 4.7983,0 8.6881,1.4532 8.6881,3.2454z" inkscape:connector-curvature="0"/>
-   <path id="path3946" class="fil0" d="M82.0715 68.8117c0,1.7922 -3.1475,3.2454 -7.0295,3.2454 -3.8828,0 -7.0301,-1.4532 -7.0301,-3.2454 0,-1.7916 3.1473,-3.2447 7.0301,-3.2447 3.882,0 7.0295,1.4531 7.0295,3.2447z" inkscape:connector-curvature="0"/>
-   <path id="path3958" class="fil0" d="M104.246 68.8117c0,1.7922 -3.1475,3.2454 -7.0293,3.2454 -3.8828,0 -7.0303,-1.4532 -7.0303,-3.2454 0,-1.7916 3.1475,-3.2447 7.0303,-3.2447 3.8818,0 7.0293,1.4531 7.0293,3.2447z" inkscape:connector-curvature="0"/>
-   <path id="path3970" class="fil0" d="M124.257 68.8117c0,1.7922 -3.1475,3.2454 -7.0301,3.2454 -3.882,0 -7.0295,-1.4532 -7.0295,-3.2454 0,-1.7916 3.1475,-3.2447 7.0295,-3.2447 3.8826,0 7.0301,1.4531 7.0301,3.2447z" inkscape:connector-curvature="0"/>
-   <path id="path3982" class="fil0" d="M144.809 68.8117c0,1.7922 -3.1475,3.2454 -7.0301,3.2454 -3.882,0 -7.0295,-1.4532 -7.0295,-3.2454 0,-1.7916 3.1475,-3.2447 7.0295,-3.2447 3.8826,0 7.0301,1.4531 7.0301,3.2447z" inkscape:connector-curvature="0"/>
+  <path id="path3686" class="fil0" d="M78.9492 4.0335c0,1.80123 -2.39426,3.2624 -5.34677,3.2624 -2.95331,0 -5.34757,-1.46117 -5.34757,-3.2624 0,-1.80233 2.39426,-3.2633 5.34757,-3.2633 2.95251,0 5.34677,1.46097 5.34677,3.2633z" inkscape:connector-curvature="0"/>
+  <path id="path3694" class="fil0" d="M105.595 4.0335c0,1.80123 -2.39366,3.2624 -5.34677,3.2624 -2.95331,0 -5.34697,-1.46117 -5.34697,-3.2624 0,-1.80233 2.39366,-3.2633 5.34697,-3.2633 2.95311,0 5.34677,1.46097 5.34677,3.2633z" sodipodi:role="line" inkscape:connector-curvature="0"/>
+  <path id="path3702" class="fil0" d="M123.723 4.0335c0,1.80123 -2.39426,3.2624 -5.34677,3.2624 -2.95331,0 -5.34697,-1.46117 -5.34697,-3.2624 0,-1.80233 2.39366,-3.2633 5.34697,-3.2633 2.95251,0 5.34677,1.46097 5.34677,3.2633z" sodipodi:role="line" inkscape:connector-curvature="0"/>
+  <path id="path3710" class="fil0" d="M140.943 4.0335c0,1.80123 -2.39346,3.2624 -5.34677,3.2624 -2.95331,0 -5.34677,-1.46117 -5.34677,-3.2624 0,-1.80233 2.39346,-3.2633 5.34677,-3.2633 2.95331,0 5.34677,1.46097 5.34677,3.2633z" sodipodi:role="line" inkscape:connector-curvature="0"/>
+  <path id="path3718" class="fil0" d="M82.4829 17.0843c0,1.80203 -3.97639,3.2633 -8.88054,3.2633 -4.90496,0 -8.88125,-1.46127 -8.88125,-3.2633 0,-1.80143 3.97629,-3.2626 8.88125,-3.2626 4.90415,0 8.88054,1.46117 8.88054,3.2626z" sodipodi:role="line" inkscape:connector-curvature="0"/>
+  <path id="path3734" class="fil0" d="M106.482 17.0843c0,1.80203 -4.65741,3.2633 -10.4027,3.2633 -5.74584,0 -10.4034,-1.46127 -10.4034,-3.2633 0,-1.80143 4.65761,-3.2626 10.4034,-3.2626 5.74534,0 10.4027,1.46117 10.4027,3.2626z" inkscape:connector-curvature="0"/>
+  <path id="path3746" class="fil0" d="M127.112 17.0843c0,1.80203 -3.91124,3.2633 -8.73585,3.2633 -4.82462,0 -8.73585,-1.46127 -8.73585,-3.2633 0,-1.80143 3.91124,-3.2626 8.73585,-3.2626 4.82462,0 8.73585,1.46117 8.73585,3.2626z" inkscape:connector-curvature="0"/>
+  <path id="path3762" class="fil0" d="M147.776 17.0843c0,1.80203 -3.91124,3.2633 -8.73575,3.2633 -4.82462,0 -8.73495,-1.46127 -8.73495,-3.2633 0,-1.80143 3.91033,-3.2626 8.73495,-3.2626 4.82452,0 8.73575,1.46117 8.73575,3.2626z" inkscape:connector-curvature="0"/>
+  <path id="path3774" class="fil0" d="M84.0051 30.1357c0,1.80223 -4.65771,3.2634 -10.4027,3.2634 -5.74584,0 -10.4036,-1.46117 -10.4036,-3.2634 0,-1.80213 4.65771,-3.2625 10.4036,-3.2625 5.74504,0 10.4027,1.46037 10.4027,3.2625z" inkscape:connector-curvature="0"/>
+  <path id="path3786" class="fil0" d="M104.96 30.1357c0,1.80223 -3.97629,3.2634 -8.88054,3.2634 -4.90465,0 -8.88105,-1.46117 -8.88105,-3.2634 0,-1.80213 3.97639,-3.2625 8.88105,-3.2625 4.90425,0 8.88054,1.46037 8.88054,3.2625z" inkscape:connector-curvature="0"/>
+  <path id="path3802" class="fil0" d="M125.661 30.1357c0,1.80223 -3.91124,3.2634 -8.73575,3.2634 -4.82462,0 -8.73495,-1.46117 -8.73495,-3.2634 0,-1.80213 3.91033,-3.2625 8.73495,-3.2625 4.82452,0 8.73575,1.46037 8.73575,3.2625z" inkscape:connector-curvature="0"/>
+  <path id="path3818" class="fil0" d="M149.86 30.1357c0,1.80223 -4.68154,3.2634 -10.4577,3.2634 -5.7753,0 -10.4567,-1.46117 -10.4567,-3.2634 0,-1.80213 4.68144,-3.2625 10.4567,-3.2625 5.77621,0 10.4577,1.46037 10.4577,3.2625z" inkscape:connector-curvature="0"/>
+  <path id="path3830" class="fil0" d="M82.9542 43.1873c0,1.80223 -3.78163,3.2624 -8.44557,3.2624 -4.66485,0 -8.44637,-1.46017 -8.44637,-3.2624 0,-1.80203 3.78153,-3.2633 8.44637,-3.2633 4.66394,0 8.44557,1.46127 8.44557,3.2633z" inkscape:connector-curvature="0"/>
+  <path id="path3846" class="fil0" d="M105.214 43.1873c0,1.80223 -3.84588,3.2624 -8.59026,3.2624 -4.74498,0 -8.59116,-1.46017 -8.59116,-3.2624 0,-1.80203 3.84618,-3.2633 8.59116,-3.2633 4.74438,0 8.59026,1.46127 8.59026,3.2633z" inkscape:connector-curvature="0"/>
+  <path id="path3862" class="fil0" d="M125.371 43.1873c0,1.80223 -3.78153,3.2624 -8.44637,3.2624 -4.66394,0 -8.44557,-1.46017 -8.44557,-3.2624 0,-1.80203 3.78163,-3.2633 8.44557,-3.2633 4.66485,0 8.44637,1.46127 8.44637,3.2633z" inkscape:connector-curvature="0"/>
+  <path id="path3874" class="fil0" d="M145.329 43.1873c0,1.80223 -3.62648,3.2624 -8.10129,3.2624 -4.47411,0 -8.10139,-1.46017 -8.10139,-3.2624 0,-1.80203 3.62729,-3.2633 8.10139,-3.2633 4.47481,0 8.10129,1.46127 8.10129,3.2633z" inkscape:connector-curvature="0"/>
+  <path id="path3890" class="fil0" d="M84.5672 56.2388c0,1.80153 -4.50337,3.2625 -10.0586,3.2625 -5.55601,0 -10.0595,-1.46097 -10.0595,-3.2625 0,-1.80203 4.50347,-3.2632 10.0595,-3.2632 5.5552,0 10.0586,1.46117 10.0586,3.2632z" inkscape:connector-curvature="0"/>
+  <path id="path3902" class="fil0" d="M104.906 56.2388c0,1.80153 -3.62739,3.2625 -8.10129,3.2625 -4.47491,0 -8.10149,-1.46097 -8.10149,-3.2625 0,-1.80203 3.62658,-3.2632 8.10149,-3.2632 4.4739,0 8.10129,1.46117 8.10129,3.2632z" inkscape:connector-curvature="0"/>
+  <path id="path3922" class="fil0" d="M125.661 56.2388c0,1.80153 -3.91124,3.2625 -8.73575,3.2625 -4.82462,0 -8.73495,-1.46097 -8.73495,-3.2625 0,-1.80203 3.91033,-3.2632 8.73495,-3.2632 4.82452,0 8.73575,1.46117 8.73575,3.2632z" inkscape:connector-curvature="0"/>
+  <path id="path3934" class="fil0" d="M146.326 56.2388c0,1.80153 -3.91113,3.2625 -8.73575,3.2625 -4.82452,0 -8.73575,-1.46097 -8.73575,-3.2625 0,-1.80203 3.91124,-3.2632 8.73575,-3.2632 4.82462,0 8.73575,1.46117 8.73575,3.2632z" inkscape:connector-curvature="0"/>
+  <path id="path3946" class="fil0" d="M81.5767 69.2897c0,1.80203 -3.16476,3.2632 -7.06806,3.2632 -3.9041,0 -7.06866,-1.46117 -7.06866,-3.2632 0,-1.80143 3.16456,-3.2625 7.06866,-3.2625 3.90329,0 7.06806,1.46107 7.06806,3.2625z" inkscape:connector-curvature="0"/>
+  <path id="path3958" class="fil0" d="M103.873 69.2897c0,1.80203 -3.16476,3.2632 -7.06785,3.2632 -3.9041,0 -7.06886,-1.46117 -7.06886,-3.2632 0,-1.80143 3.16476,-3.2625 7.06886,-3.2625 3.90309,0 7.06785,1.46107 7.06785,3.2625z" inkscape:connector-curvature="0"/>
+  <path id="path3970" class="fil0" d="M123.994 69.2897c0,1.80203 -3.16476,3.2632 -7.06866,3.2632 -3.90329,0 -7.06806,-1.46117 -7.06806,-3.2632 0,-1.80143 3.16476,-3.2625 7.06806,-3.2625 3.9039,0 7.06866,1.46107 7.06866,3.2625z" inkscape:connector-curvature="0"/>
+  <path id="path3982" class="fil0" d="M144.658 69.2897c0,1.80203 -3.16476,3.2632 -7.06866,3.2632 -3.90329,0 -7.06806,-1.46117 -7.06806,-3.2632 0,-1.80143 3.16476,-3.2625 7.06806,-3.2625 3.9039,0 7.06866,1.46107 7.06866,3.2625z" inkscape:connector-curvature="0"/>
+  <g id="_103420432">
+   <path id="path3726" class="fil1 str0" d="M73.6024 13.7669c0,-1.96673 0,-4.4922 0,-6.45179" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3730" class="fil1 str0" d="M80.0742 14.8655c1.32825,-0.378364 2.72416,-0.747377 4.04145,-1.04379 18.0653,-4.06306 23.0927,-2.4206 41.1484,-6.5258 1.91585,-0.435677 3.99871,-1.03253 5.78898,-1.58515" inkscape:connector-curvature="0"/>
+   <path id="path3742" class="fil1 str0" d="M97.0885 13.8312c0.655878,-1.99468 1.50652,-4.58441 2.15978,-6.57356" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3754" class="fil1 str0" d="M114.442 14.1501c-3.22851,-2.26013 -7.75088,-5.4257 -10.8163,-7.5719" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3758" class="fil1 str0" d="M118.376 13.7669c0,-1.96673 0,-4.4922 0,-6.45179" inkscape:connector-curvature="0"/>
+   <path id="path3782" class="fil1 str0" d="M73.6024 26.8177c0,-1.96673 0,-4.4916 0,-6.45119" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3794" class="fil1 str0" d="M91.4761 27.3557c-3.85322,-2.17486 -9.32718,-5.26492 -13.2001,-7.45185" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3798" class="fil1 str0" d="M96.0796 26.8177c0,-1.96673 0,-4.4916 0,-6.45119" inkscape:connector-curvature="0"/>
+   <path id="path3810" class="fil1 str0" d="M117.284 26.8177c0.224927,-1.96673 0.513501,-4.4916 0.737724,-6.45119" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3814" class="fil1 str0" d="M121.508 27.3257c3.7952,-2.17818 9.16198,-5.25708 12.9562,-7.43435" inkscape:connector-curvature="0"/>
+   <path id="path3826" class="fil1 str0" d="M139.313 26.8177c-0.0565082,-1.96673 -0.128803,-4.4916 -0.184607,-6.45119" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3842" class="fil1 str0" d="M80.9509 41.0792c7.94886,-2.37868 21.393,-6.40021 29.4015,-8.79628" inkscape:connector-curvature="0"/>
+   <path id="path3854" class="fil1 str0" d="M91.9644 40.4383c-3.91536,-2.15827 -9.49349,-5.23244 -13.4723,-7.42571" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3858" class="fil1 str0" d="M100.879 40.3461c3.44218,-2.15103 8.2676,-5.16709 11.7264,-7.32858" inkscape:connector-curvature="0"/>
+   <path id="path3870" class="fil1 str0" d="M116.925 39.8693c0,-1.96693 0,-4.4916 0,-6.4521" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3882" class="fil1 str0" d="M133.021 40.3773c-3.46128,-2.164 -8.34623,-5.21656 -11.825,-7.39082" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3914" class="fil1 str0" d="M100.973 53.4279c3.43041,-2.163 8.27162,-5.21565 11.7193,-7.39001" inkscape:connector-curvature="0"/>
+   <path id="path3918" class="fil1 str0" d="M102.966 54.1162c1.20276,-0.378263 2.45499,-0.77181 3.62729,-1.14062 8.48147,-2.66474 18.2865,-5.7387 24.4727,-7.67688" inkscape:connector-curvature="0"/>
+   <path id="path3930" class="fil1 str0" d="M116.925 52.9207c0,-1.96673 0,-4.4915 0,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3942" class="fil1 str0" d="M137.501 52.9207c-0.0564077,-1.96673 -0.128602,-4.4915 -0.184406,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3954" class="fil1 str0" d="M74.5086 65.9723c0,-1.96673 0,-4.49231 0,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3966" class="fil1 str0" d="M96.8048 65.9723c0,-1.96673 0,-4.49231 0,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3978" class="fil1 str0" d="M116.925 65.9723c0,-1.96673 0,-4.49231 0,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3990" class="fil1 str0" d="M137.59 65.9723c0,-1.96673 0,-4.49231 0,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+  </g>
+  <g id="_103419808">
+   <path id="path3770" class="fil1 str1" d="M138.207 13.8312c-0.542157,-1.99468 -1.24489,-4.58441 -1.78463,-6.57356" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3838" class="fil1 str1" d="M74.2845 39.8693c-0.140768,-1.96693 -0.321353,-4.4916 -0.461115,-6.4521" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3886" class="fil1 str1" d="M137.765 39.8693c0.337039,-1.96693 0.769498,-4.4916 1.10583,-6.4521" inkscape:connector-curvature="0"/>
+   <path id="path3898" class="fil1 str1" d="M74.5086 52.9207c0,-1.96673 0,-4.4915 0,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+   <path id="path3910" class="fil1 str1" d="M96.7594 52.9207c-0.0278519,-1.96673 -0.0635466,-4.4915 -0.092203,-6.45189" sodipodi:role="line" inkscape:connector-curvature="0"/>
+  </g>
+  <g id="_102460488">
+   <text x="70.9736" y="4.70396" id="text3688" class="fil2 fnt0">IN_</text>
+   <text x="74.9203" y="4.70396" id="text3688" class="fil2 fnt0">0</text>
+   <text x="97.6204" y="4.70396" id="text3696" class="fil2 fnt0">IN_</text>
+   <text x="101.567" y="4.70396" id="text3696" class="fil2 fnt0">1</text>
+   <text x="115.747" y="4.70396" id="text3704" class="fil2 fnt0">IN_</text>
+   <text x="119.694" y="4.70396" id="text3704" class="fil2 fnt0">2</text>
+   <text x="132.968" y="4.70396" id="text3712" class="fil2 fnt0">IN_</text>
+   <text x="136.915" y="4.70396" id="text3712" class="fil2 fnt0">3</text>
+   <text x="68.2548" y="17.7555" id="text3720" class="fil2 fnt0">1_</text>
+   <text x="71.1177" y="17.7555" id="text3720" class="fil2 fnt0">0_</text>
+   <text x="73.9807" y="17.7555" id="text3720" class="fil2 fnt0">NO</text>
+   <text x="77.7658" y="17.7555" id="text3720" class="fil2 fnt0">R</text>
+   <text x="89.5539" y="17.7555" id="text3736" class="fil2 fnt0">1_</text>
+   <text x="92.4168" y="17.7555" id="text3736" class="fil2 fnt0">1_</text>
+   <text x="95.2797" y="17.7555" id="text3736" class="fil2 fnt0">R</text>
+   <text x="97.1654" y="17.7555" id="text3736" class="fil2 fnt0">O</text>
+   <text x="99.2114" y="17.7555" id="text3736" class="fil2 fnt0">L_</text>
+   <text x="102.208" y="17.7555" id="text3736" class="fil2 fnt0">5</text>
+   <text x="113.119" y="17.7555" id="text3748" class="fil2 fnt0">1_</text>
+   <text x="115.982" y="17.7555" id="text3748" class="fil2 fnt0">2_</text>
+   <text x="118.845" y="17.7555" id="text3748" class="fil2 fnt0">AND</text>
+   <text x="133.784" y="17.7555" id="text3764" class="fil2 fnt0">1_</text>
+   <text x="136.646" y="17.7555" id="text3764" class="fil2 fnt0">3_</text>
+   <text x="139.509" y="17.7555" id="text3764" class="fil2 fnt0">NO</text>
+   <text x="143.295" y="17.7555" id="text3764" class="fil2 fnt0">P</text>
+   <text x="67.0767" y="30.807" id="text3776" class="fil2 fnt0">2_</text>
+   <text x="69.9396" y="30.807" id="text3776" class="fil2 fnt0">0_</text>
+   <text x="72.8025" y="30.807" id="text3776" class="fil2 fnt0">R</text>
+   <text x="74.6882" y="30.807" id="text3776" class="fil2 fnt0">O</text>
+   <text x="76.7342" y="30.807" id="text3776" class="fil2 fnt0">L_</text>
+   <text x="79.7305" y="30.807" id="text3776" class="fil2 fnt0">0</text>
+   <text x="90.732" y="30.807" id="text3788" class="fil2 fnt0">2_</text>
+   <text x="93.595" y="30.807" id="text3788" class="fil2 fnt0">1_</text>
+   <text x="96.4579" y="30.807" id="text3788" class="fil2 fnt0">S</text>
+   <text x="98.2088" y="30.807" id="text3788" class="fil2 fnt0">UM</text>
+   <text x="111.669" y="30.807" id="text3804" class="fil2 fnt0">2_</text>
+   <text x="114.532" y="30.807" id="text3804" class="fil2 fnt0">2_</text>
+   <text x="117.395" y="30.807" id="text3804" class="fil2 fnt0">ADD</text>
+   <text x="132.787" y="30.807" id="text3820" class="fil2 fnt0">2_</text>
+   <text x="135.65" y="30.807" id="text3820" class="fil2 fnt0">3_</text>
+   <text x="138.512" y="30.807" id="text3820" class="fil2 fnt0">R</text>
+   <text x="140.398" y="30.807" id="text3820" class="fil2 fnt0">O</text>
+   <text x="142.444" y="30.807" id="text3820" class="fil2 fnt0">R</text>
+   <text x="144.33" y="30.807" id="text3820" class="fil2 fnt0">_</text>
+   <text x="145.835" y="30.807" id="text3820" class="fil2 fnt0">6</text>
+   <text x="69.4329" y="43.8577" id="text3832" class="fil2 fnt0">3_</text>
+   <text x="72.2959" y="43.8577" id="text3832" class="fil2 fnt0">0_</text>
+   <text x="75.1588" y="43.8577" id="text3832" class="fil2 fnt0">S</text>
+   <text x="76.9097" y="43.8577" id="text3832" class="fil2 fnt0">UB</text>
+   <text x="91.4571" y="43.8577" id="text3848" class="fil2 fnt0">3_</text>
+   <text x="94.32" y="43.8577" id="text3848" class="fil2 fnt0">1_</text>
+   <text x="97.1829" y="43.8577" id="text3848" class="fil2 fnt0">O</text>
+   <text x="99.2045" y="43.8577" id="text3848" class="fil2 fnt0">R</text>
+   <text x="101.115" y="43.8577" id="text3848" class="fil2 fnt0">_</text>
+   <text x="111.85" y="43.8577" id="text3864" class="fil2 fnt0">3_</text>
+   <text x="114.713" y="43.8577" id="text3864" class="fil2 fnt0">2_</text>
+   <text x="117.576" y="43.8577" id="text3864" class="fil2 fnt0">S</text>
+   <text x="119.327" y="43.8577" id="text3864" class="fil2 fnt0">UB</text>
+   <text x="132.424" y="43.8577" id="text3876" class="fil2 fnt0">3_</text>
+   <text x="135.287" y="43.8577" id="text3876" class="fil2 fnt0">3_</text>
+   <text x="138.15" y="43.8577" id="text3876" class="fil2 fnt0">DIV</text>
+   <text x="68.2548" y="56.9092" id="text3892" class="fil2 fnt0">4_</text>
+   <text x="71.1177" y="56.9092" id="text3892" class="fil2 fnt0">0_</text>
+   <text x="73.9807" y="56.9092" id="text3892" class="fil2 fnt0">BS</text>
+   <text x="77.4951" y="56.9092" id="text3892" class="fil2 fnt0">L_</text>
+   <text x="80.4915" y="56.9092" id="text3892" class="fil2 fnt0">3</text>
+   <text x="92.0009" y="56.9092" id="text3904" class="fil2 fnt0">4_</text>
+   <text x="94.8638" y="56.9092" id="text3904" class="fil2 fnt0">1_</text>
+   <text x="97.7267" y="56.9092" id="text3904" class="fil2 fnt0">DIV</text>
+   <text x="111.669" y="56.9092" id="text3924" class="fil2 fnt0">4_</text>
+   <text x="114.532" y="56.9092" id="text3924" class="fil2 fnt0">2_</text>
+   <text x="117.395" y="56.9092" id="text3924" class="fil2 fnt0">NAN</text>
+   <text x="132.334" y="56.9092" id="text3936" class="fil2 fnt0">4_</text>
+   <text x="135.196" y="56.9092" id="text3936" class="fil2 fnt0">3_</text>
+   <text x="138.059" y="56.9092" id="text3936" class="fil2 fnt0">ADD</text>
+   <text x="70.5204" y="69.9606" id="text3948" class="fil2 fnt0">0_</text>
+   <text x="73.3833" y="69.9606" id="text3948" class="fil2 fnt0">O</text>
+   <text x="75.4293" y="69.9606" id="text3948" class="fil2 fnt0">UT</text>
+   <text x="92.8166" y="69.9606" id="text3960" class="fil2 fnt0">1_</text>
+   <text x="95.6795" y="69.9606" id="text3960" class="fil2 fnt0">O</text>
+   <text x="97.7255" y="69.9606" id="text3960" class="fil2 fnt0">UT</text>
+   <text x="112.938" y="69.9606" id="text3972" class="fil2 fnt0">2_</text>
+   <text x="115.8" y="69.9606" id="text3972" class="fil2 fnt0">O</text>
+   <text x="117.846" y="69.9606" id="text3972" class="fil2 fnt0">UT</text>
+   <text x="133.602" y="69.9606" id="text3984" class="fil2 fnt0">3_</text>
+   <text x="136.465" y="69.9606" id="text3984" class="fil2 fnt0">O</text>
+   <text x="138.511" y="69.9606" id="text3984" class="fil2 fnt0">UT</text>
+  </g>
+  <text x="41.7052" y="17.8059"  class="fil3 fnt1">layer 1</text>
+  <text x="41.7052" y="30.8575"  class="fil3 fnt1">layer 2</text>
+  <text x="41.7052" y="43.9079"  class="fil3 fnt1">layer 3</text>
+  <text x="41.7052" y="56.9554"  class="fil3 fnt1">layer 4</text>
+  <text x="6.38171" y="68.6008"  class="fil3 fnt2">circuit output</text>
+  <text x="2.54468" y="71.9212"  class="fil3 fnt1">output from last layer</text>
+  <text x="8.7442" y="3.34374"  class="fil3 fnt2">circuit input</text>
+  <text x="7.43445" y="6.66415"  class="fil3 fnt1">input to first layer</text>
+  <text x="16.2125" y="29.2358"  class="fil3 fnt2">internal </text>
+  <text x="7.13683" y="33.1985"  class="fil3 fnt2">circuit layers</text>
+  <text x="-0" y="36.5189"  class="fil3 fnt1">each layer takes inputs </text>
+  <text x="1.57821" y="39.689"  class="fil3 fnt1">from the previous and</text>
+  <text x="12.7738" y="42.8591"  class="fil3 fnt1">sends output</text>
+  <text x="4.57103" y="46.0292"  class="fil3 fnt1">to the following one</text>
+  <g id="_106625560">
+   <polyline id="_102392192" class="fil4 str2" points="59.1918,13.303 53.3939,13.303 53.3939,20.8663 59.1988,20.8663 "/>
+   <polyline id="_102392120" class="fil4 str2" points="59.1918,26.3546 53.3939,26.3546 53.3939,33.9179 59.1988,33.9179 "/>
+   <polyline id="_102392048" class="fil4 str2" points="59.1918,39.4051 53.3939,39.4051 53.3939,46.9684 59.1988,46.9684 "/>
+   <polyline id="_102391976" class="fil4 str2" points="59.1918,52.4567 53.3939,52.4567 53.3939,60.0201 59.1988,60.0201 "/>
+   <polyline id="_102391904" class="fil4 str2" points="59.1669,65.5084 32.9301,65.5084 32.9301,73.0718 59.1988,73.0718 "/>
+   <polyline id="_102391832" class="fil4 str2" points="59.1669,0.251371 32.9301,0.251371 32.9301,7.81473 59.1988,7.81473 "/>
+   <polyline id="_102391760" class="fil4 str2" points="38.5781,13.303 32.9301,13.303 32.9301,60.0201 38.585,60.0201 "/>
+  </g>
+  <text x="153.516" y="54.2773"  class="fil3 fnt1">node</text>
+  <text x="153.516" y="57.4474"  class="fil3 fnt1">connectors</text>
+  <text x="153.516" y="29.6924"  class="fil3 fnt1">implicit node</text>
+  <text x="153.516" y="32.8625"  class="fil3 fnt1">connectors</text>
+  <text x="153.516" y="41.1023"  class="fil3 fnt1">function nodes</text>
+  <g id="_105970888">
    <g>
-    <path id="path3726" class="fil1 str0" d="M74.1407 13.5918c0,-1.956 0,-4.4677 0,-6.4166" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3730" class="fil1 str0" d="M80.5772 14.6844c1.321,-0.3763 2.7093,-0.7433 4.0194,-1.0381 17.9668,-4.0409 22.9667,-2.4074 40.9239,-6.4902 1.9054,-0.4333 3.9769,-1.0269 5.7574,-1.5765" inkscape:connector-curvature="0"/>
-    <path id="path3742" class="fil1 str0" d="M97.4987 13.6558c0.6523,-1.9838 1.4983,-4.5594 2.148,-6.5377" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3754" class="fil1 str0" d="M114.758 13.9729c-3.2109,-2.2478 -7.7086,-5.3961 -10.7573,-7.5306" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3758" class="fil1 str0" d="M118.67 13.5918c0,-1.956 0,-4.4677 0,-6.4166" inkscape:connector-curvature="0"/>
-    <path id="path3782" class="fil1 str0" d="M74.1407 26.5714c0,-1.956 0,-4.4671 0,-6.416" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3794" class="fil1 str0" d="M91.9169 27.1065c-3.8322,-2.163 -9.2763,-5.2362 -13.1281,-7.4112" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3798" class="fil1 str0" d="M96.4953 26.5714c0,-1.956 0,-4.4671 0,-6.416" inkscape:connector-curvature="0"/>
-    <path id="path3810" class="fil1 str0" d="M117.584 26.5714c0.2237,-1.956 0.5107,-4.4671 0.7337,-6.416" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3814" class="fil1 str0" d="M121.785 27.0766c3.7745,-2.1663 9.112,-5.2284 12.8855,-7.3938" inkscape:connector-curvature="0"/>
-    <path id="path3826" class="fil1 str0" d="M139.493 26.5714c-0.0562,-1.956 -0.1281,-4.4671 -0.1836,-6.416" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3842" class="fil1 str0" d="M81.4491 40.7551c7.9055,-2.3657 21.2763,-6.3653 29.2411,-8.7483" inkscape:connector-curvature="0"/>
-    <path id="path3854" class="fil1 str0" d="M92.4025 40.1177c-3.894,-2.1465 -9.4417,-5.2039 -13.3988,-7.3852" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3858" class="fil1 str0" d="M101.268 40.026c3.4234,-2.1393 8.2225,-5.1389 11.6624,-7.2886" inkscape:connector-curvature="0"/>
-    <path id="path3870" class="fil1 str0" d="M117.227 39.5518c0,-1.9562 0,-4.4671 0,-6.4169" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3882" class="fil1 str0" d="M133.236 40.057c-3.4424,-2.1522 -8.3007,-5.1881 -11.7605,-7.3505" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3914" class="fil1 str0" d="M101.362 53.0365c3.4117,-2.1512 8.2265,-5.1872 11.6554,-7.3497" inkscape:connector-curvature="0"/>
-    <path id="path3918" class="fil1 str0" d="M103.344 53.721c1.1962,-0.3762 2.4416,-0.7676 3.6075,-1.1344 8.4352,-2.6502 18.1867,-5.7074 24.3392,-7.635" inkscape:connector-curvature="0"/>
-    <path id="path3930" class="fil1 str0" d="M117.227 52.532c0,-1.956 0,-4.467 0,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3942" class="fil1 str0" d="M137.69 52.532c-0.0561,-1.956 -0.1279,-4.467 -0.1834,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3954" class="fil1 str0" d="M75.042 65.5124c0,-1.956 0,-4.4678 0,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3966" class="fil1 str0" d="M97.2165 65.5124c0,-1.956 0,-4.4678 0,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3978" class="fil1 str0" d="M117.227 65.5124c0,-1.956 0,-4.4678 0,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3990" class="fil1 str0" d="M137.779 65.5124c0,-1.956 0,-4.4678 0,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
+    <g>
+     <path id="_102391328" class="fil5" d="M172.728 59.8423l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-0.778547 -0.251371l0.251371 -0.251371 0.0244333 0 0 0.502742 -0.0244333 0 -0.251371 -0.251371zm0.251371 0.251371l-0.251371 0 0 -0.251371 0.251371 0.251371zm-0.251371 -0.72968l0.502742 0 0 0.478309 -0.502742 0 0 -0.478309zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00538l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm-0.377057 -0.101152l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967679 0l0 -0.502742 0.483839 0 0 0.502742 -0.483839 0zm-0.967779 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm-0.96788 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm-0.96788 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm-0.96788 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm-0.96788 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm-0.96788 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm-0.96788 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm-0.96788 0l0 -0.502742 0.48394 0 0 0.502742 -0.48394 0zm0.0812432 -0.976527l0 1.45031 -1.53145 -0.725156 1.53145 -0.725156z"/>
+    </g>
+    <g>
+     <path id="_102391256" class="fil5" d="M151.337 60.0937l-0.502742 0 0 -0.502742 0.502742 0 0 0.502742zm0 1.00548l-0.502742 0 0 -0.502742 0.502742 0 0 0.502742zm0 1.00548l-0.502742 0 0 -0.502742 0.502742 0 0 0.502742zm0 1.00548l-0.502742 0 0 -0.502742 0.502742 0 0 0.502742zm-0.770704 0.690567l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922231 0l0 -0.502742 0.461115 0 0 0.502742 -0.461115 0zm-0.922331 0l0 -0.502742 0.461216 0 0 0.502742 -0.461216 0zm-0.922432 0l0 -0.502742 0.461216 0 0 0.502742 -0.461216 0zm-0.649141 -0.502742l0.187925 0 0 0.502742 -0.187925 0 0 -0.502742zm0.464132 -0.473784l0 1.45031 -1.53145 -0.725156 1.53145 -0.725156z"/>
+    </g>
+    <g>
+     <path class="fil5" d="M150.625 51.0066l0 -0.502742 0.460613 0 0 0.502742 -0.460613 0zm-0.921225 0l0 -0.502742 0.460613 0 0 0.502742 -0.460613 0zm-0.921225 0l0 -0.502742 0.460613 0 0 0.502742 -0.460613 0zm-0.921225 0l0 -0.502742 0.460613 0 0 0.502742 -0.460613 0zm-0.921225 0l0 -0.502742 0.460613 0 0 0.502742 -0.460613 0zm-0.921225 0l0 -0.502742 0.460613 0 0 0.502742 -0.460613 0zm-0.921225 0l0 -0.502742 0.460613 0 0 0.502742 -0.460613 0zm-0.921326 0l0 -0.502742 0.460713 0 0 0.502742 -0.460713 0zm-0.921426 0l0 -0.502742 0.460713 0 0 0.502742 -0.460713 0zm-0.921426 0l0 -0.502742 0.460713 0 0 0.502742 -0.460713 0zm-0.921426 0l0 -0.502742 0.460713 0 0 0.502742 -0.460713 0zm-0.921426 0l0 -0.502742 0.460713 0 0 0.502742 -0.460713 0zm-0.578657 -0.502742l0.117943 0 0 0.502742 -0.117943 0 0 -0.502742zm0.464132 -0.473784l0 1.45031 -1.53145 -0.725156 1.53145 -0.725156z"/>
+    </g>
    </g>
    <g>
-    <path id="path3770" class="fil1 str1" d="M138.393 13.6558c-0.5392,-1.9838 -1.2381,-4.5594 -1.7749,-6.5377" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3838" class="fil1 str1" d="M74.8191 39.5518c-0.14,-1.9562 -0.3196,-4.4671 -0.4586,-6.4169" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3886" class="fil1 str1" d="M137.954 39.5518c0.3352,-1.9562 0.7653,-4.4671 1.0998,-6.4169" inkscape:connector-curvature="0"/>
-    <path id="path3898" class="fil1 str1" d="M75.042 52.532c0,-1.956 0,-4.467 0,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
-    <path id="path3910" class="fil1 str1" d="M97.1714 52.532c-0.0277,-1.956 -0.0632,-4.467 -0.0917,-6.4167" sodipodi:role="line" inkscape:connector-curvature="0"/>
+    <g>
+     <path class="fil5" d="M172.728 35.3144l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-0.527176 -0.502742l0 0 0.0244333 0 0 0.502742 -0.0244333 0 0 -0.502742zm-0.431554 0.502742l0 -0.502742 0.431554 0 0 0.502742 -0.431554 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.907349 0l0 -0.502742 0.453675 0 0 0.502742 -0.453675 0zm-0.842898 -0.502742l0.389123 0 0 0.502742 -0.389123 0 0 -0.502742zm0.464132 -0.473784l0 1.45031 -1.53145 -0.725156 1.53145 -0.725156z"/>
+    </g>
+    <g>
+     <path class="fil5" d="M150.834 34.5603l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00538l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0.251371 -0.812934l0.251371 0.251371 0 0.0588209 -0.502742 0 0 -0.0588209 0.251371 -0.251371zm0 0l0.251371 0 0 0.251371 -0.251371 -0.251371zm-0.404909 0.502742l0 -0.502742 0.404909 0 0 0.502742 -0.404909 0zm-0.916801 0l0 -0.502742 0.458401 0 0 0.502742 -0.458401 0zm-0.916801 0l0 -0.502742 0.458401 0 0 0.502742 -0.458401 0zm-0.916801 0l0 -0.502742 0.458401 0 0 0.502742 -0.458401 0zm-0.916902 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm-0.917002 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm-0.917002 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm-0.917002 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm-0.917002 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm-0.917002 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm-0.917002 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm-0.917002 0l0 -0.502742 0.458501 0 0 0.502742 -0.458501 0zm0.383794 -0.976527l0 1.45031 -1.53145 -0.725156 1.53145 -0.725156z"/>
+    </g>
    </g>
    <g>
-    <text x="71.5262" y="4.5783" id="text3688" class="fil2 fnt0">IN_</text>
-    <text x="75.4514" y="4.5783" id="text3688" class="fil2 fnt0">0</text>
-    <text x="98.0277" y="4.5783" id="text3696" class="fil2 fnt0">IN_</text>
-    <text x="101.953" y="4.5783" id="text3696" class="fil2 fnt0">1</text>
-    <text x="116.055" y="4.5783" id="text3704" class="fil2 fnt0">IN_</text>
-    <text x="119.98" y="4.5783" id="text3704" class="fil2 fnt0">2</text>
-    <text x="133.182" y="4.5783" id="text3712" class="fil2 fnt0">IN_</text>
-    <text x="137.108" y="4.5783" id="text3712" class="fil2 fnt0">3</text>
-    <text x="68.8223" y="17.5586" id="text3720" class="fil2 fnt0">1_</text>
-    <text x="71.6696" y="17.5586" id="text3720" class="fil2 fnt0">0_</text>
-    <text x="74.5169" y="17.5586" id="text3720" class="fil2 fnt0">NO</text>
-    <text x="78.2814" y="17.5586" id="text3720" class="fil2 fnt0">R</text>
-    <text x="90.0052" y="17.5586" id="text3736" class="fil2 fnt0">1_</text>
-    <text x="92.8525" y="17.5586" id="text3736" class="fil2 fnt0">1_</text>
-    <text x="95.6998" y="17.5586" id="text3736" class="fil2 fnt0">R</text>
-    <text x="97.5752" y="17.5586" id="text3736" class="fil2 fnt0">O</text>
-    <text x="99.61" y="17.5586" id="text3736" class="fil2 fnt0">L_</text>
-    <text x="102.59" y="17.5586" id="text3736" class="fil2 fnt0">5</text>
-    <text x="113.441" y="17.5586" id="text3748" class="fil2 fnt0">1_</text>
-    <text x="116.289" y="17.5586" id="text3748" class="fil2 fnt0">2_</text>
-    <text x="119.136" y="17.5586" id="text3748" class="fil2 fnt0">AND</text>
-    <text x="133.994" y="17.5586" id="text3764" class="fil2 fnt0">1_</text>
-    <text x="136.841" y="17.5586" id="text3764" class="fil2 fnt0">3_</text>
-    <text x="139.688" y="17.5586" id="text3764" class="fil2 fnt0">NO</text>
-    <text x="143.453" y="17.5586" id="text3764" class="fil2 fnt0">P</text>
-    <text x="67.6506" y="30.539" id="text3776" class="fil2 fnt0">2_</text>
-    <text x="70.4979" y="30.539" id="text3776" class="fil2 fnt0">0_</text>
-    <text x="73.3452" y="30.539" id="text3776" class="fil2 fnt0">R</text>
-    <text x="75.2206" y="30.539" id="text3776" class="fil2 fnt0">O</text>
-    <text x="77.2554" y="30.539" id="text3776" class="fil2 fnt0">L_</text>
-    <text x="80.2354" y="30.539" id="text3776" class="fil2 fnt0">0</text>
-    <text x="91.1769" y="30.539" id="text3788" class="fil2 fnt0">2_</text>
-    <text x="94.0242" y="30.539" id="text3788" class="fil2 fnt0">1_</text>
-    <text x="96.8715" y="30.539" id="text3788" class="fil2 fnt0">S</text>
-    <text x="98.6129" y="30.539" id="text3788" class="fil2 fnt0">UM</text>
-    <text x="111.999" y="30.539" id="text3804" class="fil2 fnt0">2_</text>
-    <text x="114.847" y="30.539" id="text3804" class="fil2 fnt0">2_</text>
-    <text x="117.694" y="30.539" id="text3804" class="fil2 fnt0">ADD</text>
-    <text x="133.002" y="30.539" id="text3820" class="fil2 fnt0">2_</text>
-    <text x="135.849" y="30.539" id="text3820" class="fil2 fnt0">3_</text>
-    <text x="138.697" y="30.539" id="text3820" class="fil2 fnt0">R</text>
-    <text x="140.572" y="30.539" id="text3820" class="fil2 fnt0">O</text>
-    <text x="142.607" y="30.539" id="text3820" class="fil2 fnt0">R</text>
-    <text x="144.482" y="30.539" id="text3820" class="fil2 fnt0">_</text>
-    <text x="145.979" y="30.539" id="text3820" class="fil2 fnt0">6</text>
-    <text x="69.994" y="43.5185" id="text3832" class="fil2 fnt0">3_</text>
-    <text x="72.8413" y="43.5185" id="text3832" class="fil2 fnt0">0_</text>
-    <text x="75.6886" y="43.5185" id="text3832" class="fil2 fnt0">S</text>
-    <text x="77.43" y="43.5185" id="text3832" class="fil2 fnt0">UB</text>
-    <text x="91.898" y="43.5185" id="text3848" class="fil2 fnt0">3_</text>
-    <text x="94.7453" y="43.5185" id="text3848" class="fil2 fnt0">1_</text>
-    <text x="97.5926" y="43.5185" id="text3848" class="fil2 fnt0">O</text>
-    <text x="99.6032" y="43.5185" id="text3848" class="fil2 fnt0">R</text>
-    <text x="101.503" y="43.5185" id="text3848" class="fil2 fnt0">_</text>
-    <text x="112.18" y="43.5185" id="text3864" class="fil2 fnt0">3_</text>
-    <text x="115.027" y="43.5185" id="text3864" class="fil2 fnt0">2_</text>
-    <text x="117.874" y="43.5185" id="text3864" class="fil2 fnt0">S</text>
-    <text x="119.616" y="43.5185" id="text3864" class="fil2 fnt0">UB</text>
-    <text x="132.642" y="43.5185" id="text3876" class="fil2 fnt0">3_</text>
-    <text x="135.489" y="43.5185" id="text3876" class="fil2 fnt0">3_</text>
-    <text x="138.336" y="43.5185" id="text3876" class="fil2 fnt0">DIV</text>
-    <text x="68.8223" y="56.4988" id="text3892" class="fil2 fnt0">4_</text>
-    <text x="71.6696" y="56.4988" id="text3892" class="fil2 fnt0">0_</text>
-    <text x="74.5169" y="56.4988" id="text3892" class="fil2 fnt0">BS</text>
-    <text x="78.0122" y="56.4988" id="text3892" class="fil2 fnt0">L_</text>
-    <text x="80.9922" y="56.4988" id="text3892" class="fil2 fnt0">3</text>
-    <text x="92.4388" y="56.4988" id="text3904" class="fil2 fnt0">4_</text>
-    <text x="95.2861" y="56.4988" id="text3904" class="fil2 fnt0">1_</text>
-    <text x="98.1334" y="56.4988" id="text3904" class="fil2 fnt0">DIV</text>
-    <text x="111.999" y="56.4988" id="text3924" class="fil2 fnt0">4_</text>
-    <text x="114.847" y="56.4988" id="text3924" class="fil2 fnt0">2_</text>
-    <text x="117.694" y="56.4988" id="text3924" class="fil2 fnt0">NAN</text>
-    <text x="132.551" y="56.4988" id="text3936" class="fil2 fnt0">4_</text>
-    <text x="135.399" y="56.4988" id="text3936" class="fil2 fnt0">3_</text>
-    <text x="138.246" y="56.4988" id="text3936" class="fil2 fnt0">ADD</text>
-    <text x="71.0755" y="69.479" id="text3948" class="fil2 fnt0">0_</text>
-    <text x="73.9228" y="69.479" id="text3948" class="fil2 fnt0">O</text>
-    <text x="75.9576" y="69.479" id="text3948" class="fil2 fnt0">UT</text>
-    <text x="93.2501" y="69.479" id="text3960" class="fil2 fnt0">1_</text>
-    <text x="96.0974" y="69.479" id="text3960" class="fil2 fnt0">O</text>
-    <text x="98.1322" y="69.479" id="text3960" class="fil2 fnt0">UT</text>
-    <text x="113.261" y="69.479" id="text3972" class="fil2 fnt0">2_</text>
-    <text x="116.109" y="69.479" id="text3972" class="fil2 fnt0">O</text>
-    <text x="118.143" y="69.479" id="text3972" class="fil2 fnt0">UT</text>
-    <text x="133.813" y="69.479" id="text3984" class="fil2 fnt0">3_</text>
-    <text x="136.66" y="69.479" id="text3984" class="fil2 fnt0">O</text>
-    <text x="138.695" y="69.479" id="text3984" class="fil2 fnt0">UT</text>
-   </g>
-   <text x="42.4175" y="17.6088" id="_104559600" class="fil3 fnt1">layer 1</text>
-   <text x="42.4175" y="30.5892" id="_102178608" class="fil3 fnt1">layer 2</text>
-   <text x="42.4175" y="43.5684" id="_106500616" class="fil3 fnt1">layer 3</text>
-   <text x="42.4175" y="56.5447" id="_106500976" class="fil3 fnt1">layer 4</text>
-   <text x="7.2867" y="68.1266" id="_101664080" class="fil3 fnt2">circuit output</text>
-   <text x="1.591" y="71.4289" id="_101664080" class="fil3 fnt1">(output from last layer)</text>
-   <text x="9.6363" y="3.2255" id="_104560008" class="fil3 fnt2">circuit input</text>
-   <text x="6.4541" y="6.5278" id="_104560008" class="fil3 fnt1">(input to first layer)</text>
-   <text x="17.0639" y="28.9763" id="_107314384" class="fil3 fnt2">internal </text>
-   <text x="8.0377" y="32.9174" id="_107314384" class="fil3 fnt2">circuit layers</text>
-   <text x="-0" y="36.2197" id="_107314384" class="fil3 fnt1">(each layer takes inputs </text>
-   <text x="2.5094" y="39.3725" id="_107314384" class="fil3 fnt1">from the previous and</text>
-   <text x="13.6439" y="42.5253" id="_107314384" class="fil3 fnt1">sends output</text>
-   <text x="4.5461" y="45.6781" id="_107314384" class="fil3 fnt1">to the following one)</text>
-   <polyline id="_107114064" class="fil4 str2" points="59.8087,13.1304 54.0424,13.1304 54.0424,20.6525 59.8157,20.6525 "/>
-   <polyline id="_107111208" class="fil4 str2" points="59.8087,26.1108 54.0424,26.1108 54.0424,33.6329 59.8157,33.6329 "/>
-   <polyline id="_107314456" class="fil4 str2" points="59.8087,39.0901 54.0424,39.0901 54.0424,46.6122 59.8157,46.6122 "/>
-   <polyline id="_106500184" class="fil4 str2" points="59.8087,52.0706 54.0424,52.0706 54.0424,59.5927 59.8157,59.5927 "/>
-   <polyline id="_99690944" class="fil4 str2" points="59.784,65.0511 33.6903,65.0511 33.6903,72.5732 59.8157,72.5732 "/>
-   <polyline id="_106110784" class="fil4 str2" points="59.784,0.15 33.6903,0.15 33.6903,7.6721 59.8157,7.6721 "/>
-   <polyline id="_107113680" class="fil4 str2" points="39.3075,13.1304 33.6903,13.1304 33.6903,59.5927 39.3143,59.5927 "/>
-   <text x="152.818" y="54.4812" id="_107112216" class="fil3 fnt1">node</text>
-   <text x="152.818" y="57.634" id="_107112216" class="fil3 fnt1">connectors</text>
-   <text x="152.818" y="30.0304" id="_106499704" class="fil3 fnt1">implicit node</text>
-   <text x="152.818" y="33.1832" id="_106499704" class="fil3 fnt1">connectors</text>
-   <text x="152.818" y="41.3781" id="_106499824" class="fil3 fnt1">function nodes</text>
-   <g>
-    <path id="_104822088" class="fil5" d="M172.926 59.3159l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.5999 0l0 -0.3 0.2999 0 0 0.3 -0.2999 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.2744 -0.6257l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm-0.2913 -0.0005l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5892 0l0 -0.3 0.2946 0 0 0.3 -0.2946 0zm-0.5646 -0.2992l0.1935 0.2984 -0.0001 -0.2984 1.4032 0.9096 -0.1934 0.2984 -1.4032 -0.9096 0 -0.2984zm0 0l0 0.2984 -0.23 -0.1491 0.23 -0.1493zm1.4999 -0.7611l0.0968 0.1491 -1.4032 0.9104 -0.1935 -0.2984 1.4032 -0.9103 0.0967 0.1492z"/>
-   </g>
-   <g>
-    <path class="fil5" d="M151.351 59.4659l-0.3 0 0 -0.3 0.3 0 0 0.3zm0 0.6l-0.3 0 0 -0.3 0.3 0 0 0.3zm0 0.6l-0.3 0 0 -0.3 0.3 0 0 0.3zm0 0.6l-0.3 0 0 -0.3 0.3 0 0 0.3zm0 0.6l-0.3 0 0 -0.3 0.3 0 0 0.3zm0 0.6l-0.3 0 0 -0.3 0.3 0 0 0.3zm0 0.6l-0.3 0 0 -0.3 0.3 0 0 0.3zm-0.6907 0.1868l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.5762 0l0 -0.3 0.2881 0 0 0.3 -0.2881 0zm-0.2917 -0.3l0.0036 0 0 0.3 -0.0036 0 0 -0.3zm-0.3726 0.0008l0.1935 0.2984 -0.0001 -0.2984 1.4032 0.9096 -0.1934 0.2984 -1.4032 -0.9096 0 -0.2984zm0 0l0 0.2984 -0.23 -0.1491 0.23 -0.1493zm1.4999 -0.7611l0.0968 0.1491 -1.4032 0.9104 -0.1935 -0.2984 1.4032 -0.9103 0.0967 0.1492z"/>
-   </g>
-   <g>
-    <path class="fil5" d="M150.913 50.5284l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5758 0l0 -0.3 0.2879 0 0 0.3 -0.2879 0zm-0.5759 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.576 0l0 -0.3 0.288 0 0 0.3 -0.288 0zm-0.4109 -0.3l0.1229 0 0 0.3 -0.1229 0 0 -0.3zm-0.3726 0.0008l0.1935 0.2984 -0.0001 -0.2984 1.4032 0.9096 -0.1934 0.2984 -1.4032 -0.9096 0 -0.2984zm0 0l0 0.2984 -0.23 -0.1491 0.23 -0.1493zm1.4999 -0.7611l0.0968 0.1491 -1.4032 0.9104 -0.1935 -0.2984 1.4032 -0.9103 0.0967 0.1492z"/>
-   </g>
-   <g>
-    <path class="fil5" d="M172.926 34.9218l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.5999 0l0 -0.3 0.2999 0 0 0.3 -0.2999 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.5777 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.5718 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.5718 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.5718 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.5718 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.5718 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.5718 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.5718 0l0 -0.3 0.2859 0 0 0.3 -0.2859 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.572 0l0 -0.3 0.286 0 0 0.3 -0.286 0zm-0.3134 -0.3l0.0274 0 0 0.3 -0.0274 0 0 -0.3zm-0.3726 0.0008l0.1935 0.2984 -0.0001 -0.2984 1.4032 0.9096 -0.1934 0.2984 -1.4032 -0.9096 0 -0.2984zm0 0l0 0.2984 -0.23 -0.1491 0.23 -0.1493zm1.4999 -0.7611l0.0968 0.1491 -1.4032 0.9104 -0.1935 -0.2984 1.4032 -0.9103 0.0967 0.1492z"/>
-   </g>
-   <g>
-    <path class="fil5" d="M151.051 34.4718l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.5999l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0.15 -0.7085l0.15 0.15 0 0.2585 -0.3 0 0 -0.2585 0.15 -0.15zm0 0l0.15 0 0 0.15 -0.15 -0.15zm-0.0398 0.3l0 -0.3 0.0398 0 0 0.3 -0.0398 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5746 0l0 -0.3 0.2873 0 0 0.3 -0.2873 0zm-0.5747 0l0 -0.3 0.2874 0 0 0.3 -0.2874 0zm-0.5748 0l0 -0.3 0.2874 0 0 0.3 -0.2874 0zm-0.5748 0l0 -0.3 0.2874 0 0 0.3 -0.2874 0zm-0.5748 0l0 -0.3 0.2874 0 0 0.3 -0.2874 0zm-0.5748 0l0 -0.3 0.2874 0 0 0.3 -0.2874 0zm-0.4566 -0.2992l0.1935 0.2984 -0.0001 -0.2984 1.4032 0.9096 -0.1934 0.2984 -1.4032 -0.9096 0 -0.2984zm0 0l0 0.2984 -0.23 -0.1491 0.23 -0.1493zm1.4999 -0.7611l0.0968 0.1491 -1.4032 0.9104 -0.1935 -0.2984 1.4032 -0.9103 0.0967 0.1492z"/>
-   </g>
-   <g>
-    <path class="fil5" d="M151.051 42.7672l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm0 -0.6l0.3 0 0 0.3 -0.3 0 0 -0.3zm-0.2448 -0.0552l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.5999 0l0 -0.3 0.2999 0 0 0.3 -0.2999 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6 0l0 -0.3 0.3 0 0 0.3 -0.3 0zm-0.6497 -0.15l0.15 -0.15 0.1997 0 0 0.3 -0.1997 0 -0.15 -0.15zm0.15 0.15l-0.15 0 0 -0.15 0.15 0.15zm-0.15 -0.2359l0.3 0 0 0.0859 -0.3 0 0 -0.0859zm0 -0.5133l0.3 0 0 0.2567 -0.3 0 0 -0.2567zm0 -0.5134l0.3 0 0 0.2567 -0.3 0 0 -0.2567zm0 -0.5134l0.3 0 0 0.2567 -0.3 0 0 -0.2567zm0 -0.5134l0.3 0 0 0.2567 -0.3 0 0 -0.2567zm0 -0.5134l0.3 0 0 0.2567 -0.3 0 0 -0.2567zm0.2992 -0.6071l-0.2984 0.1935 0.2984 -0.0001 -0.9096 1.4032 -0.2984 -0.1934 0.9096 -1.4032 0.2984 0zm0 0l-0.2984 0 0.1491 -0.23 0.1493 0.23zm0.7611 1.4999l-0.1491 0.0968 -0.9104 -1.4032 0.2984 -0.1935 0.9103 1.4032 -0.1492 0.0967z"/>
-   </g>
-   <g>
-    <path class="fil5" d="M172.931 43.2172l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5888 0l0 -0.3 0.2944 0 0 0.3 -0.2944 0zm-0.5889 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.589 0l0 -0.3 0.2945 0 0 0.3 -0.2945 0zm-0.5123 -0.2992l0.1935 0.2984 -0.0001 -0.2984 1.4032 0.9096 -0.1934 0.2984 -1.4032 -0.9096 0 -0.2984zm0 0l0 0.2984 -0.23 -0.1491 0.23 -0.1493zm1.4999 -0.7611l0.0968 0.1491 -1.4032 0.9104 -0.1935 -0.2984 1.4032 -0.9103 0.0967 0.1492z"/>
-   </g>
-   <g>
-    <path class="fil5" d="M119.857 37.3903l-0.3 0 0 -0.2283 0.3 0 0 0.2283zm0 0.4566l-0.3 0 0 -0.2283 0.3 0 0 0.2283zm0 0.4566l-0.3 0 0 -0.2283 0.3 0 0 0.2283zm-0.3 0.4101l0 -0.1818 0.3 0 0 0.1818 -0.3 0zm0.0008 0.3726l0.2984 -0.1935 -0.2984 0.0001 0.9096 -1.4032 0.2984 0.1934 -0.9096 1.4032 -0.2984 0zm0 0l0.2984 0 -0.1491 0.23 -0.1493 -0.23zm-0.7611 -1.4999l0.1491 -0.0968 0.9104 1.4032 -0.2984 0.1935 -0.9103 -1.4032 0.1492 -0.0967z"/>
+    <g>
+     <path class="fil5" d="M150.834 42.9012l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm0 -1.00548l0.502742 0 0 0.502742 -0.502742 0 0 -0.502742zm-0.346691 -0.156051l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00538 0l0 -0.502742 0.502642 0 0 0.502742 -0.502642 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.00548 0l0 -0.502742 0.502742 0 0 0.502742 -0.502742 0zm-1.15601 -0.251371l0.251371 -0.251371 0.401892 0 0 0.502742 -0.401892 0 -0.251371 -0.251371zm0.251371 0.251371l-0.251371 0 0 -0.251371 0.251371 0.251371zm-0.251371 -0.321856l0.502742 0 0 0.0704845 -0.502742 0 0 -0.0704845zm0 -0.702834l0.502742 0 0 0.351417 -0.502742 0 0 -0.351417zm0 -0.703035l0.502742 0 0 0.351517 -0.502742 0 0 -0.351517zm0 -0.703035l0.502742 0 0 0.351517 -0.502742 0 0 -0.351517zm0.976527 0.271481l-1.45031 0 0.725156 -1.53145 0.725156 1.53145z"/>
+    </g>
+    <g>
+     <path class="fil5" d="M172.748 43.6553l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966472 0l0 -0.502742 0.483236 0 0 0.502742 -0.483236 0zm-0.966573 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.966673 0l0 -0.502742 0.483337 0 0 0.502742 -0.483337 0zm-0.717615 -0.502742l0.234278 0 0 0.502742 -0.234278 0 0 -0.502742zm0.464132 -0.473784l0 1.45031 -1.53145 -0.725156 1.53145 -0.725156z"/>
+    </g>
+    <g>
+     <path class="fil5" d="M119.67 37.7187l-0.502742 0 0 -0.252276 0.502742 0 0 0.252276zm0 0.504753l-0.502742 0 0 -0.252377 0.502742 0 0 0.252377zm-0.502742 0.271984l0 -0.019607 0.502742 0 0 0.019607 -0.502742 0zm-0.473784 -0.464132l1.45031 0 -0.725156 1.53145 -0.725156 -1.53145z"/>
+    </g>
    </g>
   </g>
  </g>
