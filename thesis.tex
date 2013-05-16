@@ -158,17 +158,37 @@ hash function, SHA-3, stream ciphers, eStream
 \chapter{Introduction}
 \label{chap:intro}
 
+Random data and the notion of randomness are used in in many real-life situations, but are of utmost importance in cryptography.
+Random sequences serve as keys, nonces and initialization vectors in many popular cryptographic protocols.
+An encrypted message not looking sufficiently random might leak some information of the cipher settings and/or the key used.
+An insufficient randomness of keys and other parameters may cause numerous security vulnerabilities.
+Therefore, assessing the quality of randomness became a crucial part of cryptographers' work.
 
+This thesis elaborates on distinguishing random and non-random data. Firstly, accounts of the most common method (testing using
+statistical batteries) is given. This approach has its drawbacks -- since the properties and patterns looked for must be specified
+in advance, the creation of new tests is extremely difficult and requires extensive mathematical and statistical skills.
 
-\begin{myItemize}
-\item problem description
-\item motivation -> EACirc
-\item summary of experiments to follow
-\item we = team of EACirc
-\item work and research done by me, if not stated otherwise (but consulted within the team!)
-\item licence of EACirc, licence of thesis text
-\item fithesis2 used
-\end{myItemize}
+In the next chapter, a novel method of distinguishing non-randomness is given. The proposed approach is based on evolutionary
+algorithms and utilizes the idea of software-emulated circuits. Its main benefits lie in easy automation and
+high potential of creating new tests, thus surpassing the disadvantages of statistical batteries. 
+This novel method is implemented in a general problem-solving framework called EACirc.
+
+Further chapters use the EACirc framework in practical tests and compare all obtained results with already existing approach
+using statistical batteries. The experiments are divided into three categories: control experiments checking sanity of our
+implementation and used referential data, experiments examining randomness of stream cipher outputs and experiments
+assessing randomness of hash function outputs. A single case is chosen for a more detailed analysis.
+
+Although most of the implementation improvements and research presented in this thesis was done by myself, EACirc is
+a result of a greater team\footnote{The team consists of the following members: Milan Čermák (2012-now), Matěj Prišťák (2011-2012),
+Tobiáš Smolka (2011-now), Marek Sýs (2013-now), Petr Švenda (2008-now), Martin Ukrop (2012-now).}
+where problems and ideas are always consulted together. Therefore, I use plural in the thesis text,
+even though parts not done by myself are properly attributed when mentioned.
+
+The EACirc framework and results are licensed under The MIT License, Copyright (c) 2012 Centre for Research 
+on Cryptography and Security \parencite{crocs}. The source code and documentation is freely available from project's page on GitHub 
+\parencite{eacirc-github}.
+
+The thesis text was typeset in \LaTeX{} using the \textit{fithesis2} package created by Stanislav Filipčík \parencite{fithesis}.
 
 \chapter{Statistical randomness testing}
 \label{chap:stat-rand-testing}
@@ -958,6 +978,13 @@ but usually provided a distinguisher working working in far less time than stati
 \end{myItemize}
 
 \begin{figure}[b!]
+\centering
+\includegraphics[width=\textwidth]{images/salsa20_2rounds_jaw}
+\caption{Distinguisher success rate for Salsa20 limited to 2 rounds.}
+\label{fig:salsa20-jaw}
+\end{figure}
+
+\begin{figure}[t!]
 \centering
 \includegraphics[width=\textwidth]{images/case1-final}
 \caption{Analysis of a distinguisher evolved for Salsa20 limited to 2 rounds (pruned version of the circuit is displayed).}
