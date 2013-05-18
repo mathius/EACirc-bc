@@ -1,4 +1,5 @@
-\documentclass[12pt,oneside]{fithesis2}
+\documentclass[12pt,oneside]{fithesis2}		% pc version
+%\documentclass[12pt,twoside]{fithesis2}		% print version
 
 % ===== LOADING PACKAGES =====
 % language settings, main documnet language last
@@ -12,7 +13,8 @@
 % fithesis2 requires csquotes
 \usepackage{csquotes}
 % set page margins
-\usepackage[top=3.5cm, bottom=3cm, left=2.4cm, right=2.4cm]{geometry}
+\usepackage[top=3.0cm, bottom=3.5cm, left=2.4cm, right=2.4cm]{geometry}	% pc version
+%\usepackage[top=3.0cm, bottom=3.5cm, left=2.9cm, right=1.9cm]{geometry}	% print version
 % package to make bullet list nicer
 \usepackage{enumitem}
 % math symbols and environments
@@ -23,8 +25,9 @@
 \usepackage{siunitx}
 \usepackage{dcolumn}
 \usepackage{array}
-% enable page rotation
-\usepackage{pdflscape}
+% enable page rotation and floats rotation
+\usepackage{pdflscape}		% pc version
+%\usepackage{rotating}		% print version
 % bibliography management
 \usepackage[backend=biber, 		% use biber as backend instead of BiBTeX
 	bibstyle=ieee-alphabetic, 	% bibliography style: IEEE with alphabetic citations
@@ -34,31 +37,36 @@
 	block=ragged 				% format bibliography into blocks, ragged on right
 ]{biblatex}
 \addbibresource{thesis.bib}
+% setting custom colors for links
+\usepackage{xcolor}
+\definecolor{dark-red}{rgb}{0.6,0.15,0.15}
+\definecolor{dark-green}{rgb}{0.15,0.4,0.15}
+\definecolor{medium-blue}{rgb}{0,0,0.5}
 % generating hyperlinks in document
 \usepackage{url}
-\usepackage[plainpages=false,pdfpagelabels,colorlinks=true]{hyperref}
+\usepackage[plainpages=false, 	% get the page numbering correctly
+            pdfpagelabels, 		% write arabic labels to all pages
+            unicode,	 			% allow unicode characters in links
+            colorlinks=true, 	% use colored links instead of boxed (pc version)
+            %hidelinks, 			% hide links (print version)
+            linkcolor={dark-red},
+            citecolor={dark-green},
+            urlcolor={medium-blue}
+			]{hyperref}
 
 % ===== MAIN DOCUMENT SETTINGS =====
 % adjusting hyphenation penalties
 \tolerance=10000
 \hyphenpenalty=500
+% renew command for shorter and nicer underscore
+\renewcommand{\_}{\leavevmode \kern0.0em\vbox{\hrule width0.4em}}
 % space between paragraphs
 \setlength{\parskip}{0.6em plus0.2em minus0.2em}
-% set smaller default spacing in itemize
-%\setitemize{itemsep=0.2em,topsep=0pt,parsep=0pt,partopsep=0pt}
-% set default itemize symbol to square
+% define square symbol
 \newcommand{\squarebullet}{\textcolor{black}{\raisebox{0.15em}{\rule{4pt}{4pt}}}}
-%\renewcommand{\labelitemi}{\squarebullet}
-%\renewcommand{\labelitemi}{\scriptsize$\blacksquare$} 
+% define new itemize environment with squares and smaller spaces
 \newenvironment{myItemize}{
   \begin{itemize}[leftmargin=2em,rightmargin=1em,itemsep=\parskip ,parsep=0em,topsep=0em,partopsep=0em]
-%  \setlength{}{2em}
-%  \setlength{\rightmargin}{1.5em}
-%  \setlength{\itemsep}{0.2em}
-%  \setlength{\parsep}{0em}
-%  \setlength{\topsep}{0em}
-%  \setlength{\partopsep}{0em}
-%  \setlength{\parskip}{0em}
   \renewcommand{\labelitemi}{\squarebullet}
   \renewcommand{\labelitemii}{$\diamond$}
 }{
@@ -766,8 +774,9 @@ less so from pink and Brownian noise (success rate only around 65\,\%),
 (although the differences are easily detectable by human ear).
 \end{myItemize}
 
-\begin{landscape}
-\begin{table}[p]
+\begin{landscape}		% pc version
+\begin{table}[p]		% pc version
+%\begin{sidewaystable}	% print version
 \centering
 \newsavebox{\temp}
 \newcolumntype{C}{>{\centering \begin{lrbox}{\temp} \arraybackslash}X<{\end{lrbox} \m{\unhbox\temp} \arraybackslash}}
@@ -821,8 +830,9 @@ metal music (sample 1) &
 \end{tabularx}
 \caption{Distinguishing random streams and uncompressed audio (noise, compressed noise, metal music).}
 \label{tab:control-audio}
-\end{table}
-\end{landscape}
+%\end{sidewaystable}	% print version
+\end{table}			% pc version
+\end{landscape}		% pc version
 
 \chapter{Distinguishing cipher outputs from random stream}
 \label{chap:distinguish-cipher}
@@ -973,7 +983,7 @@ but usually provided a distinguisher working working in far less time than stati
 \chapter{Analysis of Salsa20 output stream}
 \label{chap:analysis-salsa}
 
-In this chapter we analyse one selected result from the previous experiment in a more detailed manner.
+In this chapter we analyse one selected case from the previous experiment in a more detailed manner.
 We study the dependence of distinguisher success rate on the number of generations already computed.
 Further attention is paid to the evolved circuit and the statistical properties it uses to draw the final verdict
 (random vs.\ non-random).
@@ -981,52 +991,48 @@ Further attention is paid to the evolved circuit and the statistical properties 
 \section{Distinguisher success rate}
 \label{sec:salsa-success-rate}
 
-\begin{myItemize}
-\item figure 1
-\item typical jaw-like shape (over-learning to specific test vector set, drop after change)
-\item figure 2
-\item specific for Salsa20-2: dropping value rises (learning), drops down again
-\item the distinguisher stabilises and then drops -> this repeats almost periodically every ~350 KB
-\item hypothesis: we can evolve distinguisher for each 350 KB, but are unable to produce a distinguisher for whole stream
-\end{myItemize}
-
 \begin{figure}[b!]
 \centering
-\includegraphics[width=\textwidth]{images/random2random_overlearning_jaw}
-\caption{Circuit success rate for control experiment trying to distinguish two streams of quantum random data.}
+\includegraphics[width=\textwidth]{images/jaw-random}
+\caption{Circuit success rate for control experiment trying to distinguish two streams of quantum random data (note the shifted 
+scale on y-axis). The dotted line represent the value of 0.52 (stream indistinguishable from random).}
 \label{fig:random-jaw}
 \end{figure}
 
+The general relationship between fitness value and the number of evolved generations in evolutionary algorithms is very specific -- 
+a typical example can be seen in \autoref{fig:random-jaw}. This jaw-like curve represents the the success rate of a circuit trying
+to distinguish two independent random streams. The success rate rises, while the test vector set remains unchanged (100 generations
+in our setting) and then suddenly drops after the set change. As can be easily seen in the graph, the behaviour repeats 
+almost periodically. However, notice that the success rate does never exceed the value of 0.55.
+
+This is caused by the circuit \textit{over-learning} on a specific test vector set
+(circuits are learning to distinguish this particular set instead of general characteristics of the streams).
+On one hand, this phenomenon can be easily suppressed by changing the test vectors more frequently or increasing the number of vecors
+in a set. On the other, higher test set change frequency of more vectors 
+would increase computational complexity (generating a new set of test vectors is by far
+the most computationally-intensive phase at the moment). Therefore a reasonable trade-off is used.
+
 \begin{figure}[t!]
 \centering
-\includegraphics[width=\textwidth]{images/salsa20_2rounds_jaw}
-\caption{Circuit success rate for distinguishing Salsa20 limited to 2 rounds from quantum random data.}
+\includegraphics[width=\textwidth]{images/jaw-salsa}
+\caption{Circuit success rate for distinguishing Salsa20 limited to 2 rounds from quantum random data (note the shifted 
+scale on y-axis). The dotted line represent the value of 0.52 (stream indistinguishable from random).}
 \label{fig:salsa20-jaw}
 \end{figure}
 
+In \autoref{fig:salsa20-jaw} we see similar relationship for circuit distinguishing Salsa20 cipher limited to 2 rounds.
+The over-learning tendency (repeating continual rise and sudden drop) is partly present as well, but in contrast to the previous case
+the circuits success rate reaches much higher values. Even if not evolving a strong distinguisher, this would be a sufficient
+evidence for non-randomness of Salsa20 output stream.
+
+We can further notice that after initial fluctuations the circuit success rate show another periodic behaviour about every 4\,000
+generations. The circuit stabilises at distinguishing the Salsa20 output and then suddenly drops back to about a success of random
+guessing. It than gets better again and after about 4\,000 generations (equivalent to about 450\,KB of data) drops again.
+This behaviour is specific to Salsa20 and its source probably comes the the cipher design. A detailed analysis will be
+the part of our future work.
+
 \section{Evolved circuits}
 \label{sec:salsa-circuits}
-
-\begin{myItemize}
-\item analysing best individuals after 30 000 generations
-\item statistics was made on outputs of individual nodes based on 1 000 000 random 16-byte input sequences
-\item see figure
-\item \textsc{1\_2\_DIV} divides by \textsc{IN\_7}, \textsc{IN\_12} and \textsc{IN\_14} resulting in a byte with very low Hamming weight
-\item 1\_3\_OR makes logical disjunction of 7 input bytes resulting in a byte with very high Hamming weight
-\item 2\_2\_NOR negates 1\_2\_DIV -> high Hamming weight (99.97\% is binary one)
-\item 2\_3\_BSL\_3 results in 3 in most cases (98.43\% is binary 3)
-\item 3\_0\_SUM has low Hamming weight (due to overflow in addition) (98.40\% is binary 2)
-\item 1\_5\_NOP takes IN\_5 without change and 1\_6\_ROR\_1 is solely dependent on IN\_6
-\item 2\_5\_SUB computes 1\_5\_NOP - 1\_5\_NOP - 1\_6\_ROR\_1 resulting in value solely dependent on IN\_6
-\item constant branches in the middle
-\item both output bytes are dependent only on 7th input byte (IN\_6)
-\item circuits evolved in parallel runs exhibited very similar behaviour -- in may of them, the output bytes depended only
-on the 7th input byte
-\item => the output produced by Salsa20 reduced to 2 rounds is weaker on every 7th byte than on others
-\item -> possible design flaw?
-\item difficult to tell what is the exact form of weakness, but draws out attention to the ever-mentioned byte 7, so that
-would be the byte we would concentrate on if improving Salsa20
-\end{myItemize}
 
 \begin{figure}[t!]
 \centering
@@ -1034,6 +1040,65 @@ would be the byte we would concentrate on if improving Salsa20
 \caption{Analysis of a distinguisher evolved for Salsa20 limited to 2 rounds (pruned version of the circuit is displayed).}
 \label{fig:salsa20-case1}
 \end{figure}
+
+Other type of detailed study of Salsa20 limited to 2 rounds included the evolved distinguishers.
+An example interpretation of one such circuit is demonstrated on the circuit shown in \autoref{fig:salsa20-case1}.
+We recorded the output of all its function nodes on 1\,000\,000 independent random circuit input sequences and concluded the following:
+
+\begin{myItemize}
+\item The node \textsc{1\_2\_div} located divides the value of \textsc{in\_2} by \textsc{in\_7}, \textsc{in\_12} and \textsc{in\_14}
+resulting in a byte with very low Hamming weight.
+\item The node \textsc{1\_3\_or} makes logical disjunction of 7 different input bytes resulting in a byte with very 
+high Hamming weight.
+\item The result of node \textsc{2\_2\_nor} is a negation \textsc{1\_2\_div}. Its Hamming weight should therefore be generally
+very high (in 99.97\% of the tested 1\,000\,000 input sequences it produced binary one).
+\item The node \textsc{2\_3\_bsl\_3} results in the last three bits of \textsc{1\_3\_or} and thus most likely outputs binary
+representation of 3 (98.43\% of the tested cases).
+\item The output of \textsc{3\_0\_sum} has low Hamming weight (due to overflow in addition), usually being a binary
+representation of 2 (98.40\% of tested cases).
+\item Nodes \textsc{2\_1\_const\_1}, \textsc{3\_1\_nor} and \textsc{3\_2\_const\_80} produce constant output.
+\item The node \textsc{1\_5\_nop} takes \textsc{in\_5} without change and the node \textsc{1\_6\_ror\_1} is solely dependent 
+on input byte \textsc{in\_6}.
+\item The node \textsc{2\_5\_sub} computes \textsc{1\_5\_nop} - \textsc{1\_5\_nop} - \textsc{1\_6\_ror\_1} resulting in value 
+solely dependent on \textsc{in\_6}.
+\end{myItemize}
+
+\noindent
+Following the reasoning the the above list, we can conclude that both output bytes (\textsc{1\_out} and \textsc{2\_out})
+depend solely on 7\textsuperscript{th} input byte (\textsc{in\_6}). Circuits evolved in parallel runs exhibited very similar 
+behaviour -- in may of them, the output bytes (and thus the final verdict) depended only on the 7\textsuperscript{th} input byte.
+It is difficult to tell what is the exact form of this weakness, but it draws out attention to the ever-mentioned byte 7.
+It definitely implies a possible design flaw in Salsa20 influencing the randomness of every 7\textsuperscript{th} output byte.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=\textwidth]{images/circuit-stats}
+\caption{Frequency of circuit output values for circuit displayed in \autoref{fig:salsa20-case1} for 2 streams. Evaluator interprets
+values less than 128 as stream originating from the cipher, values above or equal to 128 as stream originating from random source.}
+\label{fig:circuit-stats}
+\end{figure}
+
+After analysing the output of internal nodes, we concentrated on the circuit output and its final verdict (random vs.\ non-random).
+We used circuit from \autoref{fig:salsa20-case1}, where both output byte produce the same value (this happened in most of the
+parallel runs).
+We made statistics of all values output by the circuit for random data stream and Salsa20 (limited to 2 rounds) output stream.
+In both cases, 1\,000\,000 input sequences were used. The frequencies of output values are plotted in \autoref{fig:circuit-stats}
+in form of a cumulative bar chart. Each coloured block represents a single value, its width proportional to the number of times
+this value was output. 
+
+\noindent
+The evaluator used interpreted the circuit outputs as follows:
+\begin{myItemize}
+\item if the numerical value of the output byte was less or equal to 127, the stream was concluded to originate from Salsa20;
+\item otherwise (numerical value of the output byte equal to or greater than 128) it was concluded to be from a random source.
+\end{myItemize}
+
+\noindent
+Two important conclusions can be drawn from the data in \autoref{fig:circuit-stats}. Firstly, the circuit succeeds in distinguishing
+Salsa20 limited to 2 round most of the times, but not always. Secondly, while the distribution of output values in case of random
+stream is more or less even, in case of Salsa20 the value of 126 was far more frequent (85.02\%). From the latter fact, we could
+possibly backtrack through the circuit to establish the exact bits in the 7\textsuperscript{th} input byte causing the
+stream to be distinguishable from random, if such analysis was required.
 
 \chapter{Distinguishing hash outputs from random stream}
 \label{chap:distinguish-hash}
@@ -1461,6 +1526,12 @@ For this, new tools for interpreting the results will have to be developed
 
 % ===== APPENDIX AND BIBLIOGRAPHY =====
 \appendix
+
+% include citations not cited specifically
+\nocite{*}
+% print complete bibliography
+\printbibliography
+
 \chapter{Data attachment}
 
 \begin{myItemize}
@@ -1470,10 +1541,5 @@ For this, new tools for interpreting the results will have to be developed
 \item results of STS NIST from all performed experiments
 \item results of Dieharder from all performed experiments
 \end{myItemize}
-
-% include citations not cited specifically
-\nocite{*}
-% print complete bibliography
-\printbibliography
 
 \end{document}
