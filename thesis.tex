@@ -174,7 +174,7 @@ Therefore, assessing the quality of randomness became a crucial part of cryptogr
 
 This thesis elaborates on distinguishing random and non-random data. Firstly, accounts of the most common method (testing using
 statistical batteries) is given. This approach has its drawbacks -- since the properties and patterns looked for must be specified
-in advance, the creation of new tests is extremely difficult and requires extensive mathematical and statistical skills.
+in advance, the creation of new tests is difficult and requires extensive mathematical and statistical skills.
 
 In the next chapter, a novel method of distinguishing non-randomness is given. The proposed approach is based on evolutionary
 algorithms and utilizes the idea of software-emulated circuits. Its main benefits lie in easy automation and
@@ -189,8 +189,12 @@ assessing randomness of hash function outputs. A single case is chosen for a mor
 Although most of the implementation improvements and research presented in this thesis was done by myself, EACirc is
 a result of a greater team\footnote{The team consists of the following members: Milan Čermák (2012-now), Matěj Prišťák (2011-2012),
 Tobiáš Smolka (2011-now), Marek Sýs (2013-now), Petr Švenda (2008-now), Martin Ukrop (2012-now).}
-where problems and ideas are always consulted together. Therefore, I use plural in the thesis text,
+where problems and ideas were consulted together. Therefore, I use plural in the thesis text,
 even though parts not done by myself are properly attributed when mentioned.
+
+At the beginning of 2013, we wrote a scientific paper based on parts of the research presented in this thesis
+(up to \autoref{chap:distinguish-cipher}). The paper was accepted as as full for the 10\textsuperscript{th} International
+Conference on Security and Cryptography and will be published in mid-summer 2013. \parencite{lab-paper}
 
 The EACirc framework and results are licensed under The MIT License, Copyright (c) 2012 Centre for Research 
 on Cryptography and Security \parencite{crocs}. The source code and documentation is freely available from project's page on GitHub 
@@ -201,23 +205,34 @@ The thesis text was typeset in \LaTeX{} using the \textit{fithesis2} package cre
 \chapter{Statistical randomness testing}
 \label{chap:stat-rand-testing}
 
-The goal of randomness testing is to determine, whether the data provided is \textit{random}. 
-The problem comes with the definition of randomness, since in truly random data, 
-each fixed subsequence (e.\,g.\ sequence of a hundred zeroes) has the same probability of appearing.
-Thus, statistical metrics have been developed to asses the matter of randomness.
+Random numbers are useful in various fields of human life. 
+To name but a few: generating data encryption keys, creating nonces and other unique data for in security protocols,
+simulating and modelling complex phenomena, evenly sampling large data sets.
+Producing random data by computers is extremely difficult\footnote{\textit{``Anyone who considers arithmetical methods of producing 
+random digits is, of course, in a state of sin.''} \parencite{neumann-random}}, as they are inherently deterministic.
+Yet it is crucial to be able to distinguish sufficiently random data from the non-random -- it may enable us
+to detect badly designed cryptographic protocols, algorithms or their buggy implementations.
+The problem comes with the definition of randomness. In truly random data, each fixed subsequence 
+has the same probability of appearing. Thus, statistical metrics have been developed to asses the matter of randomness.
 
 All the statistical randomness tests are based on mathematical properties that hold for
-\textit{most} of the random sequences with a sufficient length.
+\textit{most} of the random sequences with a sufficient length and do not hold for non-random data streams.
 A simple example of such a property states that in each binary sequence the number of ones and zeroes should be 
-approximately the same. It is crucial to be aware, that this will not hold for \textit{all} sequences (see the example above),
+approximately the same. It is crucial to be aware, that this will not hold for \textit{all} sequences (e.\,g.\ sequence of 
+a hundred zeroes does definitely not satisfy this property),
 but the probability of randomly generating such a sequence sharply decreases with the increasing length.
 
-Paragraph summarising statistical batteries \autoref{fig:workflow-statistical-batteries}.
+To ease the testing of randomness, batteries of statistical randomness tests such as STS NIST or Dieharder have been developed. 
+The main working principle of such batteries is summarized in \autoref{fig:workflow-statistical-batteries}. 
+Firstly, the chosen statistical properties of the chosen data are computed (e.\,g.\ number of ones versus number of zeroes). 
+Secondly, for each property, the corresponding p-value is computed
+(the probability of obtaining a test statistic at least as extreme as the one that was actually observed).
+The final verdict is based on the p-value and chosen significance level.
 
 \begin{figure}[b!]
 \centering
 \includegraphics[width=\textwidth]{images/workflow-statistical-batteries}
-\caption{Simplified work-flow of statistical batteries such as STS NIST or Dieharder.}
+\caption{Simplified work-flow of Dieharder statistical battery.}
 \label{fig:workflow-statistical-batteries}
 \end{figure}
 
@@ -228,7 +243,8 @@ Once the tests are implemented, they do not require excessive amount of time to 
 the data is usually processed just once in a linear fashion.
 \item \textbf{Universality}\\
 Statistical tests can by applied to any binary data regardless of its origin -- they perform equally well. 
-This can be viewed both as an advantage and disadvantage, since tests cannot be effortlessly adapted to specific situations.
+This can be viewed both as an advantage and disadvantage, since testing process will not adapt to the stream of
+data with dynamically changing properties.
 \item \textbf{One-way design}\\
 The creation of new test must be preceded by the idea and analysis of some useful statistical property. This part may be 
 very complicated and usually requires extensive mathematical skills.
@@ -320,6 +336,11 @@ optimize a successful \textit{distinguisher} -- the test determining whether its
 The distinguisher will be represented as a hardware-like circuit consisting of a number of interconnected simple functions.
 The evolution will use the principles of genetic programming.
 
+In \autoref{sec:basic-ga} the basic accounts of genetic programming will be given followed by the description
+of software emulated circuits in \autoref{sec:sw-circuits}. Finally, in \autoref{sec:eacirc-principles} and 
+\autoref{sec:eacirc-capabilities} the two techniques are combined and working principles and capabilities of EACirc are
+explained.
+
 \section{Basic principles of genetic programming}
 \label{sec:basic-ga}
 
@@ -346,14 +367,17 @@ required number of generations have evolved.
 The principles of evolutionary algorithms induce a couple of design limitations and disadvantages. 
 The most important ones include:
 \begin{myItemize}
-\item Only problems with a sufficient space of partial solutions are applicable, since the individuals must be assessed 
-to determine the fittest.
+\item Only problems with a sufficiently large fitness landscape are applicable (where enough partial solutions exist to facilitate
+evolution).
 \item A small change in the solution should induce only a small change in the individual's fitness. If the changes were
 too rapid, the evolution wouldn't be able to stabilize on the better and more successful solutions.
 \item The evolution phase can be computationally very expensive, since making only small improvements to the individuals may require
 high number of generations evolved.
 \item It may be quite difficult to fine-tune the parameters (such as population size, mutation and crossover probabilities)
 to achieve the best results.
+\item In the evolution process, an excessive amount of decisions must be taken (which individuals to breed, 
+what mutations to perform, \dots). These are usually done randomly so as not to discriminate particular changes.
+Randomization on the other hand complicates reproducibility.
 \end{myItemize}
 
 \noindent
@@ -392,10 +416,11 @@ In the current solution design, we consider only simple nodes operating on bytes
 \end{myItemize}
 
 \noindent
-Although it would be sufficient to restrict ourselves to a smaller set of functions (e.\,g.\ \textsc{nand} only),
-we chose to support a wider variety of functions as an human understandability trade-off.
-More complex and sophisticated functions enable us to limit the circuit to significantly smaller number of layers and nodes,
-while retaining a comparable expressive power.
+It would be sufficient to restrict ourselves to a smaller set of functions (e.\,g.\ \textsc{nand} only),
+since with such subset we can express arbitrarily complex function. However, the spacial requirements rise with the function
+complexity. More complex and sophisticated functions enable us to limit the circuit to significantly smaller number of 
+layers and nodes, while retaining a comparable expressive power.
+We decided to support a wider variety of functions as an human understandability trade-off.
 
 To some extent, the structure of a software circuit resembles artificial neural networks 
 (deep belief neural networks in particular \parencite{neural-networks}). Notable differences are in
@@ -406,7 +431,9 @@ The function of individual nodes is different as well, since all nodes in artifi
 \label{sec:eacirc-principles}
 
 Combining the principles of genetic programming and software circuits, we developed EACirc, the framework for automatic
-problem solving. %TBD more info on general working principles
+problem solving. The framework tries to evolve a circuit solving the given problem. The candidate population is assessed
+(how well does each individual solve the problem) and then cross-bred (better circuits having higher probability to survive).
+The whole process repeats until the desired success rate is achieved or the required number of generations is evolved.
 A simplified work-flow of the testing process can be seen in \autoref{fig:workflow-eacirc}.
 
 \begin{figure}[b!]
@@ -423,7 +450,7 @@ and basic fitness evaluation. Later on, the application was improved by Matej Pr
 (as their master and bachelor theses, respectively \parencite{thesis-pristak, thesis-dubovec}).
 
 Afterwards, the object model of the entire project was redesigned and a handful of new features was added by myself. 
-Most of the code that was taken over was revised and refactored as necessary
+Most of the code taken over was revised and refactored as necessary
 to ease the understanding of its function and to standardise naming and programming principles used throughout the project. 
 Currently, the framework consist of the following main parts:
 \begin{myItemize}
@@ -444,7 +471,8 @@ Evaluator is a function responsible for yielding a numerical value of fitness, w
 actual and expected circuit outputs. There are multiple approaches to evaluators -- the equality of expected and
 actual output can be based on Hamming weight, numerical value, \dots
 \item \textbf{Random generators}\\
-Since evolutionary algorithms are highly randomized, a source of randomness is needed. To ensure the
+Evolutionary algorithms require a source of randomness to run (determining crossovers, mutation, generating initial population,
+order of test vectors, \dots) To ensure the
 computation determinism (all experiments need to be exactly reproducible), a hierarchy of random generators was developed.
 To satisfy the varying needs, several generator types are implemented: true quantum random generator (based on pre-generated data),
 configurable biased generator and low-entropy MD5-based generator.
@@ -487,7 +515,8 @@ For easy reusing and analysis, the evolved circuits are output in 4 different fo
 \end{myItemize}
 \noindent
 The \textsc{dot} graph format can be easily displayed using the Graphviz library \parencite{graphviz} and thus 
-facilitates manual analysis done by humans after the computation.\\
+facilitates manual analysis done by humans after the computation.
+To further ease the human analysis, circuits can be \textit{pruned} before export -- all disconnected and unused nodes are removed.\\
 This functionality was implemented as early as the first version of EACirc. 
 \item \textbf{Static checker for circuits in C}\\
 Static checker is used to verify the success of evolved circuits exported as C programs. 
@@ -523,7 +552,7 @@ For further details, user and development documentation, see EACirc wiki at GitH
 This chapter summarizes the configuration of EACirc used in the experiments presented in later chapters.
 The accounts of random data used are given and EACirc outputs are described. 
 In most experiments, our performance is compared to traditional batteries of statistical tests (STS NIST, Dieharder)
-therefore settings and output description of these batteries is provided as well.
+therefore settings and output description of these batteries are provided as well.
 
 \section{EACirc settings}
 \label{sec:settings-eacirc}
@@ -534,15 +563,16 @@ see \autoref{chap:distinguish-control}.
 
 The evolution works with a population of 20 individuals, with a sexual crossover probability of 20\,\% and a mutation probability
 set to 5\,\%. In each case (if not stated otherwise), we evolve 30\,000 generations with the test vector set
-(learning data) changing every 100\textsuperscript{th} generation. Thus, a total of 300 unique test vector sets is used in each run.
+(learning data) changing every 100\textsuperscript{th} generation. Thus, a total of 300 unique test vector sets are used in each run.
 
 The circuit dimensions are limited to 5 layers with a maximum of 8 function nodes per layer. It processes up to 16 input bytes
-and produces 2 output bytes. Because of bad experience in previous work, using the \textsc{readx} function is forbidden.
+and produces 2 output bytes. Because of suspected implementation problems, using the \textsc{readx} function is forbidden.
 All other implemented functions are allowed.
 
-Each testing set consists of 1\,000 independent vectors, exactly half of which is truly random. 
-According to research done by Matej Prišťák, the imbalance in test vectors would make the circuit learn what type is more frequent
-in the particular set instead of developing a deterministic distinguisher. 
+Each testing set consists of 1\,000 independent vectors, exactly half of which is truly random and the other half is
+generated by the assessed function.
+According to the previous research, the imbalance in test vector types complicates the learning phase, since the circuits
+are also trying to learn which type is more frequent in the particular set. 
 The order of random and non-random vectors in the set is not fixed.
 Hence (\autoref{eq:eacirc-data-use}), all the results output by EACirc are based on a sample of about 2.5\,MB of assessed data.
 \begin{equation}
@@ -567,7 +597,7 @@ appropriate chapters along with the results and their interpretation.
 \section{Random data sources}
 \label{sec:settings-random}
 
-Eacirc requires a good source of randomness, since the the distinguishing process is based on comparing the assessed data
+EACirc requires a good source of randomness, since the the distinguishing process is based on comparing the assessed data
 with a stream of data we declare to be random. All the achieved results therefore rise and fall 
 on the quality of this referential stream.
 
@@ -595,9 +625,10 @@ and 29901\textsuperscript{st} generation.
 The presented results are of 2 types, depending on how good the found distinguishers are.
 \begin{myItemize}
 \item If \textit{strong distinguishers} were found, we show the average number of generations needed
-to reach them. For our purposes, a population of strong distinguishers has a maximum success rate in generations just
+to reach them. For our purposes, a population of strong distinguishers is defined as having a maximum success rate in generations just
 after the change of test vectors over 99\,\% during at least 50 consecutive test vector sets (5\,000 generations).
-We call these distinguishers strong, because of their anticipated high success rate on streams they have not been learning on so far.
+Such strong distinguishers have a high probability of successfully differentiating new stream samples, since they maintained high
+success rate for 50 test sets.
 \item If a population of strong distinguishers was not reached during the evolution, 
 we present the average value of maximal success rates in generations just after the change of test vectors,
 further averaged across all 30 runs. This average average maximum (\textsc{aam}) is presented in parentheses.
@@ -633,7 +664,7 @@ combined p-value within the significance interval and assigning 0 otherwise.
 In summary, a fraction of 162/162 denotes a random stream (all tests passed) while a value of 0/162 denotes a highly non-random
 stream (no test passed).
 
-From the Dieharder suite, only the test corresponding to the original Diehard collection were used.
+From the Dieharder suite, only the tests corresponding to the original Diehard collection were used.
 The only exception is the \textit{Diehard Sums Test} which was omitted, since the Dieharder community claims it has a couple of
 implementation bugs and thus should not be used at all. Each of the chosen tests was rune just once, but was let
 to process as much data as it required. Running the whole set processed about 582\,MB altogether with the smallest test
@@ -647,7 +678,7 @@ The result of the whole suite (20 tests in total) is again summarized in a cumul
 
 Before performing the experiments themselves, we need to acquire reference results -- what does it mean
 streams are indistinguishable from random in out context? Is the referential random data indistinguishable from random?
-What is the \textsc{aam} value for the distinguishers?
+What is the \textsc{aam} value (see \autoref{sec:settings-eacirc-output}) for the distinguishers?
 
 \section{Looking for non-randomness in quantum random data}
 \label{sec:control-random-random}
@@ -657,7 +688,8 @@ We use 193\,MB of data obtained from Quantum Random Bit Generator Service (for d
 We presume to fail at this and thus establish the randomness of the assessed data stream.
 
 Using the standard statistical batteries confirmed out expectations -- all 20 tests of Dieharder passed as well as
-all 162 tests of STS NIST. Running EACirc yielded the \textsc{aam} value of 0.52 with runs differing in 3\textsuperscript{rd}
+all 162 tests of STS NIST. Running EACirc with the settings described in \autoref{sec:settings-eacirc}
+yielded the \textsc{aam} value of 0.52 with runs differing in 3\textsuperscript{rd}
 or 4\textsuperscript{th} decimal place.
 
 We anticipated that the difference of obtained \textsc{aam} from the naïve value of 0.50 was influenced by population size
@@ -741,7 +773,7 @@ The quantum random data files had about 5\,MB and were turned into a listenable 
 instructing to interpret the data as 2-channel, 16\,bit/sample, 44.1\,kHz PCM-encoded audio.
 The 30 seconds (about 5.3\,MB) samples of white, pink and Brownian noise in the same audio format were generated using SoX
 \parencite{sox}. The third subset was created from the above-mentioned generated noises by mp3 compression (bitrate of 
-128\,kbps) and decompression back to the PCM-encoded audio. Note, that after compression the files
+128\,kbps) and decompression back to the PCM-encoded audio. Note that after the lossy MP3 compression the files
 took about 480\,kB each (compared to 5.3\,MB of the uncompressed version).
 The last three were 30 seconds samples of transcendental khaoblack metal by Abbey ov Thelema \parencite{abbey-ov-thelema}
 all taken from the band's promo called \textit{MMXII: Here \& Now - At the Threshold ov End Times}.
@@ -867,7 +899,7 @@ were fixed to binary zeroes.
 
 Before coming to the results, two things must be noted:
 \begin{myItemize}
-\item The internal structure of LEX responds specifically to the limitation of number of rounds.
+\item The internal structure of LEX function responds specifically to the limitation of number of rounds.
 LEX prepares 4 output bytes during every round (other bytes default to binary zero). 
 Limitation of internal rounds therefore only limits the number
 of output bytes, not their strength/randomness.
@@ -943,7 +975,7 @@ but usually provided a distinguisher working working in far less time than stati
 \begin{table}[htb]
 \centering
 \resultsTableEstream{
-1 & 0.0 & 0 & $n=148$ & 0.0 & 0 & $n=7274$ & 3.0 & 1${}^{*}$ & $n=154$ \\ \hline
+1 & 0.0 & 0 & $n=148$ & 0.0 & 0 & $n=7274$ & 3.0 & 1 & $n=154$ \\ \hline
 2 & 4.0 & 1 & $n=221$ & 4.0 & 1 & $n=304$ & 3.5 & 1 & $n=254$ \\ \hline
 3 & 0.5 & 1 & $n=378$ & 3.5 & 1 & $n=491$ & 4.0 & 1 & $n=361$ \\ \hline
 4 & 20.0 & 162 & (0.52) & 19.5 & 162 & (0.52) & 20.0 & 161 & (0.52) \\ \hline \hline
@@ -976,7 +1008,8 @@ but usually provided a distinguisher working working in far less time than stati
 13 & 20.0 & 162 & (0.52) & 20.0 & 162 & (0.52) & 19.0 & 162 & (0.52) \\ \hline \hline
 32 & 20.0 & 161 & (0.52) & 20.0 & 162 & (0.52) & 20.0 & 161 & (0.52) \\ \hline
 }
-\caption{Random distinguishers for TSC-4 ciphertext.}
+\caption{Random distinguishers for TSC-4 ciphertext. For the notes on fields marked with asterisk, 
+see \autoref{sec:estream-results}.}
 \label{tab:estream-tsc}
 \end{table}
 
@@ -1119,8 +1152,13 @@ The implementations (taken from the last successful phase of the competition) an
 modifications limiting the number of rounds in these functions were taken over from previous work \parencite{thesis-dubovec}
 and revised. In the end, 18 most promising candidates were chosen: ARIRANG, Aurora, Blake, Cheetah, CubeHash, DCH, 
 Dynamic SHA, Dynamic SHA2, ECHO, Grøstl, Hamsi, JH, Lesamnta, Luffa, MD6, SIMD, Tangle, and Twister.
-These were the candidates which could be successfully limited in complexity and while their full version produced a random-looking
-output, their most limited version did not. All these hash function were subsequently tested unlimited and
+These were the candidates fulfilling the following two requirements:
+\begin{myItemize}
+\item the hash functions could be effortlessly limited in complexity by decreasing the number of internal rounds and
+\item while the full (unlimited) version produced a random-looking output, their most limited version did not.
+\end{myItemize}
+\noindent
+All these hash function were subsequently tested unlimited and
 then for all lower number of rounds until reaching distinguishability from a random stream.
 
 As opposed to the work we were inspired by, we generated continuous output stream by hashing a simple 4-byte counter starting
@@ -1148,7 +1186,8 @@ in each case. The results can be seen in the bottom two lines of the same table.
 behaviour.
 
 All in all, we decided to keep the setting of changing the test set every 100\textsuperscript{th} generation.
-Doing so is a acceptable trade-off between circuit success rate and required run time. 
+Changing the test set more frequently would result in the generation of more test vectors, which is computationally very expensive.
+The chosen frequency is a acceptable trade-off between circuit success rate and required run time. 
 Furthermore, we retain settings similar to the previous experiments, which facilitates the comparison of the results.
 \bigskip
 
@@ -1197,6 +1236,8 @@ Previously (mainly \autoref{chap:distinguish-cipher}), all the results within an
 (all 30 runs reached more or less the same results).
 The computations presented in this chapter display the variations characteristic to evolutionary algorithms -- 
 only some of the runs are successful (the randomized evolution in the other just did not succeed).
+If only some of the parallel runs reached the population of strong distinguishers, their number is denote in curly brackets
+after the average generation.
 It may be interesting to consider a larger amount of runs in border cases, where statistical batteries were successful
 but EACirc was not.
 \vfill
@@ -1215,8 +1256,8 @@ but EACirc was not.
 \bigskip
 \resultsTableSha{
 0 & 0.0 & 1 & $n=5614$ \\ \hline
-1 & 0.0 & 1 & $n=4101$ [1] \\ \hline
-2 & 0.5 & 132 & $n=13201$ [1] \\ \hline
+1 & 0.0 & 1 & $n=4101$ \{1\} \\ \hline
+2 & 0.5 & 132 & $n=13201$ \{1\} \\ \hline
 3 & 0.5 & 132 & (0.52) \\ \hline
 4 & 20.0 & 160 & (0.52) \\ \hline \hline
 17 & 19.5 & 161 & (0.52) \\ \hline
@@ -1237,8 +1278,8 @@ but EACirc was not.
 0 & 0.0 & 1 & $n=181$ \\ \hline
 1 & 0.0 & 1 & $n=574$ \\ \hline
 2 & 0.0 & 0 & $n=708$ \\ \hline
-3 & 0.0 & 0 & $n=14659$ [12] \\ \hline
-4 & 0.0 & 1 & $n=16870$ [10] \\ \hline
+3 & 0.0 & 0 & $n=14659$ \{12\} \\ \hline
+4 & 0.0 & 1 & $n=16870$ \{10\} \\ \hline
 5 & 0.0 & 1 & (0.52) \\ \hline
 6 & 20.0 & 161 & (0.52) \\ \hline \hline
 16 & 20.0 & 162 & (0.52) \\ \hline
@@ -1261,18 +1302,19 @@ but EACirc was not.
 \bigskip
 \resultsTableSha{
 0 & 0.0${}^{*}$ & 0 & $n=104$ \\ \hline
-1 & 0.0${}^{*}$ & 0 & $n=17260$ [5] \\ \hline
+1 & 0.0${}^{*}$ & 0 & $n=17260$ \{5\} \\ \hline
 2 & 19.5 & 162 & (0.52) \\ \hline
 4 & 20.0 & 162 & (0.52) \\ \hline
 }
-\caption{Random distinguishers for DCH output.}
+\caption{Random distinguishers for DCH output. For the notes on fields marked with asterisk, 
+see \autoref{sec:sha3-results}.}
 \label{tab:sha3-dch}
 \bigskip
 \resultsTableSha{
 0 & 0.0 & 0 & $n=484$ \\ \hline
 1 & 0.0 & 0 & $n=2337$ \\ \hline
 2 & 0.0 & 1 & $n=1773$ \\ \hline
-3 & 0.0 & 1 & $n=12731$ [10] \\ \hline
+3 & 0.0 & 1 & $n=12731$ \{10\} \\ \hline
 4 & 0.0 & 18 & (0.74) \\ \hline
 5 & 0.5 & 18 & (0.61) \\ \hline
 6 & 3.0 & 16 & (0.59) \\ \hline
@@ -1284,7 +1326,7 @@ but EACirc was not.
 \label{tab:sha3-dsha}
 }{
 \resultsTableSha{
-1 & 1.0 & 1 & $n=15886$ [13] \\ \hline
+1 & 1.0 & 1 & $n=15886$ \{13\} \\ \hline
 2 & 1.0 & 1 & (0.74) \\ \hline
 3 & 0.0 & 1 & (0.75) \\ \hline
 4 & 0.0 & 1 & (0.57) \\ \hline
@@ -1303,7 +1345,7 @@ but EACirc was not.
 \label{tab:sha3-dsha2}
 \bigskip
 \resultsTableSha{
-1 & 9.0 & 24 & $n=10501$ [3] \\ \hline
+1 & 9.0 & 24 & $n=10501$ \{3\} \\ \hline
 2 & 9.0 & 24 & (0.52) \\ \hline
 3 & 20.0 & 161 & (0.52) \\ \hline \hline
 8 & 20.0 & 161 & (0.52) \\ \hline
@@ -1316,7 +1358,7 @@ but EACirc was not.
 \begin{table}[htb]
 \twoColumns{
 \resultsTableSha{
-0 & 0.0 & 0 & $n=6285$ [25] \\ \hline
+0 & 0.0 & 0 & $n=6285$ \{25\} \\ \hline
 1 & 0.0 & 0 & (0.58) \\ \hline
 2 & 12.5 & 52 & (0.58) \\ \hline
 3 & 12.5 & 52 & (0.52) \\ \hline
@@ -1327,7 +1369,7 @@ but EACirc was not.
 \label{tab:sha3-grostl}
 \bigskip
 \resultsTableSha{
-0 & 2.5 & 1 & $n=10376$ [24] \\ \hline
+0 & 2.5 & 1 & $n=10376$ \{24\} \\ \hline
 1 & 2.5 & 1 & (0.52) \\ \hline
 2 & 19.5 & 161 & (0.52) \\ \hline \hline
 3 & 20.0 & 162 & (0.52) \\ \hline
@@ -1342,7 +1384,7 @@ but EACirc was not.
 3 & 0.0 & 1 & $n=3674$ \\ \hline
 4 & 0.0 & 1 & $n=1748$ \\ \hline
 5 & 0.0 & 3 & $n=784$ \\ \hline
-6 & 0.0 & 3 & $n=5040$ [28] \\ \hline
+6 & 0.0 & 3 & $n=5040$ \{28\} \\ \hline
 7 & 20.0 & 161 & (0.52) \\ \hline \hline
 42 & 20.0 & 162 & (0.52) \\ \hline
 }
@@ -1362,9 +1404,9 @@ but EACirc was not.
 \bigskip
 \resultsTableSha{
 0 & 0.0 & 0 & $n=604$ \\ \hline
-1 & 0.0 & 0 & $n=1073$ [29] \\ \hline
+1 & 0.0 & 0 & $n=1073$ \{29\} \\ \hline
 2 & 0.0 & 1 & $n=2074$ \\ \hline
-3 & 0.0 & 1 & $n=3735$ [29] \\ \hline
+3 & 0.0 & 1 & $n=3735$ \{29\} \\ \hline
 4 & 0.0 & 4 & (0.75) \\ \hline
 5 & 0.0 & 3 & (0.75) \\ \hline
 6 & 0.0 & 10 & (0.74) \\ \hline
@@ -1384,7 +1426,7 @@ but EACirc was not.
 2 & 0.0 & 0 & $n=1084$ \\ \hline
 3 & 0.0 & 0 & $n=631$ \\ \hline
 4 & 0.0 & 0 & $n=781$ \\ \hline
-5 & 0.0 & 0 & $n=13020$ [21] \\ \hline
+5 & 0.0 & 0 & $n=13020$ \{21\} \\ \hline
 6 & 0.0 & 1 & (0.88) \\ \hline
 7 & 0.0 & 1 & (0.65) \\ \hline
 8 & 17.5 & 18 & (0.53) \\ \hline
@@ -1392,7 +1434,8 @@ but EACirc was not.
 10 & 20.0 & 160 & (0.52) \\ \hline \hline
 104 & 20.0 & 162 & (0.52) \\ \hline
 }
-\caption{Random distinguishers for MD6 output.}
+\caption{Random distinguishers for MD6 output. For the notes on fields marked with asterisk, 
+see \autoref{sec:sha3-results}.}
 \label{tab:sha3-md6}
 \bigskip
 \resultsTableSha{
@@ -1411,7 +1454,7 @@ but EACirc was not.
 \label{tab:sha3-twister}
 }{
 \resultsTableSha{
-0 & 0.0 & 1 & $n=4697$ [28] \\ \hline
+0 & 0.0 & 1 & $n=4697$ \{28\} \\ \hline
 1 & 0.0 & 1 & (0.52) \\ \hline
 2 & 19.5 & 162 & (0.52) \\ \hline \hline
 4 & 19.5 & 161 & (0.52) \\ \hline
@@ -1453,9 +1496,11 @@ but EACirc was not.
 
 This work explored automated methods of creating statistical randomness tests. Tests were created as hardware-like circuits using
 EACirc, framework for automatic problem solving based on genetic programming principles. The complete codes of EACirc were revised
-and improved. The computation is now perfectly deterministic enabling recommencing of older runs and easy experiment replication.
-The object model of EACirc was enhanced to allow for effortless integration of new projects and evaluators.
+and significantly improved, support for multi-platform compilation was added. 
+The computation is now perfectly deterministic enabling recommencing of older runs and easy experiment replication.
+The object model of EACirc was enhanced to allow for better adaptability and effortless integration of new projects and evaluators.
 For independent verification of achieved results, static checker was developed.
+I summary, several thousands of lines of code and documentation were created. 
 
 Capabilities of the framework were checked by numerous reference experiments. The assumed behaviour when trying to distinguish
 two sets of quantum random data (even from different sources) was confirmed. A set of uncompressed audio files was confronted with
@@ -1467,6 +1512,9 @@ The evaluation was done both using the proposed automated method (EACirc) and ut
 (Dieharder, STS NIST) and the results were compared. An analogical set of experiments was performed 
 on 18 SHA-3 candidate hash functions.
 EACirc results for Salsa20 were thoroughly analysed, demonstrating the usage of information provided by EACirc.
+
+Part of the research was summarized in a scientific paper that was accepted for the 10\textsuperscript{th} International Conference
+on Security and Cryptography. \parencite{lab-paper}
 
 \section{Conclusions based on experimental data}
 \label{sec:outro-conclusions}
@@ -1488,7 +1536,7 @@ of failure even when less data is available.
 The proposed method uses a significantly different approach to detect non-randomness compared to statistical batteries.
 It does not require prior knowledge of specific data properties -- instead, it tries to deduce these properties by itself.
 Therefore, possibilities of using yet unknown data properties arises. This, however, was not conclusively proven, 
-since we have done a wide analysis instead of concentrating on the exact results.
+since we have done a wide analysis instead of concentrating on the best possible performance for a particular function.
 \item \textbf{Limited input scope}\\
 Since the distinguisher circuits only process small parts of the input at a time, this approach may by unable to detect
 non-randomness present in the global scale. Enabling the circuit to process longer inputs would alleviate this drawback.
@@ -1502,7 +1550,8 @@ by EACirc dynamically adapt to the data stream. Thus, if a data stream changes i
 (predefined statistical tests never change).
 \item \textbf{Results interpretation}\\
 On one hand, dynamically adapting tests present a huge disadvantage when interpreting their results -- it may be very difficult for
-humans to analyse, what data properties is the distinguisher using. On the hand, statistical tests only inform of the data's global
+humans to analyse, on what data properties is the distinguisher basing its verdict. 
+On the hand, statistical tests only inform of the data's global
 characteristics (e.\,g.\ there are much more ones than zeroes), while the distinguisher circuits may be a little more specific 
 (e.\,g.\ every 6\textsuperscript{th} byte has a higher Hamming weight than it should).
 \end{myItemize}
@@ -1510,15 +1559,18 @@ characteristics (e.\,g.\ there are much more ones than zeroes), while the distin
 \section{Proposed future work}
 \label{sec:outro-future-work}
 
-The primary goal for us will be enabling the circuit to process longer inputs and thus detect more global interdependencies.
+As could be seen in \autoref{chap:distinguish-cipher} and \autoref{chap:distinguish-hash}, EACirc still falls behind standard 
+statistical batteries in some cases. In the future work we will concentrate on those border cases were EACirc is outperformed.
+
+Another primary goal for us will be enabling the circuit to process longer inputs and thus detect more global interdependencies.
 We consider several scenarios of achieving this. To name but a few, we may re-implement the \textsc{readx} function that
 reads arbitrary input byte. Other method would be to implement a kind of \textit{memory} for the circuit, which would enable
 the transfer of information when processing longer inputs.
 
-Another interesting idea is explore the range of functions allowed in the circuit nodes. On one hand, we may allow more complex
+Another interesting idea is to explore the range of functions allowed in the circuit nodes. On one hand, we may allow more complex
 data processing in a single node -- sequences extracted from the byte-code of the analysed stream cipher/hash function may be used.
 On the other hand, we may limit the range of allowed functions to but a few, e.\,g.\ only \textsc{and}, \textsc{or} and \textsc{not},
-as such a small set is sufficient to express anything.
+as such a small set is sufficient to express arbitrarily complex function if given enough space.
 
 Furthermore, we plan to perform deeper analysis of the obtained results with respect to the tested stream ciphers and hash functions.
 For this, new tools for interpreting the results will have to be developed 
