@@ -1,5 +1,5 @@
-\documentclass[12pt,oneside]{fithesis2}		% pc version
-%\documentclass[12pt,twoside]{fithesis2}		% print version
+%\documentclass[12pt,oneside]{fithesis2}		% pc version
+\documentclass[12pt,twoside]{fithesis2}		% print version
 
 % ===== LOADING PACKAGES =====
 % language settings, main documnet language last
@@ -13,8 +13,8 @@
 % fithesis2 requires csquotes
 \usepackage{csquotes}
 % set page margins
-\usepackage[top=3.0cm, bottom=3.5cm, left=2.4cm, right=2.4cm]{geometry}	% pc version
-%\usepackage[top=3.0cm, bottom=3.5cm, left=2.9cm, right=1.9cm]{geometry}	% print version
+%\usepackage[top=3.0cm, bottom=3.5cm, left=2.4cm, right=2.4cm]{geometry}	% pc version
+\usepackage[top=3.0cm, bottom=3.5cm, left=2.9cm, right=1.9cm]{geometry}	% print version
 % package to make bullet list nicer
 \usepackage{enumitem}
 % math symbols and environments
@@ -26,8 +26,8 @@
 \usepackage{dcolumn}
 \usepackage{array}
 % enable page rotation and floats rotation
-\usepackage{pdflscape}		% pc version
-%\usepackage{rotating}		% print version
+%\usepackage{pdflscape}		% pc version
+\usepackage{rotating}		% print version
 % bibliography management
 \usepackage[backend=biber, 		% use biber as backend instead of BiBTeX
 	bibstyle=ieee-alphabetic, 	% bibliography style: IEEE with alphabetic citations
@@ -47,8 +47,8 @@
 \usepackage[plainpages=false, 	% get the page numbering correctly
             pdfpagelabels, 		% write arabic labels to all pages
             unicode,	 			% allow unicode characters in links
-            colorlinks=true, 	% use colored links instead of boxed (pc version)
-            %hidelinks, 			% hide links (print version)
+            %colorlinks=true, 	% use colored links instead of boxed (pc version)
+            hidelinks, 			% hide links (print version)
             linkcolor={dark-red},
             citecolor={dark-green},
             urlcolor={medium-blue}
@@ -805,9 +805,9 @@ less so from pink and Brownian noise (success rate only around 65\,\%),
 (although the differences are easily detectable by human ear).
 \end{myItemize}
 
-\begin{landscape}		% pc version
-\begin{table}[p]		% pc version
-%\begin{sidewaystable}	% print version
+%\begin{landscape}		% pc version
+%\begin{table}[p]		% pc version
+\begin{sidewaystable}	% print version
 \centering
 \newsavebox{\temp}
 \newcolumntype{A}{>{\centering \begin{lrbox}{\temp} \arraybackslash}X<{\end{lrbox} \m{\unhbox\temp} \arraybackslash}}
@@ -861,9 +861,9 @@ metal music (sample 1) &
 \end{tabularx}
 \caption{Distinguishing random streams and uncompressed audio (noise, compressed noise, metal music).}
 \label{tab:control-audio}
-%\end{sidewaystable}	% print version
-\end{table}			% pc version
-\end{landscape}		% pc version
+\end{sidewaystable}	% print version
+%\end{table}			% pc version
+%\end{landscape}		% pc version
 
 \chapter{Distinguishing cipher outputs from random stream}
 \label{chap:distinguish-cipher}
