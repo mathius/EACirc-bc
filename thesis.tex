@@ -1,5 +1,5 @@
-\documentclass[12pt,oneside]{fithesis2}		% pc version
-%\documentclass[12pt,twoside]{fithesis2}		% print version
+%\documentclass[12pt,oneside]{fithesis2}		% pc version
+\documentclass[12pt,twoside]{fithesis2}		% print version
 
 % ===== LOADING PACKAGES =====
 % language settings, main documnet language last
@@ -13,8 +13,8 @@
 % fithesis2 requires csquotes
 \usepackage{csquotes}
 % set page margins
-\usepackage[top=3.0cm, bottom=3.5cm, left=2.4cm, right=2.4cm]{geometry}	% pc version
-%\usepackage[top=3.0cm, bottom=3.5cm, left=2.9cm, right=1.9cm]{geometry}	% print version
+%\usepackage[top=3.0cm, bottom=3.5cm, left=2.4cm, right=2.4cm]{geometry}	% pc version
+\usepackage[top=3.0cm, bottom=3.5cm, left=2.9cm, right=1.9cm]{geometry}	% print version
 % package to make bullet list nicer
 \usepackage{enumitem}
 % math symbols and environments
@@ -26,8 +26,8 @@
 \usepackage{dcolumn}
 \usepackage{array}
 % enable page rotation and floats rotation
-\usepackage{pdflscape}		% pc version
-%\usepackage{rotating}		% print version
+%\usepackage{pdflscape}		% pc version
+\usepackage{rotating}		% print version
 % bibliography management
 \usepackage[backend=biber, 		% use biber as backend instead of BiBTeX
 	bibstyle=ieee-alphabetic, 	% bibliography style: IEEE with alphabetic citations
@@ -47,8 +47,8 @@
 \usepackage[plainpages=false, 	% get the page numbering correctly
             pdfpagelabels, 		% write arabic labels to all pages
             unicode,	 			% allow unicode characters in links
-            colorlinks=true, 	% use colored links instead of boxed (pc version)
-            %hidelinks, 			% hide links (print version)
+            %colorlinks=true, 	% use colored links instead of boxed (pc version)
+            hidelinks, 			% hide links (print version)
             linkcolor={dark-red},
             citecolor={dark-green},
             urlcolor={medium-blue}
@@ -87,9 +87,10 @@
 \newcommand{\m}[1]{\multirow{2}*{#1}}
 % rotated (one or multi line) table cell
 \newcommand{\rotatedHeader}[2][l]{\rotatebox{90}{\begin{tabular}[#1]{@{}l}#2\end{tabular}}}
+% new table column type - flexible width + centering
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 % results table for eStream
 \newcommand{\resultsTableEstream}[1]{%
-\newcolumntype{C}{>{\centering\arraybackslash}X}%
 \begin{tabularx}{\textwidth}{|r*{3}{||S[table-format=2.1]|S[table-format=3.0]|C}|} \hline
 \multirow{1}*{\raisebox{-\height-0.3cm}{\rotatebox{90}{\# of rounds}}} & \multicolumn{9}{c|}{IV and key reinitialization} \\ \cline{2-10}
 & \multicolumn{3}{c||}{once for run} & 
@@ -102,7 +103,6 @@
 \end{tabularx}}
 % results table for SHA-3
 \newcommand{\resultsTableSha}[1]{%
-\newcolumntype{C}{>{\centering\arraybackslash}X}%
 \begin{tabularx}{7.3cm}{|r||S[table-format=2.1]|S[table-format=3.0]|C|} \hline
 \raisebox{0cm}{\rotatebox{90}{\# of rounds }} & 
 \multicolumn{1}{c|}{\rotatedHeader{Dieharder\\(x/20)}} & 
@@ -708,7 +708,6 @@ value of 0.52 corresponds to indistinguishable streams.
 \begin{table}[h]
 \centering
 \renewcommand{\arraystretch}{1.2}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{|c|r||*{6}{C|}} \cline{3-8}
 \multicolumn{2}{c||}{} & \multicolumn{6}{c|}{number of test vector in a set} \\ \cline{3-8}
 \multicolumn{2}{c||}{} & 200 & 500 & 1000 & 2000 & 5000 & 10\,000 \\ \hline \hline
@@ -745,7 +744,6 @@ interchangeably.
 \begin{table}[h]
 \centering
 \renewcommand{\arraystretch}{1.2}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{|c|r||*{6}{C|}} \cline{3-8}
 \multicolumn{2}{c||}{} & \multicolumn{6}{c|}{QRBG service (Ruđer Bošković Institute, Croatia)} \\ \cline{3-8}
 \multicolumn{2}{c||}{} & stream 1 & stream 2 & stream 3 & stream 4 & stream 5 & stream 6 \\ \hline \hline
@@ -806,13 +804,13 @@ less so from pink and Brownian noise (success rate only around 65\,\%),
 (although the differences are easily detectable by human ear).
 \end{myItemize}
 
-\begin{landscape}		% pc version
-\begin{table}[p]		% pc version
-%\begin{sidewaystable}	% print version
+%\begin{landscape}		% pc version
+%\begin{table}[p]		% pc version
+\begin{sidewaystable}	% print version
 \centering
 \newsavebox{\temp}
-\newcolumntype{C}{>{\centering \begin{lrbox}{\temp} \arraybackslash}X<{\end{lrbox} \m{\unhbox\temp} \arraybackslash}}
-\begin{tabularx}{22cm}{|c|>{\raggedright\arraybackslash}p{2.5cm}*{4}{||C|C|C}|} \cline{3-14}
+\newcolumntype{CC}{>{\centering \begin{lrbox}{\temp} \arraybackslash}X<{\end{lrbox} \m{\unhbox\temp} \arraybackslash}}
+\begin{tabularx}{22cm}{|c|>{\raggedright\arraybackslash}p{2.5cm}*{4}{||CC|CC|CC}|} \cline{3-14}
 
 \multicolumn{2}{l||}{} & \multicolumn{3}{c||}{random streams} & \multicolumn{3}{c||}{noise (true)} &
 \multicolumn{3}{c||}{noise (via mp3)} & \multicolumn{3}{c|}{metal music} \\ \cline{3-14}
@@ -862,9 +860,9 @@ metal music (sample 1) &
 \end{tabularx}
 \caption{Distinguishing random streams and uncompressed audio (noise, compressed noise, metal music).}
 \label{tab:control-audio}
-%\end{sidewaystable}	% print version
-\end{table}			% pc version
-\end{landscape}		% pc version
+\end{sidewaystable}	% print version
+%\end{table}			% pc version
+%\end{landscape}		% pc version
 
 \chapter{Distinguishing cipher outputs from random stream}
 \label{chap:distinguish-cipher}
@@ -1194,7 +1192,6 @@ Furthermore, we retain settings similar to the previous experiments, which facil
 \begin{table}[htb]
 \centering
 \renewcommand{\arraystretch}{1.2}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{2cm}||*{8}{C|}} \cline{2-9}
 \multicolumn{1}{l||}{} & \multicolumn{8}{c|}{change frequency for test vector set} \\ \cline{2-9}
 \multicolumn{1}{l||}{} & 5 & 10 & 20 & 50 & 100 & 200 & 500 & 1000 \\ \hline \hline
@@ -1307,7 +1304,7 @@ but EACirc was not.
 4 & 20.0 & 162 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for DCH output. For the notes on fields marked with asterisk, 
-see \autoref{sec:sha3-results}.}
+see \autoref{sec:hash-results}.}
 \label{tab:sha3-dch}
 \bigskip
 \resultsTableSha{
@@ -1435,7 +1432,7 @@ see \autoref{sec:sha3-results}.}
 104 & 20.0 & 162 & (0.52) \\ \hline
 }
 \caption{Random distinguishers for MD6 output. For the notes on fields marked with asterisk, 
-see \autoref{sec:sha3-results}.}
+see \autoref{sec:hash-results}.}
 \label{tab:sha3-md6}
 \bigskip
 \resultsTableSha{
@@ -1586,12 +1583,21 @@ For this, new tools for interpreting the results will have to be developed
 
 \chapter{Data attachment}
 
+The data attachment contains source codes and most experimental results organized in the following structure:
 \begin{myItemize}
-\item code of EACirc (gitHub commit number + date)
-\item copy of EACirc wiki (hosted at GitHub, commit number + date)
-\item results of all performed EACirc experiments in the form of AAM values
-\item results of STS NIST from all performed experiments
-\item results of Dieharder from all performed experiments
+\item \texttt{eacirc}\\
+source codes of EACirc (copy of entire project repository with master commit 4b92ed9e36 from 2013-05-19)
+\item \texttt{eacirc-wiki}\\
+project's wiki-based documentation (copy of entire wiki repository with master commit 2817031fac from 2013-05-05)
+\item \texttt{data-estream}\\
+experimental results related to distinguishing eStream ciphers output (\autoref{chap:distinguish-cipher}), 
+further divided into subdirectories according to the testing method (\texttt{eacirc}, \texttt{dieharder} and \texttt{sts-nist})
+\item \texttt{data-sha3}\\
+experimental results related to distinguishing SHA-3 hash functions output (\autoref{chap:distinguish-hash}),
+further divided into subdirectories according to the testing method (\texttt{eacirc}, \texttt{dieharder} and \texttt{sts-nist})
+\item \texttt{data-other}\\
+experimental results from EACirc for other performed tests along with full audio samples used for experiment described
+in \autoref{sec:distinguishing-audio}
 \end{myItemize}
 
 \end{document}
